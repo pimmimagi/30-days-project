@@ -13,6 +13,11 @@ namespace PixelCrushers.DialogueSystem.Wrappers
     [AddComponentMenu("Pixel Crushers/Dialogue System/UI/Standard UI/Dialogue/Standard UI Menu Panel")]
     public class StandardUIMenuPanel : PixelCrushers.DialogueSystem.StandardUIMenuPanel
     {
+        /*public void Start()
+        {
+            base.ActivateUIElements();
+            base.InstantiateButton();
+            Debug.LogError("Spawn Cell");
+        }*/
     }
-
 }

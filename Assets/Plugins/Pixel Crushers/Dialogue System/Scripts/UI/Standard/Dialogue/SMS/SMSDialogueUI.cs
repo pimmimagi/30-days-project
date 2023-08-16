@@ -51,9 +51,19 @@ namespace PixelCrushers.DialogueSystem
 
             public float GetDelayDuration(Subtitle subtitle)
             {
-                return (basedOnTextLength ? Mathf.Max(DialogueManager.DisplaySettings.subtitleSettings.minSubtitleSeconds,
-                    subtitle.formattedText.text.Length / Mathf.Max(1, DialogueManager.DisplaySettings.subtitleSettings.subtitleCharsPerSecond)) : 0) +
-                    additionalSeconds;
+                float calculatedDuration = (basedOnTextLength ? Mathf.Max(DialogueManager.DisplaySettings.subtitleSettings.minSubtitleSeconds,
+     subtitle.formattedText.text.Length / Mathf.Max(1, DialogueManager.DisplaySettings.subtitleSettings.subtitleCharsPerSecond)) : 0) +
+     additionalSeconds;
+
+                // Debug line to display the calculated duration before subtraction
+                //Debug.Log("Original calculated duration: " + calculatedDuration);
+
+                float finalDuration = Mathf.Max(0, calculatedDuration - 2);
+
+                // Debug line to display the final duration after subtracting 2 seconds
+               // Debug.Log("Final duration after subtracting 2 seconds: " + finalDuration);
+
+                return finalDuration;
             }
 
             public void CopyTo(PreDelaySettings dest)

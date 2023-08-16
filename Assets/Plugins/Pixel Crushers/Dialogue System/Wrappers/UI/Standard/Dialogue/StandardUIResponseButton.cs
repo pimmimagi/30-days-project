@@ -1,17 +1,19 @@
-﻿// Copyright (c) Pixel Crushers. All rights reserved.
-
-using UnityEngine;
+﻿using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 namespace PixelCrushers.DialogueSystem.Wrappers
 {
-
-    /// <summary>
-    /// This wrapper class keeps references intact if you switch between the 
-    /// compiled assembly and source code versions of the original class.
-    /// </summary>
     [AddComponentMenu("Pixel Crushers/Dialogue System/UI/Standard UI/Dialogue/Standard UI Response Button")]
     public class StandardUIResponseButton : PixelCrushers.DialogueSystem.StandardUIResponseButton
     {
-    }
+        public TextPrinter textPrinterScript;
 
+        public override void SetFormattedText(FormattedText formattedText)
+        {
+            base.SetFormattedText(formattedText);
+
+            if (textPrinterScript != null)
+                textPrinterScript.SetWriterText(UITools.GetUIFormattedText(formattedText));
+        }
+    }
 }

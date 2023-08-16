@@ -54,7 +54,11 @@ namespace PixelCrushers.DialogueSystem
         /// <summary>
         /// Indicates whether the button is shown or not.
         /// </summary>
-        public virtual bool isVisible { get; set; }
+        public virtual bool isVisible
+        {
+            get { return gameObject.activeSelf; }
+            set { gameObject.SetActive(value); }
+        }
 
         /// <summary>
         /// Gets or sets the response associated with this button. If the player clicks this 
@@ -91,7 +95,18 @@ namespace PixelCrushers.DialogueSystem
 
         public virtual void Start()
         {
-            if (button != null && button.onClick.GetPersistentEventCount() == 0)
+            if (button == null) button = GetComponent<UnityEngine.UI.Button>();
+            if (button == null)
+            {
+                Debug.LogWarning("Dialogue System: Response button '" + name + "' is missing a Unity UI Button component!", this);
+                return;
+            }
+
+            // Make the button visible and clickable by default:
+            isVisible = true;
+            isClickable = true;
+
+            if (button.onClick.GetPersistentEventCount() == 0)
             {
                 button.onClick.AddListener(OnClick);
             }
