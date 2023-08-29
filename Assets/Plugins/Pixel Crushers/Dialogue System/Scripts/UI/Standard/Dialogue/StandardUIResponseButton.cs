@@ -13,10 +13,11 @@ namespace PixelCrushers.DialogueSystem
     [AddComponentMenu("")] // Use wrapper.
     public class StandardUIResponseButton : MonoBehaviour, ISelectHandler
     {
-
+        public AudioSource audioSource;
         [HelpBox("If Button's OnClick() event is empty, this Standard UI Response Button component will automatically assign its OnClick method at runtime. If Button's OnClick() event has other elements, you *must* manually assign the StandardUIResponseButton.OnClick method to it.", HelpBoxMessageType.Info)]
         public UnityEngine.UI.Button button;
 
+        public AudioClip buttonClickClip;
         [Tooltip("Text element to display response text.")]
         public UITextField label;
 
@@ -54,11 +55,11 @@ namespace PixelCrushers.DialogueSystem
         /// <summary>
         /// Indicates whether the button is shown or not.
         /// </summary>
-        public virtual bool isVisible
-        {
-            get { return gameObject.activeSelf; }
-            set { gameObject.SetActive(value); }
-        }
+        public virtual bool isVisible { get; set; }
+        //{
+        //    get { return gameObject.activeSelf; }
+        //    set { gameObject.SetActive(value); }
+       // }
 
         /// <summary>
         /// Gets or sets the response associated with this button. If the player clicks this 
@@ -95,6 +96,7 @@ namespace PixelCrushers.DialogueSystem
 
         public virtual void Start()
         {
+
             if (button == null) button = GetComponent<UnityEngine.UI.Button>();
             if (button == null)
             {
@@ -102,9 +104,8 @@ namespace PixelCrushers.DialogueSystem
                 return;
             }
 
-            // Make the button visible and clickable by default:
-            isVisible = true;
             isClickable = true;
+            // Make the button visible 
 
             if (button.onClick.GetPersistentEventCount() == 0)
             {
@@ -141,10 +142,23 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public virtual void OnClick()
         {
+            PlaySound();
+            Debug.Log("Sound is playing");
+
             if (target != null)
             {
                 SetCurrentResponse();
                 target.SendMessage("OnClick", response, SendMessageOptions.RequireReceiver);
+                Reset();
+            }
+        }
+
+        private void PlaySound()
+        {
+            if (audioSource != null && buttonClickClip != null)
+            {
+                Debug.LogError("def");
+                audioSource.PlayOneShot(buttonClickClip);
             }
         }
 
@@ -159,6 +173,14 @@ namespace PixelCrushers.DialogueSystem
             {
                 DialogueManager.instance.conversationController.SetCurrentResponse(response);
             }
+        }
+        public void CanClick()
+        {
+            isClickable = true;
+        }
+        public void DisableClick()
+        {
+            isClickable = false;
         }
     }
 

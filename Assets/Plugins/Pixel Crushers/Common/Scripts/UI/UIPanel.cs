@@ -15,7 +15,8 @@ namespace PixelCrushers
     [AddComponentMenu("")] // Use wrapper.
     public class UIPanel : MonoBehaviour
     {
-
+        public AudioSource audioSource;
+        public AudioClip npcChatPopupSound;
         [Tooltip("When enabling the panel, select this if input device is Joystick or Keyboard.")]
         public GameObject firstSelected;
 
@@ -227,6 +228,7 @@ namespace PixelCrushers
             panelState = PanelState.Opening;
             gameObject.SetActive(true);
             onOpen.Invoke();
+
             if (myAnimator != null && myAnimator.isInitialized && !string.IsNullOrEmpty(hideAnimationTrigger))
             {
                 myAnimator.ResetTrigger(hideAnimationTrigger);
@@ -236,6 +238,11 @@ namespace PixelCrushers
             // With quick panel changes, panel may not reach OnEnable/OnDisable before being reused.
             // Update panelStack here also to handle this case:
             PushToPanelStack();
+            if (audioSource != null && npcChatPopupSound != null)
+            {
+                audioSource.clip = npcChatPopupSound;
+                audioSource.Play();
+            }
         }
 
         public virtual void Close()
