@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using Unity.Collections.LowLevel.Unsafe;
+using System.Linq;
 
 public class CharacterPod : MonoBehaviour
 {
@@ -13,15 +14,7 @@ public class CharacterPod : MonoBehaviour
 
     public List<CharacterTemplateScriptableObject> CharacterTemplateList;
 
-    public void Initialize(CharacterBean characterBean)
-    {
-        this.CharacterBean = characterBean;
-        this.relationshipvalue = new ReactiveProperty<int>(characterBean.relationship);
-        /*foreach (CharacterBean bean in Characterlist)
-        {
-            Initialize(bean);
-        }*/
-    }
+
 
     public void LoadCharacterData()
     {
@@ -35,18 +28,20 @@ public class CharacterPod : MonoBehaviour
 
             if ( data.IDCharacter == 0)
             {
-                characterBean.relationship = 5;
+                characterBean.relationship = 81;
             } else if ( data.IDCharacter == 1) 
 
             {
-                characterBean.relationship = 10;
+                characterBean.relationship = 48;
             }
                 else if ( data.IDCharacter == 2)
             {
-                characterBean.relationship = 2;
+                characterBean.relationship = 82;
             }
 
+            
             CharacterBeanList.Add(characterBean);
+            CharacterBeanList = CharacterBeanList.OrderByDescending(character => character.relationship).Take(3).ToList();
         }
     }
 }

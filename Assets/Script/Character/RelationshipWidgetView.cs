@@ -15,5 +15,6 @@ public class RelationshipWidgetView : MonoBehaviour
         relationshipCellView1.Bind(characterPod.CharacterBeanList[0]);
         relationshipCellView2.Bind(characterPod.CharacterBeanList[1]);
         relationshipCellView3.Bind(characterPod.CharacterBeanList[2]);
+
     }
 }

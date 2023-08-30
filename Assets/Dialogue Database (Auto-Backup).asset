@@ -1380,7 +1380,7 @@ MonoBehaviour:
         destinationDialogueID: 15
         isConnector: 0
         priority: 2
-      conditionsString: Variable["F_relationship"] == 0
+      conditionsString: Variable["Frelationship"] == 0
       userScript: SwitchNPCNin_Stand_to_F_stand()
       onExecute:
         m_PersistentCalls:
@@ -1388,7 +1388,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1048.0195
-        y: 1181.2559
+        y: 1182.3547
         width: 160
         height: 30
     - id: 14
@@ -1435,7 +1435,7 @@ MonoBehaviour:
         destinationDialogueID: 16
         isConnector: 0
         priority: 2
-      conditionsString: Variable["F_relationship"] >= 1
+      conditionsString: Variable["Frelationship"] >= 1
       userScript: SwitchNPCNin_Stand_to_F_stand()
       onExecute:
         m_PersistentCalls:
@@ -1497,8 +1497,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 834.46
-        y: 1324.6575
+        x: 1047.647
+        y: 1338.9431
         width: 160
         height: 30
     - id: 16
@@ -1552,8 +1552,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1605.7501
-        y: 1310.8501
+        x: 1633.1085
+        y: 1397.6426
         width: 160
         height: 30
     - id: 17
@@ -1711,13 +1711,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1399.325
-        y: 1647.6304
+        x: 1476.9565
+        y: 1492.4148
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1187.2295, y: 1157.1741}
-    canvasZoom: 0.54999995
+    canvasScrollPosition: {x: 765.7388, y: 796.8737}
+    canvasZoom: 0.4900001
   - id: 3
     fields:
     - title: Title
