@@ -1716,8 +1716,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 765.7388, y: 796.8737}
-    canvasZoom: 0.4900001
+    canvasScrollPosition: {x: 935.91754, y: 446.84546}
+    canvasZoom: 1.1199994
   - id: 3
     fields:
     - title: Title
@@ -1799,7 +1799,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 3
@@ -1815,8 +1815,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
-        y: 30
+        x: 296
+        y: 8
         width: 160
         height: 30
     - id: 1
@@ -1830,11 +1830,11 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Actor
-        value: 2
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 1
+        value: 3
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -1842,7 +1842,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: HELLO
+        value: c
         type: 0
         typeString: 
       - title: Sequence
@@ -1870,8 +1870,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 310
-        y: 128
+        x: 94
+        y: 142
         width: 160
         height: 30
     - id: 2
@@ -1889,7 +1889,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 3
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -1919,13 +1919,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 314
-        y: 177
+        x: 278
+        y: 334
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 488.11996, y: 0}
+    canvasZoom: 0.1
   - id: 4
     fields:
     - title: Title

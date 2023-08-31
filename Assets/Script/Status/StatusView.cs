@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,10 +8,11 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class StatusView : MonoBehaviour
 {
+    public GameObject StatusPlayerDefaultBox;
     public TMP_Text StatusPlayerDefaultText;
     public PlayerPod playerpod;
     public GameObject StatusEditPlayerBox;
-    public TMP_Text StatusPlayerChangeText;
+    public TMP_InputField StatusPlayerChangeTextInputField;
     public Button EditStatusButton;
     public Button SaveStatusButton;
 
@@ -24,7 +25,7 @@ public class StatusView : MonoBehaviour
     private void SetupSubscribe()
     {
         playerpod.StatusPlayerText.Subscribe(newStatusText => {
-            StatusPlayerDefaultText.text = newStatusText;
+                StatusPlayerDefaultText.text = newStatusText;
         }).AddTo(this);
     }
 
@@ -32,20 +33,23 @@ public class StatusView : MonoBehaviour
     {
         EditStatusButton.onClick.AddListener(() =>
         {
-            ClearText()
+            StatusPlayerDefaultBox.SetActive(false);
             StatusEditPlayerBox.gameObject.SetActive(true);
+            ClearText();
         });
 
         SaveStatusButton.onClick.AddListener(() =>
         {
             StatusEditPlayerBox.gameObject.SetActive(false);
-            StatusPlayerDefaultText.text = StatusPlayerChangeText.text;
+            //StatusPlayerDefaultText.text = StatusPlayerChangeText.text;
+            playerpod.UpdateStatusText(StatusPlayerChangeTextInputField.text);
+            StatusPlayerDefaultBox.SetActive(true);
         });
     }
 
     public void ClearText()
     {
-        if (StatusPlayerDefaultText != null) StatusPlayerDefaultText.text = "";
+        StatusPlayerDefaultText.text = "";
+        StatusPlayerChangeTextInputField.text = "";
     }
-
 }

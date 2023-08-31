@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scene/Dialogue.unity
     guid: 6dd3f0f42c105de4a9bc0a64eab45b90
+  - enabled: 1
+    path: Assets/scene/MainMenu.unity
+    guid: e8ddf5c0dc22e6c418e6ae0602a0f51d
+  - enabled: 1
+    path: Assets/scene/ChatApp.unity
+    guid: 06f047ce461c09643a8d9f565137d562
   m_configObjects: {}
