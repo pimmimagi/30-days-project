@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
@@ -7,6 +7,7 @@ public class DialoguePod : MonoBehaviour
 {
     private PlayerPod playerpod;
     private CharacterPod characterPod;
+    public NotificationCellView notificationCellView;
 
     private void Start()
     {
@@ -14,10 +15,19 @@ public class DialoguePod : MonoBehaviour
         characterPod = CharacterPod.Instance;
     }
 
-   void OnConversationLine(Subtitle subtitle)
-    { 
-        Debug.Log("About to show the text: " + subtitle.formattedText.text);
-        characterPod.UpdateCurrentChatText(subtitle.formattedText.text);
+    void OnConversationLine(Subtitle subtitle)
+    {
+        Debug.Log("Received text from dialogue: " + subtitle.formattedText.text);
+        characterPod.UpdateCurrentChatText(3, subtitle.formattedText.text);
+        if (subtitle.formattedText.text == "อิอิ")
+        {
+            playerpod.current_date += 1;
+            notificationCellView.SetActive();
+            Debug.Log("current date is = " + playerpod.current_date);
+            Debug.Log("current text of index 0 is" + characterPod.GetCharacterBeanByID(0).CurrentChatText);
+            Debug.Log("current text of index 3 is" + characterPod.GetCharacterBeanByID(3).CurrentChatText);
+        }
+        
     }
 }
 

@@ -1,9 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
+using PixelCrushers.DialogueSystem;
 
 public class ChatCellView: MonoBehaviour
 {
@@ -17,19 +18,13 @@ public class ChatCellView: MonoBehaviour
     {
         playerpod = PlayerPod.Instance;
         characterpod = CharacterPod.Instance;
-        SetupSubscribe();
     }
-
-    private void SetupSubscribe()
-    {
-        characterpod.CharacterBean.CurrentChatText.Subscribe(newcurrentText => {
-            Currenttext.text = newcurrentText;
-        }).AddTo(this);
-    }
-
     public void Bind(CharacterBean data)
     {
         CharacterImage.sprite = data.characterData.ProfileSprite;
         CharacterNameText.text = data.characterData.NameText;
+        Currenttext.text = data.CurrentChatText;
+        Debug.Log("current text is binding to : " + data.CurrentChatText);
     }
+
 }

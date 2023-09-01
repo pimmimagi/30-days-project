@@ -13,10 +13,11 @@ public class CalendarWidgetView : MonoBehaviour
     [SerializeField] private TMP_Text datetext;
     [SerializeField] private TMP_Text daytext;
 
-    public PlayerPod playerPod;
+    private PlayerPod playerPod;
 
     private void Start()
     {
+        playerPod = PlayerPod.Instance;
         InitializeCalendar();
     }
 

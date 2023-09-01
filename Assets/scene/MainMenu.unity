@@ -220,7 +220,6 @@ MonoBehaviour:
   calendarPanel: {fileID: 1427355035}
   datetext: {fileID: 702667094300427828}
   daytext: {fileID: 1610097679919823298}
-  playerPod: {fileID: 1182899684}
 --- !u!1 &41356635
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,7 +388,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3449,12 +3448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69f286734c93f944be730464280f044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_date: 15
+  current_date: 1
   current_day: Sunday
   StatusPlayerText:
     value: "\u0E2D\u0E31\u0E19\u0E22\u0E2D\u0E07"
-  CurrentChatText:
-    value: "\u0E01\u0E23\u0E38\u0E13\u0E32\u0E43\u0E2A\u0E48\u0E02\u0E49\u0E2D\u0E04\u0E27\u0E32\u0E21"
 --- !u!4 &1182899685
 Transform:
   m_ObjectHideFlags: 0
@@ -3602,6 +3599,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2434653a22e77d5429b221f85c5c9836, type: 2}
   - {fileID: 11400000, guid: 7362023a3e67044499002c247da82e48, type: 2}
   - {fileID: 11400000, guid: f40a7971a936a0b4ba06cb1a777eef3a, type: 2}
+  CheckLoadCharacterdata: 0
 --- !u!4 &1215380521
 Transform:
   m_ObjectHideFlags: 0

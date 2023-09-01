@@ -1,8 +1,8 @@
-using UniRx;
+﻿using System.Diagnostics;
 
 public class CharacterBean
 {
     public CharacterTemplateScriptableObject characterData;
     public int relationship;
-    public ReactiveProperty<string> CurrentChatText = new ReactiveProperty<string>("");
+    public string CurrentChatText = "ข้อความเริ่มต้น";
 }

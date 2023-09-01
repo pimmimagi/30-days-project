@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IDCharacter: 3
   NameText: "\u0E1E\u0E32\u0E22"
-  ProfileSprite: {fileID: 21300000, guid: c58680f9a39c219489816106dba5f92d, type: 3}
+  ProfileSprite: {fileID: 21300000, guid: 1014b87d0dabc184d81c2cc0beaf7f02, type: 3}

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
-public class PlayerPod : MonoBehaviour
-{
+public class PlayerPod : MonoBehaviour { 
 
     public static PlayerPod Instance { get; private set; }
 
@@ -21,7 +20,7 @@ public class PlayerPod : MonoBehaviour
         }
     }
 
-    public int current_date = 15;
+    public int current_date = 1;
     public string current_day = "Sunday";
     public ReactiveProperty<string> StatusPlayerText = new ReactiveProperty<string>("อันยอง");
 

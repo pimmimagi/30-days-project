@@ -12,29 +12,37 @@ public class CharacterPod : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(Instance);
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("CharacterPod Instance initialized.");
         }
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
     }
 
 
-  //  public ReactiveProperty<int> relationshipvalue{ get; private set;}
+    //  public ReactiveProperty<int> relationshipvalue{ get; private set;}
     public CharacterBean CharacterBean { get; private set;}
 
     public List<CharacterBean> CharacterBeanList;
 
     public List<CharacterTemplateScriptableObject> CharacterTemplateList;
+    
+    public bool CheckLoadCharacterdata = false;
 
 
 
     public void LoadCharacterData()
     {
+
+        if (CheckLoadCharacterdata)
+        {
+            return;
+        }
         CharacterBeanList = new List<CharacterBean>();
 
         foreach (CharacterTemplateScriptableObject data in CharacterTemplateList)
@@ -62,12 +70,32 @@ public class CharacterPod : MonoBehaviour
 
             
             CharacterBeanList.Add(characterBean);
+            CharacterBean = characterBean;
             CharacterBeanList = CharacterBeanList.OrderByDescending(character => character.relationship).Take(3).ToList();
+            CheckLoadCharacterdata = true;
         }
     }
-    public void UpdateCurrentChatText(string newChatText)
+    public void UpdateCurrentChatText(int characterID, string newChatText)
     {
-        CharacterBean.CurrentChatText.Value = newChatText;
-        Debug.Log("Pod ปัจจุบัน คือ " + newChatText);
+        var targetBean = GetCharacterBeanByID(characterID);
+        if (targetBean != null)
+        {
+            if (targetBean.CurrentChatText != newChatText)
+            {
+                targetBean.CurrentChatText = newChatText;
+                Debug.Log("Updated character ID " + characterID + " with text: " + newChatText);
+                Debug.LogError(CharacterBeanList.FirstOrDefault(bean => bean.characterData.IDCharacter == characterID).CurrentChatText);
+            }
+            else
+            {
+                Debug.Log("Text for character ID " + characterID + " remains the same. No update needed.");
+            }
+        }
+    }
+
+
+    public CharacterBean GetCharacterBeanByID(int id)
+    {
+        return CharacterBeanList.FirstOrDefault(bean => bean.characterData.IDCharacter == id);
     }
 }
