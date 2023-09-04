@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scene/ChatApp.unity
     guid: 06f047ce461c09643a8d9f565137d562
+  - enabled: 1
+    path: Assets/scene/Chat2.unity
+    guid: 54b40ef0f3874ef4992d84649fec385e
+  - enabled: 1
+    path: Assets/scene/ChatAppStartDay1.unity
+    guid: 154ad57430d60fb4babc0d84dbae3720
   m_configObjects: {}

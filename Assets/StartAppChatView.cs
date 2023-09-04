@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.Events;
+
 
 public class StartAppChatView : MonoBehaviour
 {
@@ -17,6 +19,10 @@ public class StartAppChatView : MonoBehaviour
     public TMP_Text StatusOfDate;
     private PlayerPod playerpod;
     public bool CheckValueDateChange = false;
+    [SerializeField] public UnityEvent isPlaying;
+    public UnityEvent StartPlaying;
+    public UnityEvent FinishChapter;
+    public GameObject CellViewPieGameObject;
 
     private void Start()
     {
@@ -26,17 +32,19 @@ public class StartAppChatView : MonoBehaviour
     }
     private void SetupButtonListener()
     {
+ 
         StartDateButton1.onClick.AddListener(() =>
         {
-            MoveToScene(1);
-            CheckValueDateChange = true; 
+            MoveToScene(6);
+            //playerpod.CheckisPlayerClickButton = true;
+            playerpod.isplaying = true;
         });
 
         StartDateButton2.onClick.AddListener(() =>
         {
-            MoveToScene(3);
+            MoveToScene(5);
             Debug.Log("already move");
-            CheckValueDateChange = true; 
+            playerpod.isplaying = true;
         });
     }
 
@@ -50,17 +58,10 @@ public class StartAppChatView : MonoBehaviour
     {
         AllInactiveButton();
 
-        if (DateChanged())
-        {
-            PlayingBox.SetActive(false);
-            StartDateButton2.gameObject.SetActive(true);
-            CheckValueDateChange = true;
-        }
-        else
+        if (playerpod.isplaying)
         {
             PlayingBox.SetActive(true);
         }
-
         switch (playerpod.current_date)
         {
             case 1:

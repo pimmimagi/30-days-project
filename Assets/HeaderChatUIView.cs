@@ -18,7 +18,7 @@ public class HeaderChatUIView : MonoBehaviour
     {
         BackChatUIButton.onClick.AddListener(() =>
         {
-            MoveToScene(4);
+            MoveToScene(6);
             characterPod.CheckLoadCharacterdata = true;
             Debug.Log("Status after click back" + characterPod.CheckLoadCharacterdata);
         });

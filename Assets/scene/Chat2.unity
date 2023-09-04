@@ -188,7 +188,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: Questioning
+  conversation: New Conversation 7
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
@@ -415,7 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d5e176d4cac5447a9a54af530de2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChatBoxChatAppButton: {fileID: 0}
 --- !u!114 &75820490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,7 +1304,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &382480891
 GameObject:
@@ -1883,54 +1882,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565168836}
   m_CullTransparentMesh: 0
---- !u!1 &607906418
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 607906420}
-  - component: {fileID: 607906419}
-  m_Layer: 0
-  m_Name: PlayerPod
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &607906419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607906418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e69f286734c93f944be730464280f044, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  current_date: 1
-  current_day: Sunday
-  StatusPlayerText:
-    value: "\u0E2D\u0E31\u0E19\u0E22\u0E2D\u0E07"
---- !u!4 &607906420
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607906418}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 496.86435, y: 1015.9512, z: 4.521416}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636496519
 GameObject:
   m_ObjectHideFlags: 0
@@ -5709,7 +5660,7 @@ MonoBehaviour:
     asyncGameObjectBatchSize: 1000
     asyncDialogueEntryBatchSize: 100
     initializeNewVariables: 1
-  allowSimultaneousConversations: 0
+  allowSimultaneousConversations: 1
   interruptActiveConversations: 0
   includeSimStatus: 0
   instantiateDatabase: 0
@@ -7065,23 +7016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca55201633b97d3408f439eb84ecb249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueEntrySceneEvents:
-  - guid: 024387d7-49c0-4e7d-9c05-4f91a61f6655
-    onExecute:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1579143448}
-          m_TargetAssemblyTypeName: NotificationCellView, Assembly-CSharp
-          m_MethodName: SetActive
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  dialogueEntrySceneEvents: []
 --- !u!4 &2051525968
 Transform:
   m_ObjectHideFlags: 0
@@ -7095,7 +7030,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2089880118
 GameObject:

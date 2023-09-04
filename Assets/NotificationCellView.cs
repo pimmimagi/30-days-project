@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UniRx;
+using System;
 public class NotificationCellView : MonoBehaviour
 {
     public GameObject NotificationPopUp;
@@ -20,10 +21,28 @@ public class NotificationCellView : MonoBehaviour
     }
 
     public void SetActive()
+
     {
-        Invoke("HideShowNotificationPopup", 1);
-        Invoke("HideShowNotificationNumber", 1);
+        Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ => { 
+        NotificationPopUp.SetActive(true);
+            NumberOfNotification.SetActive(true);
+            Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ => {
+                NotificationPopUp.SetActive(false);
+
+            });
+
+        });
+
+        //StartCoroutine(StartBeforeSeconds(3, NotificationPopUp));
+        //StartCoroutine(RemoveAfterSeconds(6,NotificationPopUp));
+        //Invoke("HideShowNotificationNumber", 1);
         
+    }
+
+    IEnumerator StartBeforeSeconds(int seconds, GameObject obj)
+    {
+        yield return new WaitForSeconds(seconds);
+        obj.SetActive(true);
     }
 
     IEnumerator RemoveAfterSeconds(int seconds, GameObject obj)

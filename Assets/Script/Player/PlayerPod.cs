@@ -23,6 +23,9 @@ public class PlayerPod : MonoBehaviour {
     public int current_date = 1;
     public string current_day = "Sunday";
     public ReactiveProperty<string> StatusPlayerText = new ReactiveProperty<string>("อันยอง");
+    public bool isplaying = false;
+    public bool CheckPlayerReadMessagePie = false;
+    public bool CheckPlayerReadMessageF = false;
 
     public void UpdateStatusText(string newStatus)
     {

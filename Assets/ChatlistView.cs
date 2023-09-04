@@ -8,6 +8,7 @@ public class ChatlistView : MonoBehaviour
     public ChatCellView ChatlistCellViewPie;
     public ChatCellView ChatlistCellViewF;
     public GameObject CellViewFGameObject;
+    public GameObject CellViewPieGameObject;
     public CharacterPod characterPod;
     public PlayerPod playerPod;
 
@@ -27,6 +28,7 @@ public class ChatlistView : MonoBehaviour
 
         if(playerPod.current_date == 2)
         {
+            characterBeanID0.CurrentChatText =  "ฮัลโหล";
             CellViewFGameObject.SetActive(true);
             ChatlistCellViewF.Currenttext.text = characterBeanID0.CurrentChatText;
 

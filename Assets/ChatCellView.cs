@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.SceneManagement;
 
 public class ChatCellView: MonoBehaviour
 {
@@ -13,11 +14,24 @@ public class ChatCellView: MonoBehaviour
     public TMP_Text CharacterNameText;
     private PlayerPod playerpod;
     private CharacterPod characterpod;
+    public Button ChatBoxChatAppButton1;
+    public Button ChatBoxChatAppButton2;
+    public Image NotificationPie;
+    public Image NotificationF;
 
     private void Start()
     {
         playerpod = PlayerPod.Instance;
         characterpod = CharacterPod.Instance;
+        SetupButtonListener();
+        if (playerpod.CheckPlayerReadMessagePie)
+        {
+            NotificationPie.gameObject.SetActive(false);
+        }
+        if (playerpod.CheckPlayerReadMessageF)
+        {
+            NotificationF.gameObject.SetActive(false);
+        }
     }
     public void Bind(CharacterBean data)
     {
@@ -26,5 +40,23 @@ public class ChatCellView: MonoBehaviour
         Currenttext.text = data.CurrentChatText;
         Debug.Log("current text is binding to : " + data.CurrentChatText);
     }
+    private void SetupButtonListener()
+    {
+        ChatBoxChatAppButton1.onClick.AddListener(() =>
+        {
+            playerpod.CheckPlayerReadMessagePie = true;
+            MoveToScene(1);
+        });
 
+        ChatBoxChatAppButton2.onClick.AddListener(() =>
+        {
+            playerpod.CheckPlayerReadMessageF = true;
+            MoveToScene(5);
+        });
+    }
+
+    public void MoveToScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
+    }
 }
