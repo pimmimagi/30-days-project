@@ -35,15 +35,15 @@ public class StartAppChatView : MonoBehaviour
  
         StartDateButton1.onClick.AddListener(() =>
         {
-            MoveToScene(6);
+            //MoveToScene(1);
             //playerpod.CheckisPlayerClickButton = true;
             playerpod.isplaying = true;
         });
 
         StartDateButton2.onClick.AddListener(() =>
         {
-            MoveToScene(5);
-            Debug.Log("already move");
+            //MoveToScene(5);
+            //Debug.Log("already move");
             playerpod.isplaying = true;
         });
     }

@@ -26,11 +26,12 @@ public class PlayerPod : MonoBehaviour {
     public bool isplaying = false;
     public bool CheckPlayerReadMessagePie = false;
     public bool CheckPlayerReadMessageF = false;
+    public bool PlayerReadingMessagePie = false;
+    public bool PlayerReadingMessageF = false;
+    public bool ReadAlready = false;
 
     public void UpdateStatusText(string newStatus)
     {
         StatusPlayerText.Value = newStatus;
     }
-
-
 }

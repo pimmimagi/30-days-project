@@ -10,7 +10,7 @@ public class StatusView : MonoBehaviour
 {
     public GameObject StatusPlayerDefaultBox;
     public TMP_Text StatusPlayerDefaultText;
-    public PlayerPod playerpod;
+    private PlayerPod playerpod;
     public GameObject StatusEditPlayerBox;
     public TMP_InputField StatusPlayerChangeTextInputField;
     public Button EditStatusButton;
@@ -18,6 +18,7 @@ public class StatusView : MonoBehaviour
 
     private void Start()
     {
+        playerpod = PlayerPod.Instance;
         SetupSubscribe();
         SetupButtonListener();
     }

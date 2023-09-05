@@ -8,6 +8,7 @@ public class DialoguePod : MonoBehaviour
     private PlayerPod playerpod;
     private CharacterPod characterPod;
     public NotificationCellView notificationCellView;
+    public ChatlistView chatlistView;
 
     private void Start()
     {
@@ -18,17 +19,37 @@ public class DialoguePod : MonoBehaviour
     void OnConversationLine(Subtitle subtitle)
     {
         Debug.Log("Received text from dialogue: " + subtitle.formattedText.text);
-        characterPod.UpdateCurrentChatText(3, subtitle.formattedText.text);
-        if (subtitle.formattedText.text == "อิอิ")
+        if (playerpod.current_date == 1 )
+        {
+            characterPod.UpdateCurrentChatText(3, subtitle.formattedText.text);
+            chatlistView.UpdateChatCellsPie();
+        }
+        else if (playerpod.current_date == 2 )
+        {
+            characterPod.UpdateCurrentChatText(0, subtitle.formattedText.text);
+            chatlistView.UpdateChatCellF();
+        }
+        if (subtitle.formattedText.text == "อิอิ" && playerpod.ReadAlready == false)
         {
             playerpod.current_date += 1;
             playerpod.isplaying = false;
+            playerpod.ReadAlready = true;
             //notificationCellView.NotificationPopUp.gameObject.SetActive(true);
-            notificationCellView.SetActive();
+            //notificationCellView.SetActive();
            // notificationCellView.NumberOfNotification.gameObject.SetActive(true);
             Debug.Log("current date is = " + playerpod.current_date);
             Debug.Log("current text of index 0 is" + characterPod.GetCharacterBeanByID(0).CurrentChatText);
             Debug.Log("current text of index 3 is" + characterPod.GetCharacterBeanByID(3).CurrentChatText);
+
+            if (playerpod.current_date == 2)
+            {
+                chatlistView.CellViewFGameObject.gameObject.SetActive(true);
+                //characterBeanID0.CurrentChatText = "ฮัลโหล";
+               // CellViewFGameObject.SetActive(true);
+                Debug.Log("Set active already");
+                //ChatlistCellViewF.Currenttext.text = characterBeanID0.CurrentChatText;
+
+            }
         }
         else if (subtitle.formattedText.text == "มึงจำอะไรไม่ได้เลยหรอ")
         {

@@ -44,14 +44,19 @@ public class ChatCellView: MonoBehaviour
     {
         ChatBoxChatAppButton1.onClick.AddListener(() =>
         {
-            playerpod.CheckPlayerReadMessagePie = true;
-            MoveToScene(1);
+            //playerpod.SetStatusPlayerReadindFalse();
+            //playerpod.CheckPlayerReadMessagePie = true;
+            //playerpod.PlayerReadingMessagePie = true;
+            //MoveToScene(1);
         });
 
         ChatBoxChatAppButton2.onClick.AddListener(() =>
         {
-            playerpod.CheckPlayerReadMessageF = true;
-            MoveToScene(5);
+           // playerpod.SetStatusPlayerReadindFalse();
+           // Debug.LogError(playerpod.PlayerReadingMessagePie);
+            //playerpod.CheckPlayerReadMessageF = true;
+            //playerpod.PlayerReadingMessageF = true;
+            //MoveToScene(5);
         });
     }
 
