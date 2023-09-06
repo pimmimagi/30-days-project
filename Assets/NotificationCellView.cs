@@ -13,6 +13,7 @@ public class NotificationCellView : MonoBehaviour
     public Image CharacterImage;
     public TMP_Text CharacterNameText;
     private CharacterPod characterpod;
+    public AudioSource NotiSound;
 
     public void Bind(CharacterBean data)
     {
@@ -25,6 +26,7 @@ public class NotificationCellView : MonoBehaviour
     {
         Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ => { 
         NotificationPopUp.SetActive(true);
+            NotiSound.Play();
             NumberOfNotification.SetActive(true);
             Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ => {
                 NotificationPopUp.SetActive(false);

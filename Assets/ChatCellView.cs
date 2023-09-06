@@ -18,20 +18,19 @@ public class ChatCellView: MonoBehaviour
     public Button ChatBoxChatAppButton2;
     public Image NotificationPie;
     public Image NotificationF;
+    public GameObject NumberofNotification;
 
     private void Start()
     {
         playerpod = PlayerPod.Instance;
         characterpod = CharacterPod.Instance;
         SetupButtonListener();
-        if (playerpod.CheckPlayerReadMessagePie)
-        {
-            NotificationPie.gameObject.SetActive(false);
-        }
-        if (playerpod.CheckPlayerReadMessageF)
-        {
-            NotificationF.gameObject.SetActive(false);
-        }
+        SetNotification();
+    }
+
+    private void Update()
+    {
+        SetNotification();
     }
     public void Bind(CharacterBean data)
     {
@@ -63,5 +62,19 @@ public class ChatCellView: MonoBehaviour
     public void MoveToScene(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
+    }
+
+    public void SetNotification()
+    {
+        if (playerpod.CheckPlayerReadMessagePie)
+        {
+            NotificationPie.gameObject.SetActive(false);
+        }
+        if (playerpod.CheckPlayerReadMessageF)
+        {
+            NotificationF.gameObject.SetActive(false);
+            NumberofNotification.gameObject.SetActive(false);
+
+        }
     }
 }

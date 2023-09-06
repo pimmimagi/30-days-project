@@ -22,7 +22,8 @@ public class ChatlistView : MonoBehaviour
         // Debug.Log("Status before ChangeLoadCharacter : " + characterPod.CheckLoadCharacterdata);
         characterPod.LoadCharacterData();
         // Debug.Log("Status after ChangeLoadCharacter : " +  characterPod.CheckLoadCharacterdata);
-        UpdateChatCellsPie(); // Update chat cells once at the start.
+        UpdateChatCellsPie();
+        UpdateChatCellF();
     }
 
     // Call this method whenever there's a new message or when the chat cell becomes active/visible.
