@@ -682,6 +682,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackChatUIButton: {fileID: 5428066959579888872}
+  clickSound: {fileID: 0}
+  CharacterNameText: {fileID: 0}
 --- !u!1 &726275910919995990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,6 +2911,7 @@ MonoBehaviour:
   verifyPanelAssignments: 1
   headingText: {fileID: 0}
   scrollRect: {fileID: 5262279403709900539}
+  audioSource: {fileID: 0}
   contentPanel: {fileID: 2298587636818751407}
   messagePanel: {fileID: 5072264160438404747}
   maxMessages: 0

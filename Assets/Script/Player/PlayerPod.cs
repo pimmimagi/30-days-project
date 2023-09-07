@@ -31,6 +31,8 @@ public class PlayerPod : MonoBehaviour
     public bool PlayerReadingMessagePie = true;
     public bool PlayerReadingMessageF = false;
     public bool ReadAlready = false;
+    public bool PlayerReadChat1 = false;
+    public int NumberofNotification = 0;
 
     private void Update()
     {

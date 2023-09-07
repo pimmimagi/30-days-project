@@ -25,6 +25,8 @@ namespace PixelCrushers.DialogueSystem
         [Tooltip("The scroll rect containing the content panel.")]
         public UnityEngine.UI.ScrollRect scrollRect;
 
+        public AudioSource audioSource;
+
         [Tooltip("The content panel inside the scroll rect containing the message panel and response panel.")]
         public RectTransform contentPanel;
 
@@ -285,6 +287,8 @@ namespace PixelCrushers.DialogueSystem
             var text = subtitle.formattedText.text;
             go.name = (text.Length <= 20) ? text : text.Substring(0, Mathf.Min(20, text.Length)) + "...";
             instantiatedMessages.Add(go);
+            audioSource.Play();
+            Debug.LogError("Sound play");
             go.transform.SetParent(messagePanel.transform, false);
             var panel = go.GetComponent<StandardUISubtitlePanel>();
             if (panel.addSpeakerName)

@@ -389,7 +389,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1891,7 +1891,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 495616063}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633713172}
+        m_TargetAssemblyTypeName: SoundPod, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &515336663
 GameObject:
   m_ObjectHideFlags: 0
@@ -4140,9 +4152,11 @@ MonoBehaviour:
   isplaying: 0
   CheckPlayerReadMessagePie: 0
   CheckPlayerReadMessageF: 0
-  PlayerReadingMessagePie: 1
+  PlayerReadingMessagePie: 0
   PlayerReadingMessageF: 0
   ReadAlready: 0
+  PlayerReadChat1: 0
+  NumberofNotification: 0
 --- !u!4 &1182899685
 Transform:
   m_ObjectHideFlags: 0
@@ -5039,7 +5053,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1298307756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633713172}
+        m_TargetAssemblyTypeName: SoundPod, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1299629900
 GameObject:
   m_ObjectHideFlags: 0

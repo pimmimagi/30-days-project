@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
+using System.Diagnostics.Contracts;
 
 public class DialoguePod : MonoBehaviour
 {
@@ -9,60 +10,69 @@ public class DialoguePod : MonoBehaviour
     private CharacterPod characterPod;
     public NotificationCellView notificationCellView;
     public ChatlistView chatlistView;
+    public GameObject ResponseBox;
 
     private void Start()
     {
-        playerpod = PlayerPod.Instance; 
+        playerpod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
     }
 
-    void OnConversationLine(Subtitle subtitle)
+    public void OnConversationLine(Subtitle subtitle)
     {
         Debug.Log("Received text from dialogue: " + subtitle.formattedText.text);
 
-        if (playerpod.PlayerReadingMessagePie )
+        if (playerpod.PlayerReadingMessagePie)
         {
             Debug.LogError("Update Pie");
             characterPod.UpdateCurrentChatText(3, subtitle.formattedText.text);
             chatlistView.UpdateChatCellsPie();
+            if (!DialogueManager.currentConversationState.hasAnyResponses)
+            {
+                playerpod.PlayerReadingMessagePie = false;
+               // ResponseBox.SetActive(false);
+                notificationCellView.SetActive();
+                chatlistView.CellViewFGameObject.gameObject.SetActive(true);
+            }
         }
-        
-        if (playerpod.PlayerReadingMessageF )
+
+        if (playerpod.PlayerReadingMessageF)
         {
             Debug.LogError("Update F");
             characterPod.UpdateCurrentChatText(0, subtitle.formattedText.text);
             chatlistView.UpdateChatCellF();
-        }
-
-        if (subtitle.formattedText.text == "อิอิ" && playerpod.current_date == 1)
-        {
-            playerpod.current_date += 1;
-            playerpod.isplaying = false;
-            playerpod.PlayerReadingMessagePie = false;
-           
-           // notificationCellView.NotificationPopUp.gameObject.SetActive(true);
-            notificationCellView.SetActive();
-            //notificationCellView.NumberOfNotification.gameObject.SetActive(true);
-            Debug.Log("current date is = " + playerpod.current_date);
-            Debug.Log("current text of index 0 is" + characterPod.GetCharacterBeanByID(0).CurrentChatText);
-            Debug.Log("current text of index 3 is" + characterPod.GetCharacterBeanByID(3).CurrentChatText);
-
-            if (playerpod.current_date == 2)
+            if (!DialogueManager.currentConversationState.hasAnyResponses)
             {
-                chatlistView.CellViewFGameObject.gameObject.SetActive(true);
-                //characterBeanID0.CurrentChatText = "ฮัลโหล";
-               // CellViewFGameObject.SetActive(true);
-                Debug.Log("Set active already");
-                //ChatlistCellViewF.Currenttext.text = characterBeanID0.CurrentChatText;
-
+                playerpod.PlayerReadingMessageF = false;
+                // ResponseBox.SetActive(false);
+                //notificationCellView.SetActive();
+                //chatlistView.CellViewFGameObject.gameObject.SetActive(true);
+                playerpod.current_date = 2;
             }
-        }
-        else if (subtitle.formattedText.text == "มึงจำอะไรไม่ได้เลยหรอ")
-        {
-            playerpod.current_date += 1;
-            playerpod.isplaying = false;
         }
     }
 
+    public void EndConversation1()
+    {
+        playerpod.PlayerReadingMessagePie = false;
+        ResponseBox.SetActive(false);
+
+
+        // notificationCellView.NotificationPopUp.gameObject.SetActive(true);
+        if (playerpod.PlayerReadChat1 == false)
+        {
+            notificationCellView.SetActive();
+            playerpod.PlayerReadChat1 = true;
+        }
+        //notificationCellView.NumberOfNotification.gameObject.SetActive(true);
+        Debug.Log("current date is = " + playerpod.current_date);
+        Debug.Log("current text of index 0 is" + characterPod.GetCharacterBeanByID(0).CurrentChatText);
+        Debug.Log("current text of index 3 is" + characterPod.GetCharacterBeanByID(3).CurrentChatText);
+        chatlistView.CellViewFGameObject.gameObject.SetActive(true);
+    }
+    public void OnConversationEnd(Transform actor)
+    {
+        Debug.Log("THE CONVERSATION ENDED!!!");
+    }
 }
 

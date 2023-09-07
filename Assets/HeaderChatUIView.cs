@@ -34,6 +34,7 @@ public class HeaderChatUIView : MonoBehaviour
         {
             //MoveToScene(6);
             playerPod.ReadAlready = false;
+            playerPod.SetReadingMessageFalseAll();
             characterPod.CheckLoadCharacterdata = true;
             clickSound.Play();
             Debug.Log("Sound has play");

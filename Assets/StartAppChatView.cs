@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Events;
+using UniRx;
+using System;
 
 
 public class StartAppChatView : MonoBehaviour
@@ -20,9 +22,11 @@ public class StartAppChatView : MonoBehaviour
     private PlayerPod playerpod;
     public bool CheckValueDateChange = false;
     [SerializeField] public UnityEvent isPlaying;
-    public UnityEvent StartPlaying;
-    public UnityEvent FinishChapter;
     public GameObject CellViewPieGameObject;
+    public GameObject CellViewFGameObject;
+    public AudioSource NotificationSound;
+    public AudioSource ClickSound;
+    public NotificationCellView notificationCellView;
 
     private void Start()
     {
@@ -30,21 +34,30 @@ public class StartAppChatView : MonoBehaviour
         SetupButtonListener();
         SetButtonCurrentDate();
     }
+    private void Update()
+    {
+        SetButtonCurrentDate();
+    }
     private void SetupButtonListener()
     {
  
         StartDateButton1.onClick.AddListener(() =>
         {
-            MoveToScene(1);
-           // playerpod.CheckisPlayerClickButton = true;
+            //MoveToScene(1);
+            //notificationCellView.SetActive();
+            SetActive();
+            //playerpod.CheckisPlayerClickButton = true;
             playerpod.isplaying = true;
+            ClickSound.Play();
         });
 
         StartDateButton2.onClick.AddListener(() =>
         {
             //MoveToScene(5);
             //Debug.Log("already move");
+            SetActive();
             playerpod.isplaying = true;
+            ClickSound.Play();
         });
     }
 
@@ -96,5 +109,30 @@ public class StartAppChatView : MonoBehaviour
         PlayingBox.gameObject.SetActive(false);
 
     }
- 
+
+    public void SetActive()
+
+    {
+        if (playerpod.current_date == 1)
+        {
+            Observable.Timer(TimeSpan.FromSeconds(0.8)).Subscribe(_ =>
+            {
+                CellViewPieGameObject.SetActive(true);
+                NotificationSound.Play();
+
+            });
+        }
+        if (playerpod.current_date == 2)
+        {
+            Observable.Timer(TimeSpan.FromSeconds(0.8)).Subscribe(_ =>
+            {
+                CellViewFGameObject.SetActive(false);
+                
+         
+
+            });
+        }
+
+    }
+
 }

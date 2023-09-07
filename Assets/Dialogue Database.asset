@@ -80,7 +80,7 @@ MonoBehaviour:
       type: 2
       typeString: CustomFieldType_Boolean
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 21300000, guid: 23ce342abd9e7b445b5581f3ab96f9de, type: 3}
+    spritePortrait: {fileID: 21300000, guid: 11318028f32994b4fb22dcd5bc53e459, type: 3}
     alternatePortraits: []
     spritePortraits: []
   - id: 3
@@ -257,7 +257,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
-      value: 2
+      value: 0
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -4864,6 +4864,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Response Menu Sequence
+        value: 
+        type: 0
+        typeString: 
       conversationID: 6
       isRoot: 0
       isGroup: 0
@@ -4871,7 +4875,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 58
+        destinationConversationID: 6
+        destinationDialogueID: 71
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -4879,8 +4889,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1530.5968
-        y: 2018.2854
+        x: 1887.0541
+        y: 2220.2698
         width: 160
         height: 30
     - id: 59
@@ -5546,9 +5556,58 @@ MonoBehaviour:
         y: 631.8217
         width: 160
         height: 30
+    - id: 71
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: vbvb
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: Variable["Frelationship"] == 0
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1981.6168
+        y: 2408.392
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 586.755, y: 350.5014}
-    canvasZoom: 0.66999984
+    canvasScrollPosition: {x: 1596.4, y: 2012.8484}
+    canvasZoom: 0.7299998
   - id: 7
     fields:
     - title: Title
