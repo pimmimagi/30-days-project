@@ -9,8 +9,10 @@ public class ChatlistView : MonoBehaviour
 {
     public ChatCellView ChatlistCellViewPie;
     public ChatCellView ChatlistCellViewF;
+    public ChatCellView ChatlistCellGroup;
     public GameObject CellViewFGameObject;
     public GameObject CellViewPieGameObject;
+    public GameObject CellView30DaysGroupObject;
     private CharacterPod characterPod;
     private PlayerPod playerPod;
 
@@ -24,8 +26,14 @@ public class ChatlistView : MonoBehaviour
         // Debug.Log("Status after ChangeLoadCharacter : " +  characterPod.CheckLoadCharacterdata);
         UpdateChatCellsPie();
         UpdateChatCellF();
+        UpdateChatCellGroup();
     }
-
+    private void Update()
+    {
+        UpdateChatCellsPie();
+        UpdateChatCellF();
+        UpdateChatCellGroup();
+    }
     // Call this method whenever there's a new message or when the chat cell becomes active/visible.
     public void UpdateChatCellsPie()
     {
@@ -36,6 +44,12 @@ public class ChatlistView : MonoBehaviour
     {
         CharacterBean characterBeanID0 = characterPod.GetCharacterBeanByID(0);
         ChatlistCellViewF.Bind(characterBeanID0);
+    }
+
+    public void UpdateChatCellGroup()
+    {
+        CharacterBean characterBeanID2 = characterPod.GetCharacterBeanByID(2);
+        ChatlistCellGroup.Bind(characterBeanID2);
     }
 }
     

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 356ee377efcb33247ba1e4894716f3d9, type: 3}
-  m_Name: PoomData
+  m_Name: GroupData
   m_EditorClassIdentifier: 
-  IDCharacter: 2
+  IDCharacter: 4
   NameText: Group
-  ProfileSprite: {fileID: 21300000, guid: f958c265829fe8a4a99c42aa3c8902ae, type: 3}
+  ProfileSprite: {fileID: 21300000, guid: 34e2a92af0b2f484e9bf2a27702b82d2, type: 3}

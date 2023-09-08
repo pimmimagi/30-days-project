@@ -15,6 +15,7 @@ public class StatusView : MonoBehaviour
     public TMP_InputField StatusPlayerChangeTextInputField;
     public Button EditStatusButton;
     public Button SaveStatusButton;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class StatusView : MonoBehaviour
     {
         EditStatusButton.onClick.AddListener(() =>
         {
+            audioSource.Play();
             StatusPlayerDefaultBox.SetActive(false);
             StatusEditPlayerBox.gameObject.SetActive(true);
             ClearText();
@@ -41,6 +43,7 @@ public class StatusView : MonoBehaviour
 
         SaveStatusButton.onClick.AddListener(() =>
         {
+            audioSource.Play();
             StatusEditPlayerBox.gameObject.SetActive(false);
             //StatusPlayerDefaultText.text = StatusPlayerChangeText.text;
             playerpod.UpdateStatusText(StatusPlayerChangeTextInputField.text);

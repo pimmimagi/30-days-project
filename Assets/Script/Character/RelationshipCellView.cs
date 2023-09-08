@@ -12,19 +12,23 @@ public class RelationshipCellView : MonoBehaviour
     [SerializeField] private Image CharacterImage;
     [SerializeField] public Image[] HeartImage;
     
-    public CharacterPod characterPod;
+    private CharacterPod characterPod;
     public CharacterBean characterBean;
 
 
+    private void Start()
+    {
+        characterPod = CharacterPod.Instance;
+    }
     public void Bind(CharacterBean data)
     {
-
+        CharacterImage.sprite = data.characterData.ProfileSprite;
+        NameText.text = data.characterData.NameText;
+        Debug.LogError("Bind name text " + NameText.text + "to " + data.characterData.NameText);
         for (int i = 0; i < HeartImage.Length; i++)
         {
            HeartImage[i].gameObject.SetActive(false);
         }
-        CharacterImage.sprite = data.characterData.ProfileSprite;
-        NameText.text = data.characterData.NameText;
 
         if (data.relationship >= 0 && data.relationship <=20)
         {

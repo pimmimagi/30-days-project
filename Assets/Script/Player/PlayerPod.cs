@@ -33,6 +33,8 @@ public class PlayerPod : MonoBehaviour
     public bool ReadAlready = false;
     public bool PlayerReadChat1 = false;
     public int NumberofNotification = 0;
+    public bool PlayerReadPopUpProfileCharacter = false;
+    public bool PlayerReadingMessage30DaysGroup = false;
 
     private void Update()
     {
@@ -61,6 +63,7 @@ public class PlayerPod : MonoBehaviour
     {
         PlayerReadingMessagePie = false;
         PlayerReadingMessageF = false;
+        PlayerReadingMessage30DaysGroup = false;
     }
 
     public void SetReadAlreadyTrue()
@@ -107,5 +110,9 @@ public class PlayerPod : MonoBehaviour
         {
             current_day = "Saturday";
         }
+    }
+    public void SetRead30DaysFalse()
+    {
+        PlayerReadingMessage30DaysGroup = false;
     }
     }

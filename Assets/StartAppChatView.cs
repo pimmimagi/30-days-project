@@ -24,6 +24,7 @@ public class StartAppChatView : MonoBehaviour
     [SerializeField] public UnityEvent isPlaying;
     public GameObject CellViewPieGameObject;
     public GameObject CellViewFGameObject;
+    public GameObject CellViewGroup30Days;
     public AudioSource NotificationSound;
     public AudioSource ClickSound;
     public NotificationCellView notificationCellView;
@@ -45,6 +46,7 @@ public class StartAppChatView : MonoBehaviour
         {
             //MoveToScene(1);
             //notificationCellView.SetActive();
+            SetChatCellAllInactive();
             SetActive();
             //playerpod.CheckisPlayerClickButton = true;
             playerpod.isplaying = true;
@@ -55,6 +57,7 @@ public class StartAppChatView : MonoBehaviour
         {
             //MoveToScene(5);
             //Debug.Log("already move");
+            SetChatCellAllInactive();
             SetActive();
             playerpod.isplaying = true;
             ClickSound.Play();
@@ -127,12 +130,22 @@ public class StartAppChatView : MonoBehaviour
             Observable.Timer(TimeSpan.FromSeconds(0.8)).Subscribe(_ =>
             {
                 CellViewFGameObject.SetActive(false);
-                
-         
+                CellViewPieGameObject.SetActive(false);
+                CellViewGroup30Days.gameObject.SetActive(true);
+
+
+
 
             });
         }
 
+    }
+
+    public void SetChatCellAllInactive()
+    {
+        CellViewFGameObject.SetActive(false);
+        CellViewPieGameObject.SetActive(false);
+        CellViewGroup30Days.gameObject.SetActive(false);
     }
 
 }

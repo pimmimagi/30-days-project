@@ -16,6 +16,10 @@ public class DialoguePod : MonoBehaviour
     {
         playerpod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
+        foreach (Actor actor in DialogueManager.masterDatabase.actors)
+        {
+            Debug.Log("Actor " + actor.Name );
+        }
     }
 
     public void OnConversationLine(Subtitle subtitle)
@@ -24,14 +28,19 @@ public class DialoguePod : MonoBehaviour
 
         if (playerpod.PlayerReadingMessagePie)
         {
+            playerpod.PlayerReadingMessage30DaysGroup = false;
             Debug.LogError("Update Pie");
             characterPod.UpdateCurrentChatText(3, subtitle.formattedText.text);
             chatlistView.UpdateChatCellsPie();
             if (!DialogueManager.currentConversationState.hasAnyResponses)
             {
                 playerpod.PlayerReadingMessagePie = false;
-               // ResponseBox.SetActive(false);
-                notificationCellView.SetActive();
+                // ResponseBox.SetActive(false);
+                if (playerpod.NumberofNotification == 2)
+                {
+                    notificationCellView.SetActive();
+                    playerpod.NumberofNotification = 3;
+                }
                 chatlistView.CellViewFGameObject.gameObject.SetActive(true);
             }
         }
@@ -48,31 +57,29 @@ public class DialoguePod : MonoBehaviour
                 //notificationCellView.SetActive();
                 //chatlistView.CellViewFGameObject.gameObject.SetActive(true);
                 playerpod.current_date = 2;
+                playerpod.isplaying = false;
+            }
+        }
+        if (playerpod.PlayerReadingMessage30DaysGroup)
+        {
+            Debug.LogError("Update Chat Group");
+            characterPod.UpdateCurrentChatText(2, subtitle.formattedText.text);
+            Debug.LogError(characterPod.GetCharacterBeanByID(2).CurrentChatText);
+            chatlistView.UpdateChatCellGroup();
+           
+
+            if (!DialogueManager.currentConversationState.hasAnyResponses)
+            {
+                playerpod.PlayerReadingMessage30DaysGroup = false;
+                //playerpod.PlayerReadingMessageF = false;
+                // ResponseBox.SetActive(false);
+                //notificationCellView.SetActive();
+                //chatlistView.CellViewFGameObject.gameObject.SetActive(true);
+                //layerpod.current_date = 2;
             }
         }
     }
 
-    public void EndConversation1()
-    {
-        playerpod.PlayerReadingMessagePie = false;
-        ResponseBox.SetActive(false);
-
-
-        // notificationCellView.NotificationPopUp.gameObject.SetActive(true);
-        if (playerpod.PlayerReadChat1 == false)
-        {
-            notificationCellView.SetActive();
-            playerpod.PlayerReadChat1 = true;
-        }
-        //notificationCellView.NumberOfNotification.gameObject.SetActive(true);
-        Debug.Log("current date is = " + playerpod.current_date);
-        Debug.Log("current text of index 0 is" + characterPod.GetCharacterBeanByID(0).CurrentChatText);
-        Debug.Log("current text of index 3 is" + characterPod.GetCharacterBeanByID(3).CurrentChatText);
-        chatlistView.CellViewFGameObject.gameObject.SetActive(true);
-    }
-    public void OnConversationEnd(Transform actor)
-    {
-        Debug.Log("THE CONVERSATION ENDED!!!");
-    }
+ 
 }
 

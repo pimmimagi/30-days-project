@@ -55,6 +55,7 @@ public class HeaderChatUIView : MonoBehaviour
     {
         CharacterBean characterBeenID3 = characterPod.GetCharacterBeanByID(3);
         CharacterBean characterBeanID0 = characterPod.GetCharacterBeanByID(0);
+        CharacterBean characterBeanID2 = characterPod.GetCharacterBeanByID(2);
         if (playerPod.PlayerReadingMessagePie == true)
         {
             Bind(characterBeenID3);
@@ -63,6 +64,10 @@ public class HeaderChatUIView : MonoBehaviour
         if (playerPod.PlayerReadingMessageF == true)
         {
             Bind(characterBeanID0);
+        }
+        if (playerPod.PlayerReadingMessage30DaysGroup == true)
+        {
+            Bind(characterBeanID2);
         }
     }
 }
