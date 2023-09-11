@@ -19,21 +19,18 @@ public class HeaderChatUIView : MonoBehaviour
         SetupButtonListener();
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
-        SetUpBind();
-   
-        
+       
+
+
 
     }
-    private void Update()
-    {
-        SetUpBind();
-    }
+ 
     private void SetupButtonListener()
     {
         BackChatUIButton.onClick.AddListener(() =>
         {
             //MoveToScene(6);
-            playerPod.ReadAlready = false;
+
             playerPod.SetReadingMessageFalseAll();
             characterPod.CheckLoadCharacterdata = true;
             clickSound.Play();
@@ -51,23 +48,4 @@ public class HeaderChatUIView : MonoBehaviour
         CharacterNameText.text = data.characterData.NameText;
     }
 
-    public void SetUpBind()
-    {
-        CharacterBean characterBeenID3 = characterPod.GetCharacterBeanByID(3);
-        CharacterBean characterBeanID0 = characterPod.GetCharacterBeanByID(0);
-        CharacterBean characterBeanID2 = characterPod.GetCharacterBeanByID(2);
-        if (playerPod.PlayerReadingMessagePie == true)
-        {
-            Bind(characterBeenID3);
-        }
-        Debug.LogError("Status F : " + playerPod.PlayerReadingMessageF);
-        if (playerPod.PlayerReadingMessageF == true)
-        {
-            Bind(characterBeanID0);
-        }
-        if (playerPod.PlayerReadingMessage30DaysGroup == true)
-        {
-            Bind(characterBeanID2);
-        }
-    }
 }

@@ -1588,6 +1588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88de84a51a5f868499d827d19abf8b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notificationCellView: {fileID: 0}
+  chatlistView: {fileID: 0}
+  ResponseBox: {fileID: 0}
 --- !u!1 &714608363
 GameObject:
   m_ObjectHideFlags: 0

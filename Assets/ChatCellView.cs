@@ -7,7 +7,7 @@ using UniRx;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.SceneManagement;
 
-public class ChatCellView: MonoBehaviour
+public class ChatCellView : MonoBehaviour
 {
     public TMP_Text Currenttext;
     public Image CharacterImage;
@@ -25,24 +25,25 @@ public class ChatCellView: MonoBehaviour
     public RelationshipCellView relationshipCellViewF;
     public GameObject PopUpProfilePanel;
     public SMSConversation smsconversation;
+    public HeaderChatUIView HeaderChatUIView;
+
+    CharacterBean characterData;
 
     private void Start()
     {
         playerpod = PlayerPod.Instance;
         characterpod = CharacterPod.Instance;
         SetupButtonListener();
-        if (playerpod.PlayerReadPopUpProfileCharacter == false)
-        {
-            SetNotification();
-        }
+        SetupSubscribe();
+
+
+
     }
 
-    private void Update()
-    {
-        SetNotification();
-    }
+
     public void Bind(CharacterBean data)
     {
+        characterData = data;
         CharacterImage.sprite = data.characterData.ProfileSprite;
         CharacterNameText.text = data.characterData.NameText;
         Currenttext.text = data.CurrentChatText;
@@ -54,77 +55,99 @@ public class ChatCellView: MonoBehaviour
         Currenttext.text = data.CurrentChatText;
         Debug.Log("current text is binding to : " + data.CurrentChatText);
     }
+    private void SetupSubscribe()
+    {
+        playerpod.CheckPlayerReadMessagePie.Subscribe(IsReadingMessagePieAlready => {
+            if (IsReadingMessagePieAlready)
+            {
+                NotificationPie.gameObject.SetActive(false);
+            }
+            else
+            {
+                NotificationPie.gameObject.SetActive(true);
+            }
+        }).AddTo(this);
+
+        playerpod.CheckPlayerReadMessageF.Subscribe(IsReadingMessageFAlready => {
+            if (IsReadingMessageFAlready)
+            {
+                NotificationF.gameObject.SetActive(false);
+                NumberofNotification.gameObject.SetActive(false);
+            }
+            else
+            {
+                NotificationF.gameObject.SetActive(true);
+                NumberofNotification.gameObject.SetActive(true);
+            }
+        }).AddTo(this);
+
+        playerpod.PlayerReadingMessagePie.Subscribe(IsReadingMessagePie => {
+            if (IsReadingMessagePie)
+            {
+                CharacterBean characterBeenID3 = characterpod.GetCharacterBeanByID(3);
+                HeaderChatUIView.Bind(characterBeenID3);
+               
+
+            }
+
+        }).AddTo(this);
+
+        playerpod.PlayerReadingMessageF.Subscribe(IsReadingMessageF => {
+            if (IsReadingMessageF)
+            {
+                CharacterBean characterBeenID0 = characterpod.GetCharacterBeanByID(0);
+                HeaderChatUIView.Bind(characterBeenID0);
+           
+
+            }
+
+        }).AddTo(this);
+
+        playerpod.PlayerReadingMessage30DaysGroup.Subscribe(IsReadingMessage30DaysGroup => {
+            if (IsReadingMessage30DaysGroup)
+            {
+                playerpod.SetReadingMessageFalseAll();
+
+            }
+
+        }).AddTo(this);
+    }
     private void SetupButtonListener()
     {
         ChatBoxChatAppButton1.onClick.AddListener(() =>
         {
-            //playerpod.SetStatusPlayerReadindFalse();
-            playerpod.CheckPlayerReadMessagePie = true;
-            playerpod.PlayerReadingMessagePie = true;
-            //smsconversation.StartSMSConversation();
-            //MoveToScene(1);
+            playerpod.CheckPlayerReadMessagePie.Value = !playerpod.CheckPlayerReadMessagePie.Value;
+            playerpod.PlayerReadingMessagePie.Value = !playerpod.PlayerReadingMessagePie.Value;
         });
 
         ChatBoxChatAppButton2.onClick.AddListener(() =>
         {
-           // playerpod.SetStatusPlayerReadindFalse();
-           // Debug.LogError(playerpod.PlayerReadingMessagePie);
-            playerpod.CheckPlayerReadMessageF = true;
-            playerpod.PlayerReadingMessageF = true;
-            //MoveToScene(5);
+            playerpod.CheckPlayerReadMessageF.Value = !playerpod.CheckPlayerReadMessageF.Value;
+            playerpod.PlayerReadingMessageF.Value = !playerpod.PlayerReadingMessageF.Value;
         });
+
         ButtonImageF.onClick.AddListener(() =>
-        {
-            if (playerpod.PlayerReadPopUpProfileCharacter == false)
-            {
-                relationshipCellViewF.Bind(characterpod.GetCharacterBeanByID(0));
-                PopUpProfilePanel.SetActive(true);
-                playerpod.PlayerReadPopUpProfileCharacter = true;
-            }
-     
-            //MoveToScene(5);
-        });
+          {
+              // relationshipPanelView.OpenProfilePanel(data.characterData.IDCharacter);
+              relationshipCellViewF.Bind(characterpod.GetCharacterBeanByID(0));
+              PopUpProfilePanel.SetActive(true);
+
+          });
 
         ButtonImagePie.onClick.AddListener(() =>
         {
-            if (playerpod.PlayerReadPopUpProfileCharacter == false)
             {
                 relationshipCellViewF.Bind(characterpod.GetCharacterBeanByID(3));
                 PopUpProfilePanel.SetActive(true);
-                playerpod.PlayerReadPopUpProfileCharacter = true;
             }
         });
 
         //ChatBox30Days.onClick.AddListener(() =>
         //{
-            //playerpod.SetStatusPlayerReadindFalse();
-            playerpod.PlayerReadingMessage30DaysGroup = true;
-            //smsconversation.StartSMSConversation();
-            //MoveToScene(1);
+        //playerpod.SetStatusPlayerReadindFalse();
+        //playerpod.PlayerReadingMessage30DaysGroup = true;
+        //smsconversation.StartSMSConversation();
+        //MoveToScene(1);
         //});
-    }
-
-
-    public void MoveToScene(int sceneID)
-    {
-        SceneManager.LoadScene(sceneID);
-    }
-
-    public void SetNotification()
-    {
-        if (playerpod.CheckPlayerReadMessagePie)
-        {
-            NotificationPie.gameObject.SetActive(false);
-        }
-        if (playerpod.CheckPlayerReadMessageF)
-        {
-            NotificationF.gameObject.SetActive(false);
-            NumberofNotification.gameObject.SetActive(false);
-
-        }
-    }
-    public void SetPlayerReadingMessageGroup()
-    {
-        playerpod.PlayerReadingMessage30DaysGroup = true;
     }
 }

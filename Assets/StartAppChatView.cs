@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine.Events;
 using UniRx;
 using System;
+using PixelCrushers.DialogueSystem;
 
 
 public class StartAppChatView : MonoBehaviour
@@ -28,16 +29,33 @@ public class StartAppChatView : MonoBehaviour
     public AudioSource NotificationSound;
     public AudioSource ClickSound;
     public NotificationCellView notificationCellView;
+    private CharacterPod characterPod;
 
     private void Start()
     {
         playerpod = PlayerPod.Instance;
+        characterPod = CharacterPod.Instance;
         SetupButtonListener();
         SetButtonCurrentDate();
     }
     private void Update()
     {
         SetButtonCurrentDate();
+        SetupSubscribe();
+    }
+
+    private void SetupSubscribe()
+    {
+        playerpod.IsPlaying.Subscribe(Isplaying => {
+            if (Isplaying)
+            {
+                PlayingBox.SetActive(true);
+            }
+            else
+            {
+                PlayingBox.SetActive(false);
+            }
+        }).AddTo(this);
     }
     private void SetupButtonListener()
     {
@@ -48,8 +66,7 @@ public class StartAppChatView : MonoBehaviour
             //notificationCellView.SetActive();
             SetChatCellAllInactive();
             SetActive();
-            //playerpod.CheckisPlayerClickButton = true;
-            playerpod.isplaying = true;
+            playerpod.IsPlaying.Value = !playerpod.IsPlaying.Value;
             ClickSound.Play();
         });
 
@@ -58,8 +75,9 @@ public class StartAppChatView : MonoBehaviour
             //MoveToScene(5);
             //Debug.Log("already move");
             SetChatCellAllInactive();
+            characterPod.UpdateCurrentChatText(2,"คุณมีข้อความใหม่");
             SetActive();
-            playerpod.isplaying = true;
+            playerpod.IsPlaying.Value = !playerpod.IsPlaying.Value;
             ClickSound.Play();
         });
     }
@@ -74,10 +92,6 @@ public class StartAppChatView : MonoBehaviour
     {
         AllInactiveButton();
 
-        if (playerpod.isplaying)
-        {
-            PlayingBox.SetActive(true);
-        }
         switch (playerpod.current_date)
         {
             case 1:

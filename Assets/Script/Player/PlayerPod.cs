@@ -25,16 +25,14 @@ public class PlayerPod : MonoBehaviour
     public string current_day = "Sunday";
     public ReactiveProperty<string> StatusPlayerText = new ReactiveProperty<string>("อันยอง");
     public ReactiveProperty<string> NoteText = new ReactiveProperty<string>("EnterText");
-    public bool isplaying = false;
-    public bool CheckPlayerReadMessagePie = true;
-    public bool CheckPlayerReadMessageF = false;
-    public bool PlayerReadingMessagePie = true;
-    public bool PlayerReadingMessageF = false;
-    public bool ReadAlready = false;
-    public bool PlayerReadChat1 = false;
-    public int NumberofNotification = 0;
-    public bool PlayerReadPopUpProfileCharacter = false;
-    public bool PlayerReadingMessage30DaysGroup = false;
+    public ReactiveProperty<bool> IsPlaying = new ReactiveProperty<bool>(false);
+    public ReactiveProperty<bool> CheckPlayerReadMessagePie = new ReactiveProperty<bool>(true);
+    public ReactiveProperty<bool> CheckPlayerReadMessageF = new ReactiveProperty<bool>(false);
+    public ReactiveProperty<bool> PlayerReadingMessagePie = new ReactiveProperty<bool>(true);
+    public ReactiveProperty<bool> PlayerReadingMessageF = new ReactiveProperty<bool>(false);
+    public ReactiveProperty<bool> ReadAlready = new ReactiveProperty<bool>(false);
+    public ReactiveProperty<bool> PlayerReadingMessage30DaysGroup = new ReactiveProperty<bool>(false);
+    public int NumberofNotification;
 
     private void Update()
     {
@@ -49,37 +47,16 @@ public class PlayerPod : MonoBehaviour
     {
         StatusPlayerText.Value = newStatus;
     }
-    public void UpdatePlayerReadMessagePie()
-    {
-        PlayerReadingMessagePie = true;
-    }
-
-    public void UpdatePlayerReadMessageF()
-    {
-        PlayerReadingMessageF = true;
-    }
-
+    
     public void SetReadingMessageFalseAll()
     {
-        PlayerReadingMessagePie = false;
-        PlayerReadingMessageF = false;
-        PlayerReadingMessage30DaysGroup = false;
+        PlayerReadingMessagePie.Value = false;
+        PlayerReadingMessageF.Value = false;
+        PlayerReadingMessage30DaysGroup.Value = false;
     }
 
-    public void SetReadAlreadyTrue()
-    {
-        ReadAlready = true;
-    }
-
-    public void CheckPlayerReadMessagePietoTrue()
-    {
-        CheckPlayerReadMessagePie = true;
-    }
-
-    public void CheckPlayerReadMessageFtoTrue()
-    {
-        CheckPlayerReadMessageF = true;
-    }
+   
+    
     public void DateAndDay(int currentdate)
     {
         if (currentdate % 7 == 1)
@@ -111,8 +88,5 @@ public class PlayerPod : MonoBehaviour
             current_day = "Saturday";
         }
     }
-    public void SetRead30DaysFalse()
-    {
-        PlayerReadingMessage30DaysGroup = false;
-    }
+
     }
