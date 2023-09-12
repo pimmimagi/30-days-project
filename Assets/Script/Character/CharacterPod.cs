@@ -16,7 +16,6 @@ public class CharacterPod : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log("CharacterPod Instance initialized.");
         }
         else
         {
@@ -24,8 +23,6 @@ public class CharacterPod : MonoBehaviour
         }
     }
 
-
-    //  public ReactiveProperty<int> relationshipvalue{ get; private set;}
     public CharacterBean CharacterBean { get; private set;}
 
     public List<CharacterBean> CharacterBeanList;
@@ -83,12 +80,7 @@ public class CharacterPod : MonoBehaviour
             if (targetBean.CurrentChatText != newChatText)
             {
                 targetBean.CurrentChatText = newChatText;
-                Debug.Log("Updated character ID " + characterID + " with text: " + newChatText);
-                Debug.LogError(CharacterBeanList.FirstOrDefault(bean => bean.characterData.IDCharacter == characterID).CurrentChatText);
-            }
-            else
-            {
-                Debug.Log("Text for character ID " + characterID + " remains the same. No update needed.");
+             
             }
         }
     }

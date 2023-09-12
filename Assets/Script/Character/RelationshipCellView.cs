@@ -24,7 +24,6 @@ public class RelationshipCellView : MonoBehaviour
     {
         CharacterImage.sprite = data.characterData.ProfileSprite;
         NameText.text = data.characterData.NameText;
-        Debug.LogError("Bind name text " + NameText.text + "to " + data.characterData.NameText);
         for (int i = 0; i < HeartImage.Length; i++)
         {
            HeartImage[i].gameObject.SetActive(false);

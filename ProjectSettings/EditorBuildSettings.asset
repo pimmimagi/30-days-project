@@ -9,21 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/scene/ChatUI.unity
+    path: Assets/Scenes/ChatUI.unity
     guid: 1c3757dd9e1bc1e41843e21150d94f7c
   - enabled: 1
-    path: Assets/scene/Dialogue.unity
+    path: Assets/Scenes/Dialogue.unity
     guid: 6dd3f0f42c105de4a9bc0a64eab45b90
   - enabled: 1
-    path: Assets/scene/MainMenu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: e8ddf5c0dc22e6c418e6ae0602a0f51d
   - enabled: 1
-    path: Assets/scene/ChatApp.unity
+    path: Assets/Scenes/ChatApp.unity
     guid: 06f047ce461c09643a8d9f565137d562
   - enabled: 1
-    path: Assets/scene/Chat2.unity
+    path: Assets/Scenes/Chat2.unity
     guid: 54b40ef0f3874ef4992d84649fec385e
   - enabled: 1
-    path: Assets/scene/ChatAppStartDay1.unity
+    path: Assets/Scenes/ChatAppStartDay1.unity
     guid: 154ad57430d60fb4babc0d84dbae3720
   m_configObjects: {}

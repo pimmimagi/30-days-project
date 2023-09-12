@@ -39,6 +39,10 @@ public class PlayerPod : MonoBehaviour
         DateAndDay(current_date);
     }
 
+    public void UpdateIsplayingValue(bool newValue)
+    {
+       IsPlaying.Value = newValue;
+    }
     public void UpdateNoteText(string newNote)
     {
         NoteText.Value = newNote;
