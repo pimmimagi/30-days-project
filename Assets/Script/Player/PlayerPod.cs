@@ -26,19 +26,20 @@ public class PlayerPod : MonoBehaviour
     public ReactiveProperty<string> StatusPlayerText = new ReactiveProperty<string>("อันยอง");
     public ReactiveProperty<string> NoteText = new ReactiveProperty<string>("EnterText");
     public ReactiveProperty<bool> IsPlaying = new ReactiveProperty<bool>(false);
-    public ReactiveProperty<bool> CheckPlayerReadMessagePie = new ReactiveProperty<bool>(true);
-    public ReactiveProperty<bool> CheckPlayerReadMessageF = new ReactiveProperty<bool>(false);
-    public ReactiveProperty<bool> PlayerReadingMessagePie = new ReactiveProperty<bool>(true);
-    public ReactiveProperty<bool> PlayerReadingMessageF = new ReactiveProperty<bool>(false);
     public ReactiveProperty<bool> ReadAlready = new ReactiveProperty<bool>(false);
     public ReactiveProperty<bool> PlayerReadingMessage30DaysGroup = new ReactiveProperty<bool>(false);
-    public int NumberofNotification;
+    public int PlayerReadingID = -1;
+    public int NumberofNotification = 2;
 
     private void Update()
     {
         DateAndDay(current_date);
     }
 
+    public void UpdatePlayerIsReadingID(int newID)
+    {
+       PlayerReadingID = newID;
+    }
     public void UpdateIsplayingValue(bool newValue)
     {
        IsPlaying.Value = newValue;
@@ -51,16 +52,8 @@ public class PlayerPod : MonoBehaviour
     {
         StatusPlayerText.Value = newStatus;
     }
-    
-    public void SetReadingMessageFalseAll()
-    {
-        PlayerReadingMessagePie.Value = false;
-        PlayerReadingMessageF.Value = false;
-        PlayerReadingMessage30DaysGroup.Value = false;
-    }
 
-   
-    
+    //TODO  ย้ายไปอยู่ View
     public void DateAndDay(int currentdate)
     {
         if (currentdate % 7 == 1)

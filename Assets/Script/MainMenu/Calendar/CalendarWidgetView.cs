@@ -36,15 +36,8 @@ public class CalendarWidgetView : MonoBehaviour
             if (cell != null)
             {
                 cell.SetDayText(i + 1); 
-
-                if (i+1 == playerPod.current_date)
-                {
-                    cell.SetDayMarker(true);
-                }
-                else
-                {
-                    cell.SetDayMarker(false);
-                }
+                cell.SetDayMarker(i + 1 == playerPod.current_date);
+                
 
                 dayCells[i] = cell;
             }

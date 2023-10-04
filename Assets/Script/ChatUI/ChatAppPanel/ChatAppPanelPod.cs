@@ -19,7 +19,7 @@ public class ChatAppPanelPod : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public ReactiveProperty<ChatAppState> ChatState = new ReactiveProperty<ChatAppState>(ChatAppState.ChatListPanel);
+    public ReactiveProperty<ChatAppState> ChatState = new ReactiveProperty<ChatAppState>(ChatAppState.SelectChapter);
 
     public void ChangeChatState(ChatAppState newState)
     {

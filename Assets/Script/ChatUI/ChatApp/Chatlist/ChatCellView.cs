@@ -1,11 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UniRx;
-using PixelCrushers.DialogueSystem;
-using UnityEngine.SceneManagement;
 
 public class ChatCellView : MonoBehaviour
 {
@@ -14,14 +9,17 @@ public class ChatCellView : MonoBehaviour
     public TMP_Text CharacterNameText;
     private PlayerPod playerpod;
     private CharacterPod characterpod;
+    private ChatAppPanelPod chatAppPanelPod;
+    private Chapterpod chapterpod;
+    private SoundManager soundManager;
     public Button ChatBoxChatAppButton;
     public Image Notification;
-    public GameObject NumberofNotification;
+    //public GameObject NumberofNotification;
     public Button ButtonImage;
-    public RelationshipCellView relationshipCellView;
-    public GameObject PopUpProfilePanel;
-    public SMSConversation smsconversation;
-    public HeaderChatUIView HeaderChatUIView;
+   // public PopUpProfileWidgetView PopupProfile;
+    //public GameObject PopUpProfilePanel;
+    public SMSConversation SMSconversation;
+   
 
     CharacterBean characterData;
 
@@ -29,11 +27,9 @@ public class ChatCellView : MonoBehaviour
     {
         playerpod = PlayerPod.Instance;
         characterpod = CharacterPod.Instance;
-        SetupButtonListener();
-        SetupSubscribe();
-
-
-
+        chatAppPanelPod = ChatAppPanelPod.Instance;
+        chapterpod = Chapterpod.Instance;
+        soundManager = SoundManager.Instance;
     }
 
 
@@ -43,31 +39,43 @@ public class ChatCellView : MonoBehaviour
         CharacterImage.sprite = data.characterData.ProfileSprite;
         CharacterNameText.text = data.characterData.NameText;
         Currenttext.text = data.CurrentChatText;
+        SetupButtonListener(data.characterData.IDCharacter);
     }
 
     public void BindOnlyName(CharacterBean data)
     {
         Currenttext.text = data.CurrentChatText;
     }
-    private void SetupSubscribe()
-    {
-        
 
-    }
-    private void SetupButtonListener()
+    private void SetupButtonListener(int characterID)
     {
         ChatBoxChatAppButton.onClick.AddListener(() =>
         {
-            playerpod.CheckPlayerReadMessagePie.Value = !playerpod.CheckPlayerReadMessagePie.Value;
-           // playerpod.PlayerReadingMessagePie.Value = !playerpod.PlayerReadingMessagePie.Value;
+            playerpod.UpdatePlayerIsReadingID(characterID);
+            SMSconversation.StartSMSConversation(chapterpod.GetChapterByIndex(playerpod.current_date-1).Conversation[playerpod.PlayerReadingID]);
+            chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
+            characterpod.UpdateCheckPlayerReadMessageAlready(playerpod.PlayerReadingID, true);
+            SetNotificationChat();
+            characterpod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, true);
+            
+
         });
 
         ButtonImage.onClick.AddListener(() =>
           {
-              relationshipCellViewF.Bind(characterpod.GetCharacterBeanByID(0));
-              PopUpProfilePanel.SetActive(true);
+              soundManager.PlayClickSound();
+              playerpod.UpdatePlayerIsReadingID(characterID);
+              chatAppPanelPod.ChangeChatState(ChatAppState.PopupProfilePanel);
+              //PopUpProfilePanel.SetActive(true);
 
           });
+
+    }
+
+    public void SetNotificationChat()
+    {
+        CharacterBean characterBean = characterpod.GetCharacterBeanByID(playerpod.PlayerReadingID);
+        Notification.gameObject.SetActive(!characterBean.CheckPlayerReadMessageAlready);
 
     }
 }

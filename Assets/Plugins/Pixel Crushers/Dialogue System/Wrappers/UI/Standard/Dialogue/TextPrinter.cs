@@ -74,7 +74,6 @@ public class TextPrinter : MonoBehaviour
     IEnumerator TypeWriterText()
     {
         StartPrinting.Invoke();
-        Debug.Log(writer);
         text.text = leadingCharBeforeDelay ? leadingChar : "";
         yield return new WaitForSeconds(delayBeforeStart);
 

@@ -1,19 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.Events;
 using UniRx;
 using System;
-using PixelCrushers.DialogueSystem;
 
 
 public class StartAppChatView : MonoBehaviour
 {
+    private const float DELAY_CHAT_OPEN = 0.8f;
     public Button StartDateButton;
     public GameObject PlayingBox;
     public TMP_Text StatusOfDate;
@@ -22,13 +16,13 @@ public class StartAppChatView : MonoBehaviour
     public GameObject CellViewPieGameObject;
     public GameObject CellViewFGameObject;
     public GameObject CellViewGroup30Days;
-    public AudioSource NotificationSound;
-    public AudioSource ClickSound;
     public NotificationCellView notificationCellView;
     private CharacterPod characterPod;
+    private SoundManager soundManager;
 
     private void Start()
     {
+        soundManager = SoundManager.Instance;
         playerpod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
         SetupButtonListener();
@@ -46,6 +40,9 @@ public class StartAppChatView : MonoBehaviour
             else
             {
                 PlayingBox.SetActive(false);
+
+                int Chapterday = playerpod.current_date;
+                StatusOfDate.text = "DAY " + Chapterday;
             }
         }).AddTo(this);
     }
@@ -57,29 +54,27 @@ public class StartAppChatView : MonoBehaviour
             SetChatCellAllInactive();
             SetActive();
             playerpod.IsPlaying.Value = !playerpod.IsPlaying.Value;
-            ClickSound.Play();
-            int Chapterday = playerpod.current_date + 1;
-            StatusOfDate.text = "Day" + Chapterday;
+            soundManager.PlayClickSound();
             });
 
     } 
 
-
+    //TODO Change to Auto 
     public void SetActive()
 
     {
         if (playerpod.current_date == 1)
         {
-            Observable.Timer(TimeSpan.FromSeconds(0.8)).Subscribe(_ =>
+            Observable.Timer(TimeSpan.FromSeconds(DELAY_CHAT_OPEN)).Subscribe(_ =>
             {
                 CellViewPieGameObject.SetActive(true);
-                NotificationSound.Play();
+                soundManager.PlayNotificationSound();
 
             });
         }
         if (playerpod.current_date == 2)
         {
-            Observable.Timer(TimeSpan.FromSeconds(0.8)).Subscribe(_ =>
+            Observable.Timer(TimeSpan.FromSeconds(DELAY_CHAT_OPEN)).Subscribe(_ =>
             {
                 CellViewFGameObject.SetActive(false);
                 CellViewPieGameObject.SetActive(false);

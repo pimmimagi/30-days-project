@@ -288,7 +288,6 @@ namespace PixelCrushers.DialogueSystem
             go.name = (text.Length <= 20) ? text : text.Substring(0, Mathf.Min(20, text.Length)) + "...";
             instantiatedMessages.Add(go);
             audioSource.Play();
-            Debug.LogError("Sound play");
             go.transform.SetParent(messagePanel.transform, false);
             var panel = go.GetComponent<StandardUISubtitlePanel>();
             if (panel.addSpeakerName)
@@ -441,8 +440,15 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public virtual void OnRecordPersistentData()
         {
-            if (DontLoadInThisScene()) return;
-            if (!DialogueManager.IsConversationActive) return;
+            if (DontLoadInThisScene())
+            {
+                return;
+            }
+            if (!DialogueManager.IsConversationActive)
+            {
+                return;
+            }
+         
             if (Debug.isDebugBuild) Debug.Log("TextlineDialogueUI.OnRecordPersistentData: Saving current conversation to " + currentDialogueEntryRecords);
             // Save actor & conversant:
             var actorName = (DialogueManager.CurrentActor != null) ? DialogueManager.CurrentActor.name : string.Empty;
@@ -464,6 +470,7 @@ namespace PixelCrushers.DialogueSystem
         /// </summary>
         public virtual void OnApplyPersistentData()
         {
+            Debug.Log("On ApplyPersistentData Run");
             if (!string.IsNullOrEmpty(conversationVariableOverride))
             {
                 DialogueLua.SetVariable("Conversation", conversationVariableOverride);

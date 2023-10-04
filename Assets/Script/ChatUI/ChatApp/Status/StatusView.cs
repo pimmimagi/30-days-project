@@ -1,24 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UniRx;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
+
 
 public class StatusView : MonoBehaviour
 {
     public GameObject StatusPlayerDefaultBox;
     public TMP_Text StatusPlayerDefaultText;
     private PlayerPod playerpod;
+    private SoundManager soundmanager;
     public GameObject StatusEditPlayerBox;
     public TMP_InputField StatusPlayerChangeTextInputField;
     public Button EditStatusButton;
     public Button SaveStatusButton;
-    public AudioSource audioSource;
+    
 
     private void Start()
     {
+        soundmanager = SoundManager.Instance;
         playerpod = PlayerPod.Instance;
         SetupSubscribe();
         SetupButtonListener();
@@ -35,24 +35,23 @@ public class StatusView : MonoBehaviour
     {
         EditStatusButton.onClick.AddListener(() =>
         {
-            audioSource.Play();
             StatusPlayerChangeTextInputField.text = StatusPlayerDefaultText.text;
-            StatusPlayerDefaultBox.SetActive(false);
-            StatusEditPlayerBox.gameObject.SetActive(true);
-            EditStatusButton.gameObject.SetActive(false);     
-            SaveStatusButton.gameObject.SetActive(true);
+            OnClickStatusButton(false);
         });
 
         SaveStatusButton.onClick.AddListener(() =>
         {
-            audioSource.Play();
-            StatusEditPlayerBox.gameObject.SetActive(false);
             playerpod.UpdateStatusText(StatusPlayerChangeTextInputField.text);
-            StatusPlayerDefaultBox.SetActive(true);
-            EditStatusButton.gameObject.SetActive(true);
-            SaveStatusButton.gameObject.SetActive(false);
+            OnClickStatusButton(true);
         });
     }
 
-
+    private void OnClickStatusButton(bool changeToEdit)
+    {
+        soundmanager.PlayClickSound();
+        StatusEditPlayerBox.gameObject.SetActive(!changeToEdit);
+        StatusPlayerDefaultBox.SetActive(changeToEdit);
+        EditStatusButton.gameObject.SetActive(changeToEdit);
+        SaveStatusButton.gameObject.SetActive(!changeToEdit);
+    }
 }

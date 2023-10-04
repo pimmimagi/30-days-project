@@ -11,29 +11,31 @@ public class HeaderChatUIView : MonoBehaviour
     public Button BackChatUIButton;
     private CharacterPod characterPod;
     private PlayerPod playerPod;
-    public AudioSource clickSound;
+    private ChatAppPanelPod chatAppPanelPod;
+    private SoundManager soundManager;
     public TMP_Text CharacterNameText;
+
 
     private void Start()
     {
         SetupButtonListener();
+        soundManager = SoundManager.Instance;
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
+        chatAppPanelPod = ChatAppPanelPod.Instance;
+
     }
  
     private void SetupButtonListener()
     {
         BackChatUIButton.onClick.AddListener(() =>
         {
-            playerPod.SetReadingMessageFalseAll();
+            characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).CheckPlayerReadMessageAlready = false;
+            characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).PlayerisReadingThisCharacter = false;
             characterPod.CheckLoadCharacterdata = true;
-            clickSound.Play();
+            chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
+            soundManager.PlayClickSound();
         });
-    }
-
-    public void MoveToScene(int sceneID)
-    {
-        SceneManager.LoadScene(sceneID);
     }
 
     public void Bind(CharacterBean data)
@@ -41,4 +43,5 @@ public class HeaderChatUIView : MonoBehaviour
         CharacterNameText.text = data.characterData.NameText;
     }
 
+  
 }

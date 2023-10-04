@@ -2,5 +2,6 @@ public enum ChatAppState
 {
     ChatListPanel,
     ChatPanel,
-    PopupProfilePanel
+    PopupProfilePanel,
+    SelectChapter
 }

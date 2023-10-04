@@ -11,29 +11,38 @@ public class NPCView : MonoBehaviour
     public Button NPCProfileButton;
     public GameObject NPCPopUpStatus;
     public RelationshipCellView NPCPopup;
+    private ChatAppPanelPod chatAppPanelPod;
     private CharacterPod characterPod;
+    private SoundManager soundManager;
     public Text NameTextNPC;
-
+    public StandardUISubtitlePanel StandardUISubtitlePanel;
     private void Start()
     {
+        chatAppPanelPod = ChatAppPanelPod.Instance;
         characterPod = CharacterPod.Instance;
+        soundManager = SoundManager.Instance;
         SetupButtonListener();
     }
     private void SetupButtonListener()
     {
         NPCProfileButton.onClick.AddListener(() =>
         {
-            if(NameTextNPC.text == "Pie")
+            chatAppPanelPod.ChangeChatState(ChatAppState.PopupProfilePanel);
+            soundManager.PlayClickSound();
+
+            //StandardUISubtitlePanel.currentSubtitle.speakerInfo.id
+
+            if (NameTextNPC.text == "Pie")
             {
                 NPCPopup.Bind(characterPod.GetCharacterBeanByID(3));
-                NPCPopUpStatus.SetActive(true);
             }
-            
-            if(NameTextNPC.text == "เอฟ")
+
+            if (NameTextNPC.text == "เอฟ")
             {
                 NPCPopup.Bind(characterPod.GetCharacterBeanByID(0));
-                NPCPopUpStatus.SetActive(true);
             }
+
+            NPCPopUpStatus.SetActive(true);
 
 
         });

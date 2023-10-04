@@ -143,7 +143,7 @@ namespace PixelCrushers.DialogueSystem
         public virtual void OnClick()
         {
             PlaySound();
-            Debug.Log("Sound is playing");
+           
 
             if (target != null)
             {

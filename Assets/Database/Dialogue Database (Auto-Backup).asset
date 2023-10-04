@@ -106,7 +106,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     portrait: {fileID: 0}
-    spritePortrait: {fileID: 21300000, guid: 1014b87d0dabc184d81c2cc0beaf7f02, type: 3}
+    spritePortrait: {fileID: 21300000, guid: c17213cab47d7d9498d770c8df2e5cc1, type: 3}
     alternatePortraits: []
     spritePortraits: []
   - id: 4
@@ -257,7 +257,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
-      value: 0
+      value: 60
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -286,6 +286,20 @@ MonoBehaviour:
       typeString: CustomFieldType_Text
     - title: Initial Value
       value: 18
+      type: 1
+      typeString: CustomFieldType_Number
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 6
+    fields:
+    - title: Name
+      value: Pierelationship
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: 100
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -555,7 +569,7 @@ MonoBehaviour:
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasZoom: 0.94000006
   - id: 2
     fields:
     - title: Title
@@ -4977,7 +4991,7 @@ MonoBehaviour:
       - title: Response Menu Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 6
       isRoot: 0
       isGroup: 0
@@ -4987,14 +5001,14 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\")"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 1887.0541
-        y: 2221.6396
+        y: 2220.6687
         width: 160
         height: 30
     - id: 59
@@ -5661,8 +5675,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.1
+    canvasScrollPosition: {x: 213.39941, y: 488.88818}
+    canvasZoom: 0.4
   - id: 7
     fields:
     - title: Title
@@ -6310,8 +6324,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 2713.5054, y: 2590.796}
-    canvasZoom: 0.34
+    canvasScrollPosition: {x: 104.6669, y: 145.79562}
+    canvasZoom: 0.48999998
   - id: 8
     fields:
     - title: Title
@@ -6518,8 +6532,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 93.57364, y: 256.7122}
+    canvasZoom: 0.9099996
   syncInfo:
     syncActors: 0
     syncItems: 0

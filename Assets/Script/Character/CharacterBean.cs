@@ -6,4 +6,5 @@ public class CharacterBean
     public int relationship;
     public string CurrentChatText = "คุณมีข้อความใหม่";
     public bool CheckPlayerReadMessageAlready = false;
+    public bool PlayerisReadingThisCharacter = false;
 }

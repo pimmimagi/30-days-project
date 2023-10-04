@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,31 +19,32 @@ public class NotificationView : MonoBehaviour
         characterpod.LoadCharacterData();
         CharacterBean characterBeanID0 = characterpod.GetCharacterBeanByID(0);
         CharacterBean characterBeanID3 = characterpod.GetCharacterBeanByID(3);
-        NotificationCondition();
+        Lua.RegisterFunction("NotificationCharacter", this, typeof(NotificationView).GetMethod("NotificationCharacter"));
+    
+
+    }
+
+  
+
+    public void NotificationCharacter(string Name)
+    {
+        if(Name == "เอฟ")
+        {
+            CharacterBean characterBeanID0 = characterpod.GetCharacterBeanByID(0);
+            NotificationPopUp.Bind(characterBeanID0);
+        }
+        if (Name == "พาย")
+        {
+            CharacterBean characterBeanID3 = characterpod.GetCharacterBeanByID(3);
+            NotificationPopUp.Bind(characterBeanID3);
+        }
+
+        if(characterpod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter == true)
+        {
+            NotificationPopUp.SetActive();
+        }
         
     }
-
-    private void Update()
-    {
-        NotificationCondition();
-    }
-
-    public void NotificationCondition()
-    {
-        CharacterBean characterBeanID0 = characterpod.GetCharacterBeanByID(0);
-        CharacterBean characterBeanID3 = characterpod.GetCharacterBeanByID(3);
-        if (playerpod.NumberofNotification == 0)
-        {
-            NotificationPopUp.Bind(characterBeanID3);
-            playerpod.NumberofNotification = playerpod.NumberofNotification + 1;
-        }
-        if (playerpod.NumberofNotification == 1)
-        {
-            NotificationPopUp.Bind(characterBeanID0);
-            playerpod.NumberofNotification = playerpod.NumberofNotification + 1;
-        }
-    }
-
 
 }
 

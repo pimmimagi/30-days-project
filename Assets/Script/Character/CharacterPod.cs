@@ -23,12 +23,12 @@ public class CharacterPod : MonoBehaviour
         }
     }
 
-    public CharacterBean CharacterBean { get; private set;}
+    
 
     public List<CharacterBean> CharacterBeanList;
 
     public List<CharacterTemplateScriptableObject> CharacterTemplateList;
-    
+
     public bool CheckLoadCharacterdata = false;
 
 
@@ -46,45 +46,63 @@ public class CharacterPod : MonoBehaviour
         {
             CharacterBean characterBean = new CharacterBean();
             characterBean.characterData = data;
-            characterBean.relationship = 10;
-
-            if ( data.IDCharacter == 0)
-            {
-                characterBean.relationship = 81;
-            } else if ( data.IDCharacter == 1) 
-
-            {
-                characterBean.relationship = 48;
-            }
-                else if ( data.IDCharacter == 2)
-            {
-                characterBean.relationship = 82;
-            } else if (data.IDCharacter == 3)
-            {
-                characterBean.relationship = 100;
-            }
             
-
-            
+            if (data.IDCharacter == 0)
+            {
+                characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Frelationship").asInt;
+                Debug.Log("Relationship F " + characterBean.relationship);
+            }
+            else if (data.IDCharacter == 1)
+            {
+                characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Ninrelationship").asInt;
+            }
+            else if (data.IDCharacter == 2)
+            {
+                characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Poomrelationship").asInt;
+            }
+            else if (data.IDCharacter == 3)
+            {
+                characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Pierelationship").asInt;
+            }
             CharacterBeanList.Add(characterBean);
-            CharacterBean = characterBean;
-            CharacterBeanList = CharacterBeanList.OrderByDescending(character => character.relationship).Take(3).ToList();
-            CheckLoadCharacterdata = true;
+          
         }
+
+
+        //  CharacterBean = characterBean;
+        CharacterBeanList = CharacterBeanList.OrderByDescending(character => character.relationship).Take(3).ToList();
+        CheckLoadCharacterdata = true;
+
     }
     public void UpdateCurrentChatText(int characterID, string newChatText)
     {
         var targetBean = GetCharacterBeanByID(characterID);
-        if (targetBean != null)
-        {
-            if (targetBean.CurrentChatText != newChatText)
+       
+            if (targetBean != null && targetBean.CurrentChatText != newChatText)
             {
                 targetBean.CurrentChatText = newChatText;
-             
+
             }
+        
+    }
+
+    public void UpdateCheckPlayerReadMessageAlready(int characterID, bool newValue)
+    {
+        var targetBean = GetCharacterBeanByID(characterID);
+        if (targetBean != null)
+        {
+            targetBean.CheckPlayerReadMessageAlready = newValue;
         }
     }
 
+    public void UpdatePlayerisReadingThisCharacter(int characterID, bool newValue)
+    {
+        var targetBean = GetCharacterBeanByID(characterID);
+        if (targetBean != null)
+        {
+            targetBean.PlayerisReadingThisCharacter = newValue;
+        }
+    }
 
     public CharacterBean GetCharacterBeanByID(int id)
     {

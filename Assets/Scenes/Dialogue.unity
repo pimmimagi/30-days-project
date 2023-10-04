@@ -1588,9 +1588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88de84a51a5f868499d827d19abf8b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationCellView: {fileID: 0}
-  chatlistView: {fileID: 0}
-  ResponseBox: {fileID: 0}
 --- !u!1 &714608363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,19 +2674,6 @@ MonoBehaviour:
   playOnEnable: 1
   waitOneFrameBeforeStarting: 0
   stopOnConversationEnd: 0
-  autoScrollSettings:
-    autoScrollEnabled: 0
-    scrollRect: {fileID: 0}
-    scrollbarEnabler: {fileID: 0}
-  onBegin:
-    m_PersistentCalls:
-      m_Calls: []
-  onCharacter:
-    m_PersistentCalls:
-      m_Calls: []
-  onEnd:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1610887864
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,7 +3857,6 @@ MonoBehaviour:
   pcImage: {fileID: 5665926972615899193}
   pcName:
     m_uiText: {fileID: 0}
-    m_textMeshProUGUI: {fileID: 0}
   usePortraitNativeSize: 0
   timerSlider: {fileID: 5665926972615895713}
   buttonAlignment: 0
@@ -3945,10 +3928,8 @@ MonoBehaviour:
   panel: {fileID: 5665926972615865473}
   label:
     m_uiText: {fileID: 5665926972615883391}
-    m_textMeshProUGUI: {fileID: 0}
   inputField:
     m_uiInputField: {fileID: 5665926972615868459}
-    m_textMeshProInputField: {fileID: 0}
   acceptKey: 13
   acceptButton: 
   cancelKey: 27
@@ -4249,10 +4230,8 @@ MonoBehaviour:
   portraitImage: {fileID: 5665926972615899193}
   portraitName:
     m_uiText: {fileID: 0}
-    m_textMeshProUGUI: {fileID: 840307325}
   subtitleText:
     m_uiText: {fileID: 0}
-    m_textMeshProUGUI: {fileID: 1488518401}
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 1
@@ -4296,7 +4275,6 @@ MonoBehaviour:
     panel: {fileID: 5665926972615885697}
     alertText:
       m_uiText: {fileID: 5665926972615867231}
-      m_textMeshProUGUI: {fileID: 0}
     queueAlerts: 1
     dontQueueDuplicates: 0
     waitForHideAnimation: 1
@@ -5050,7 +5028,6 @@ MonoBehaviour:
   buttonClickClip: {fileID: 8300000, guid: 5b562d5674922c249b448fac10b263ab, type: 3}
   label:
     m_uiText: {fileID: 0}
-    m_textMeshProUGUI: {fileID: 0}
   setLabelColor: 0
   defaultColor: {r: 0.78431374, g: 1, b: 1, a: 1}
   textPrinterScript: {fileID: 5665926972647075382}
