@@ -9,56 +9,60 @@ public class ChatView: MonoBehaviour
 {
     private PlayerPod playerpod;
     private CharacterPod characterPod;
+    private Chapterpod chapterpod;
     public NotificationCellView notificationCellView;
     public HeaderChatUIView headerChatUIView;
     public ChatlistView chatlistView;
-
+    public SelectChapterView SelectChapterView;
 
 
     public void Init()
     {
-
+        Debug.Log("Init");
         playerpod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
+        chapterpod = Chapterpod.Instance;
         headerChatUIView.Bind(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID));
 
     }
 
     public void OnConversationLine(Subtitle subtitle)
     {
-        if (characterPod.GetCharacterBeanByID(3).PlayerisReadingThisCharacter == true)
+        Debug.Log(this.playerpod);
+        Debug.Log(playerpod.PlayerReadingID);
+        Debug.Log(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID));
+        if (characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter == true)
         {
-            characterPod.UpdateCurrentChatText(3, subtitle.formattedText.text);
-            Debug.LogError("Update" + subtitle.formattedText.text);
-            Debug.Log("Current text is " + characterPod.GetCharacterBeanByID(3).CurrentChatText);
+            characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, subtitle.formattedText.text);
             if (!DialogueManager.currentConversationState.hasAnyResponses)
             {
-                characterPod.UpdatePlayerisReadingThisCharacter(3, false);
-                
+                CheckEndOfConversation();
+                characterPod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, false);
             }
         }
 
-        if (characterPod.GetCharacterBeanByID(0).PlayerisReadingThisCharacter == true)
+    }
+
+    public void CheckEndOfConversation()
+    {
+        Debug.Log(this.chapterpod);
+        Debug.Log(playerpod.current_date - 1);
+        Debug.Log(chapterpod.GetChapterByIndex(playerpod.current_date - 1));
+        ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
+        if (playerpod.PlayerReadingConversationIndex <= chapter.DataEachConversation.Length)
         {
-            characterPod.UpdateCurrentChatText(0, subtitle.formattedText.text);
-            if (!DialogueManager.currentConversationState.hasAnyResponses)
-            {
-                characterPod.UpdatePlayerisReadingThisCharacter(0, false);
-                playerpod.current_date = 2;
-                playerpod.UpdateIsplayingValue(false);
-            }
+            playerpod.PlayerReadingConversationIndex += 1;
+            SelectChapterView.LoopCharacters(chapter);
         }
-        if (characterPod.GetCharacterBeanByID(2).PlayerisReadingThisCharacter == true)
+        else
         {
-            characterPod.UpdateCurrentChatText(2, subtitle.formattedText.text);
+            Debug.Log("Index out of bound");
+            playerpod.PlayerReadingConversationIndex = 0;
 
-
-            if (!DialogueManager.currentConversationState.hasAnyResponses)
-            {
-                playerpod.PlayerReadingMessage30DaysGroup.Value = false;
-            }
         }
     }
+
+
 
 }
 

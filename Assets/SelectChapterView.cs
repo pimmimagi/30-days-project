@@ -15,12 +15,14 @@ public class SelectChapterView : MonoBehaviour
     private Chapterpod chapterPod;
     private CharacterPod characterPod;
     private ChatAppPanelPod chatAppPanelPod;
+    private PlayerPod playerPod;
     public List<ChatCellView> Day1List;
     public GameObject ChatlistCell;
 
 
     public void Start()
     {
+        playerPod = PlayerPod.Instance;
         chapterPod = Chapterpod.Instance;
         characterPod = CharacterPod.Instance;
         chatAppPanelPod = ChatAppPanelPod.Instance;
@@ -29,13 +31,14 @@ public class SelectChapterView : MonoBehaviour
     }
 
 
+
     private void SetupButtonListener()
     {    
        
         Day1Button.onClick.AddListener(() =>
         {
             ButtonSetting();
-            ChapterTemplateScriptableObject chapter1 = chapterPod.GetChapterByIndex(0);
+            ChapterTemplateScriptableObject chapter1 = chapterPod.GetChapterByIndex(playerPod.current_date-1);
             LoopCharacters(chapter1);
             ChatlistCell.SetActive(false);
 
@@ -57,10 +60,10 @@ public class SelectChapterView : MonoBehaviour
         chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
     }
     public void LoopCharacters(ChapterTemplateScriptableObject chapter)
-    {
-        foreach (var characterAndConversation in chapter.DataEachConversation)
+    { 
+        if (playerPod.PlayerReadingConversationIndex  < chapter.DataEachConversation.Length)
         {
-            SetChatCellView(characterAndConversation.CharacterChat);
+            SetChatCellView(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].CharacterChat);
         }
     }
 
@@ -68,9 +71,10 @@ public class SelectChapterView : MonoBehaviour
     {
         ChatCellView newChatCellView = ChatlistView.CreateChatCell();
         newChatCellView.Bind(characterPod.GetCharacterBeanByID(character.IDCharacter));
-        Debug.Log(character.IDCharacter);
         newChatCellView.gameObject.SetActive(true);
     }
+
+
 
 }
 

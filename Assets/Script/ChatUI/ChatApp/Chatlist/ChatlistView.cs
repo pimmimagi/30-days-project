@@ -60,6 +60,7 @@ public class ChatlistView : MonoBehaviour
         instantiatedChatCells.Clear();
     }
 
+
 }
     
    

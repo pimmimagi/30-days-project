@@ -54,8 +54,9 @@ public class ChatCellView : MonoBehaviour
         ChatBoxChatAppButton.onClick.AddListener(() =>
         {
             playerpod.UpdatePlayerIsReadingID(characterID);
-            //SMSconversation.StartSMSConversation(chapterpod.GetChapterByIndex(playerpod.current_date-1).Conversation[playerpod.PlayerReadingID]);
             chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
+            ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
+            SMSconversation.StartSMSConversation(chapter.DataEachConversation[playerpod.PlayerReadingConversationIndex].Conversation);
             characterpod.UpdateCheckPlayerReadMessageAlready(playerpod.PlayerReadingID, true);
             SetNotificationChat();
             characterpod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, true);
