@@ -9,6 +9,7 @@ public class SelectChapterView : MonoBehaviour
     public Button Day2Button;
     public GameObject SelectChapterPanel;
     public GameObject ChatAppPanel;
+    public GameObject ChatCellGameObject;
     public ChatCellView ChatCellView;
     public ChatlistView ChatlistView;
     private Chapterpod chapterPod;
@@ -55,42 +56,46 @@ public class SelectChapterView : MonoBehaviour
         ChatAppPanel.SetActive(true);
         chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
     }
-    private void LoopCharacters(ChapterTemplateScriptableObject chapter)
+    public void LoopCharacters(ChapterTemplateScriptableObject chapter)
     {
-        foreach (CharacterTemplateScriptableObject character in chapter.CharacterChat)
+
+        // fix
+        foreach (CharacterTemplateScriptableObject character in chapter.)
         {
             //Debug.Log(character);
-            SetChatCellView(character);
+           // SetChatCellView(character);
 
         }
     }
 
-    private void SetChatCellView(CharacterTemplateScriptableObject character)
+    public void SetChatCellView(CharacterTemplateScriptableObject character)
     {
+        ChatCellView newChatCellView = ChatlistView.CreateChatCell();
         switch (character.IDCharacter)
         {
             case 0:
-                ChatCellView newChatCellView = ChatlistView.CreateChatCell();
                 Debug.Log("Run Case 0");
                 newChatCellView.Bind(characterPod.GetCharacterBeanByID(0));
                 break;
             case 1:
-                ChatCellView newChatCellView2 = ChatlistView.CreateChatCell();
                 Debug.Log("Run Case 1");
-                newChatCellView2.Bind(characterPod.GetCharacterBeanByID(1));
+                newChatCellView.Bind(characterPod.GetCharacterBeanByID(1));
                 break;
             case 2:
                 Debug.Log("Run Case 2");
-                ChatCellView newChatCellView3 = ChatlistView.CreateChatCell();
-                newChatCellView3.Bind(characterPod.GetCharacterBeanByID(2));
+                newChatCellView.Bind(characterPod.GetCharacterBeanByID(2));
                 break;
             case 3:
                 Debug.Log("Run Case 3");
-                ChatCellView newChatCellView4 = ChatlistView.CreateChatCell();
-                newChatCellView4.Bind(characterPod.GetCharacterBeanByID(3));
+                newChatCellView.Bind(characterPod.GetCharacterBeanByID(3));
+                Debug.Log("Bind Already");
                 break;
-            
+            case 4:
+                Debug.Log("Run Case 4");
+                newChatCellView.Bind(characterPod.GetCharacterBeanByID(4));
+                break;
         }
+        newChatCellView.gameObject.SetActive(true);
     }
 
        

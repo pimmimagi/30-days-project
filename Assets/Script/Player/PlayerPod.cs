@@ -30,6 +30,7 @@ public class PlayerPod : MonoBehaviour
     public ReactiveProperty<bool> PlayerReadingMessage30DaysGroup = new ReactiveProperty<bool>(false);
     public int PlayerReadingID = -1;
     public int NumberofNotification = 2;
+    public int PlayerReadingConversationIndex = 0;
 
     private void Update()
     {

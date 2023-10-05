@@ -7,52 +7,32 @@ using UnityEngine.PlayerLoop;
 
 public class ChatlistView : MonoBehaviour
 {
-    public ChatCellView ChatlistCellViewPie;
-    //public ChatCellView ChatlistCellViewF;
-    //public ChatCellView ChatlistCellGroup;
-    //public GameObject CellViewFGameObject;
-   // public GameObject CellViewPieGameObect;
-   // public GameObject CellView30DaysGroupObject;
+    public ChatCellView ChatlistCellView;
+    public SelectChapterView SelectChapterView;
     public HeaderChatUIView headerChatUIView;
     private bool StartFirstTime = true;
     [SerializeField] private CharacterPod characterPod;
     private PlayerPod playerPod;
+    private Chapterpod chapterPod;
     public GameObject PopUpProfilePanel;
     private List<GameObject> instantiatedChatCells = new List<GameObject>();
     public GameObject ChatCellPrefab;
 
+    private void Start()
+    {
+        chapterPod = Chapterpod.Instance;
+    }
 
     public void Init()
     {
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
         characterPod.LoadCharacterData();
-        //UpdateChatCellsPie();
-        //UpdateChatCellF();
-        //UpdateChatCellGroup();
+        //UpdateCurrentText();
         
     }
      //TODO Refactor 
-    public void UpdateChatCellsPie()
-    { 
-        CharacterBean characterBeenID3 = characterPod.GetCharacterBeanByID(3);
-        
-        ChatlistCellViewPie.Bind(characterBeenID3);
-        //ChatlistCellViewPie.SetNotificationChat();
-    }
-    public void UpdateChatCellF()
-    {
-        CharacterBean characterBeanID0 = characterPod.GetCharacterBeanByID(0);
-        //ChatlistCellViewF.Bind(characterBeanID0);
-        //ChatlistCellViewF.SetNotificationChat();
-    }
-
-    public void UpdateChatCellGroup()
-    {
-        CharacterBean characterBeanID2 = characterPod.GetCharacterBeanByID(2);
-        //ChatlistCellGroup.Bind(characterBeanID2);
-       // ChatlistCellGroup.SetNotificationChat();
-    }
+ 
 
     public ChatCellView CreateChatCell()
     {
@@ -79,6 +59,7 @@ public class ChatlistView : MonoBehaviour
         }
         instantiatedChatCells.Clear();
     }
+
 }
     
    

@@ -39,6 +39,8 @@ public class ChatCellView : MonoBehaviour
         CharacterImage.sprite = data.characterData.ProfileSprite;
         CharacterNameText.text = data.characterData.NameText;
         Currenttext.text = data.CurrentChatText;
+        Debug.LogError("Update current text : " + Currenttext.text);
+        Debug.LogError("data.CurrentChatText : " + data.CurrentChatText);
         SetupButtonListener(data.characterData.IDCharacter);
     }
 
@@ -52,7 +54,7 @@ public class ChatCellView : MonoBehaviour
         ChatBoxChatAppButton.onClick.AddListener(() =>
         {
             playerpod.UpdatePlayerIsReadingID(characterID);
-            SMSconversation.StartSMSConversation(chapterpod.GetChapterByIndex(playerpod.current_date-1).Conversation[playerpod.PlayerReadingID]);
+            //SMSconversation.StartSMSConversation(chapterpod.GetChapterByIndex(playerpod.current_date-1).Conversation[playerpod.PlayerReadingID]);
             chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
             characterpod.UpdateCheckPlayerReadMessageAlready(playerpod.PlayerReadingID, true);
             SetNotificationChat();
