@@ -26,7 +26,10 @@ public class Chapterpod : MonoBehaviour
     public List<ChapterBean> ChapterBeanList;
     private void Start()
     {
+        
         playerPod = PlayerPod.Instance;
+        Debug.Log(GetChapterByIndex(0).DataEachConversation.Length);
+        Debug.Log(GetChapterByIndex(1).DataEachConversation.Length);
     }
 
     public int CurrentChapterID()
@@ -58,4 +61,6 @@ public class Chapterpod : MonoBehaviour
             return null;
         }
     }
+ 
+
 }

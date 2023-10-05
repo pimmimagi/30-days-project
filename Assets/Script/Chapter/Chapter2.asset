@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Chapter2
   m_EditorClassIdentifier: 
   Order: 2
-  CharacterChat:
-  - {fileID: 11400000, guid: fe94f2659974c3741a6634e6151f8765, type: 2}
-  Conversation:
-  - Questioning
+  DataEachConversation:
+  - CharacterChat:
+    - {fileID: 11400000, guid: fe94f2659974c3741a6634e6151f8765, type: 2}
+    Conversation:
+    - mnknk

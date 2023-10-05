@@ -12,8 +12,8 @@ public class ChapterTemplateScriptableObject : ScriptableObject
     [System.Serializable]
     public class CharacterAndConversation
     {
-        public CharacterTemplateScriptableObject[] CharacterChat;
-        public string[] Conversation;
+        public CharacterTemplateScriptableObject CharacterChat;
+        public string Conversation;
     }
 
     public CharacterAndConversation[] DataEachConversation;
