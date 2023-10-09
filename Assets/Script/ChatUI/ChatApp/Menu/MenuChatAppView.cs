@@ -35,7 +35,6 @@ public class MenuChatAppView : MonoBehaviour
         BackToChatAppButton.onClick.AddListener(() =>
         {
             soundManager.PlayClickSound();
-            chatlistView.DestroyChatCell();
             ChatStartPanel.gameObject.SetActive(false);
             SelectChapterPanel.gameObject.SetActive(true);
             chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter); chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);

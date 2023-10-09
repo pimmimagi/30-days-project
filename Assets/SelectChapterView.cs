@@ -40,7 +40,7 @@ public class SelectChapterView : MonoBehaviour
             ButtonSetting();
             ChapterTemplateScriptableObject chapter1 = chapterPod.GetChapterByIndex(playerPod.current_date-1);
             LoopCharacters(chapter1);
-            ChatlistCell.SetActive(false);
+            //ChatlistCell.SetActive(false);
 
         });
         Day2Button.onClick.AddListener(() =>
@@ -48,7 +48,7 @@ public class SelectChapterView : MonoBehaviour
             ButtonSetting();
             ChapterTemplateScriptableObject chapter2 = chapterPod.GetChapterByIndex(1);
             LoopCharacters(chapter2);
-            ChatlistCell.SetActive(false);
+            //ChatlistCell.SetActive(false);
 
         });
     }

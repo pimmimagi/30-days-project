@@ -16,6 +16,8 @@ public class HeaderChatUIView : MonoBehaviour
     private SoundManager soundManager;
     public TMP_Text CharacterNameText;
     public SelectChapterView chapterView;
+    public ChatlistView chatlistView;
+    public GameObject chatCellView;
 
 
     private void Start()
@@ -36,8 +38,13 @@ public class HeaderChatUIView : MonoBehaviour
             characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).CheckPlayerReadMessageAlready = false;
             characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).PlayerisReadingThisCharacter = false;
             characterPod.CheckLoadCharacterdata = true;
-            //UpdateCurrentText();
             chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
+            //chatlistView.DestroyChatCell();
+            //chatCellView.SetActive(true);
+            ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
+            chapterView.LoopCharacters(chapter);
+            //chatCellView.SetActive(false);
+            //chatlistView.CreateChatCell();
             soundManager.PlayClickSound();
         });
     }

@@ -14,12 +14,13 @@ public class NotificationView : MonoBehaviour
 
     private void Start()
     {
+        Lua.RegisterFunction("NotificationCharacter", this, typeof(NotificationView).GetMethod("NotificationCharacter"));
         characterpod = CharacterPod.Instance;
         playerpod = PlayerPod.Instance;
         characterpod.LoadCharacterData();
         CharacterBean characterBeanID0 = characterpod.GetCharacterBeanByID(0);
         CharacterBean characterBeanID3 = characterpod.GetCharacterBeanByID(3);
-        Lua.RegisterFunction("NotificationCharacter", this, typeof(NotificationView).GetMethod("NotificationCharacter"));
+        
     
 
     }

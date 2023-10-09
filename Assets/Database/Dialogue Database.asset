@@ -1730,8 +1730,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1071.6456, y: 576.4179}
-    canvasZoom: 0.9099996
+    canvasScrollPosition: {x: 941.78076, y: 531.54266}
+    canvasZoom: 0.75999975
   - id: 3
     fields:
     - title: Title
@@ -5001,13 +5001,13 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\")"
+      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\");"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1887.0541
+        x: 1888.9409
         y: 2220.6687
         width: 160
         height: 30
@@ -5675,8 +5675,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 310.9454, y: 608.05133}
-    canvasZoom: 0.6999998
+    canvasScrollPosition: {x: 1762.4341, y: 1972.5522}
+    canvasZoom: 1.0599995
   - id: 7
     fields:
     - title: Title

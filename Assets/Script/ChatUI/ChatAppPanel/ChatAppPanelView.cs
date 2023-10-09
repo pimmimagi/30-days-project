@@ -61,9 +61,14 @@ public class ChatAppPanelView : MonoBehaviour
     public void RunChatlistPanel()
     {
         chatlistView.Init();
+        chatlistView.DestroyChatCell();
+        chatlistView.CreateChatCell();
+        //ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
+        //chapterView.LoopCharacters(chapter);
     }
     public void RunSelecChapter()
     {
         //selectChapterView.Init();
     }
+
 }

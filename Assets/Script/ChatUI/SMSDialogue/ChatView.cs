@@ -45,9 +45,7 @@ public class ChatView: MonoBehaviour
 
     public void CheckEndOfConversation()
     {
-        Debug.Log(this.chapterpod);
-        Debug.Log(playerpod.current_date - 1);
-        Debug.Log(chapterpod.GetChapterByIndex(playerpod.current_date - 1));
+     
         ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
         if (playerpod.PlayerReadingConversationIndex <= chapter.DataEachConversation.Length)
         {

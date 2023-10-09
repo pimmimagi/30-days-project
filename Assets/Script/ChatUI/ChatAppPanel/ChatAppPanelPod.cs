@@ -23,7 +23,7 @@ public class ChatAppPanelPod : MonoBehaviour
 
     public void ChangeChatState(ChatAppState newState)
     {
-        Debug.Log(newState);
+
         ChatState.Value = newState;
     }
 }

@@ -14,6 +14,7 @@ public class ChatlistView : MonoBehaviour
     [SerializeField] private CharacterPod characterPod;
     private PlayerPod playerPod;
     private Chapterpod chapterPod;
+    private ChatAppPanelPod chatAppPanelPod;
     public GameObject PopUpProfilePanel;
     private List<GameObject> instantiatedChatCells = new List<GameObject>();
     public GameObject ChatCellPrefab;
@@ -21,6 +22,7 @@ public class ChatlistView : MonoBehaviour
     private void Start()
     {
         chapterPod = Chapterpod.Instance;
+        chatAppPanelPod = ChatAppPanelPod.Instance;
     }
 
     public void Init()
@@ -31,8 +33,7 @@ public class ChatlistView : MonoBehaviour
         //UpdateCurrentText();
         
     }
-     //TODO Refactor 
- 
+    //TODO Refactor 
 
     public ChatCellView CreateChatCell()
     {
@@ -45,8 +46,8 @@ public class ChatlistView : MonoBehaviour
         }
         else
         {
-            Destroy(newChatCellView);
-            return null;
+            //Destroy(newChatCellView);
+            //return null;
         }
         return chatCellViewComponent;
     }
@@ -60,7 +61,7 @@ public class ChatlistView : MonoBehaviour
         instantiatedChatCells.Clear();
     }
 
-
+    //public void BindCurrentCh
 }
     
    

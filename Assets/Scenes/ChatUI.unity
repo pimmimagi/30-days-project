@@ -416,7 +416,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -456,11 +456,11 @@ RectTransform:
   m_Father: {fileID: 203455048}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17.200012, y: -14.400024}
-  m_SizeDelta: {x: -119.7603, y: -59.4403}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 77.1, y: -14.9}
+  m_SizeDelta: {x: 160.2397, y: 26.5597}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &275998165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,7 +609,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &444045007
 GameObject:
@@ -654,6 +654,7 @@ MonoBehaviour:
     value: 0
   PlayerReadingID: 0
   NumberofNotification: 0
+  PlayerReadingConversationIndex: 0
 --- !u!224 &444045009
 RectTransform:
   m_ObjectHideFlags: 0
@@ -832,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChatState:
-    value: 0
+    value: 3
 --- !u!224 &600923054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -846,7 +847,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -898,7 +899,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1078,7 +1079,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &936919912
 GameObject:
@@ -1546,7 +1547,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177706140
 GameObject:
@@ -1787,6 +1788,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177706140}
   m_CullTransparentMesh: 1
+--- !u!1 &1331375021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331375023}
+  - component: {fileID: 1331375022}
+  m_Layer: 5
+  m_Name: PlayerPod
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1331375022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331375021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69f286734c93f944be730464280f044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current_date: 1
+  current_day: Sunday
+  StatusPlayerText:
+    value: "\u0E2D\u0E31\u0E19\u0E22\u0E2D\u0E07"
+  NoteText:
+    value: EnterText
+  IsPlaying:
+    value: 0
+  ReadAlready:
+    value: 0
+  PlayerReadingMessage30DaysGroup:
+    value: 0
+  PlayerReadingID: 2
+  NumberofNotification: 2
+  PlayerReadingConversationIndex: 0
+--- !u!224 &1331375023
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331375021}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.9866667, y: 2.9866667, z: 2.9866667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 15.539609, y: 33.631615}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1366105645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,7 +2029,7 @@ Transform:
   - {fileID: 444948569}
   - {fileID: 936919914}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395878615
 GameObject:
@@ -2008,7 +2073,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1471495528
 GameObject:
@@ -2768,7 +2833,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2104414409
 GameObject:
@@ -11619,6 +11684,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackChatUIButton: {fileID: 4802440790326866028}
   CharacterNameText: {fileID: 5301186888758588474}
+  chapterView: {fileID: 8822006670077697241}
+  chatlistView: {fileID: 9220033696567248939}
+  chatCellView: {fileID: 5161935617452464222}
 --- !u!114 &6570518236096087880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13442,6 +13510,7 @@ MonoBehaviour:
   notificationCellView: {fileID: 3242213201023432616}
   headerChatUIView: {fileID: 6568327922232331449}
   chatlistView: {fileID: 9220033696567248939}
+  SelectChapterView: {fileID: 8822006670077697241}
 --- !u!224 &7973065556390432888
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14527,7 +14596,8 @@ MonoBehaviour:
   Day2Button: {fileID: 3894814554532208980}
   SelectChapterPanel: {fileID: 6393637193095907756}
   ChatAppPanel: {fileID: 1175770074181622664}
-  ChatCellView: {fileID: 0}
+  ChatCellGameObject: {fileID: 5161935617452464222}
+  ChatCellView: {fileID: 244113280595267425}
   ChatlistView: {fileID: 9220033696567248939}
   Day1List: []
   ChatlistCell: {fileID: 5161935617452464222}
@@ -15330,7 +15400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf976ad18daab48429ea5b2c68e7968e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChatlistCellViewPie: {fileID: 244113280595267425}
+  ChatlistCellView: {fileID: 244113280595267425}
+  SelectChapterView: {fileID: 8822006670077697241}
   headerChatUIView: {fileID: 6568327922232331449}
   characterPod: {fileID: 379642875}
   PopUpProfilePanel: {fileID: 6499902319376684329}
