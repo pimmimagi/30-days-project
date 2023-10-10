@@ -15,18 +15,21 @@ public class RelationShipNotificationView : MonoBehaviour
     public TMP_Text Relationshiptext;
     private CharacterPod characterPod;
     private PlayerPod playerPod;
+    private SoundManager soundManager;
 
 
     void Start()
     {
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
+        soundManager = SoundManager.Instance;
         RelationshipNotificationPanel.SetActive(false);
         Lua.RegisterFunction("UpdateRelationshipScore", this, typeof(RelationShipNotificationView).GetMethod("UpdateRelationshipScore"));
     }
 
     public void UpdateRelationshipScore(string NPCname, string score)
     {
+        soundManager.PlayNotificationSound();
         NameText.text = NPCname;
         BindImageWithNameNPC(NPCname);
         Relationshiptext.text = "ค่าความสนิทกับ" + " " + NPCname + " " + "เพิ่มขึ้น  + " + score;

@@ -1730,8 +1730,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1071.6456, y: 576.4179}
-    canvasZoom: 0.9099996
+    canvasScrollPosition: {x: 912.1223, y: 514.9314}
+    canvasZoom: 0.63999987
   - id: 3
     fields:
     - title: Title
@@ -2502,14 +2502,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: "SetCallingActive(\"\u0E1E\u0E32\u0E22\");"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 1354.5598
-        y: 649.8678
+        y: 648.602
         width: 160
         height: 30
     - id: 6
@@ -5001,13 +5001,13 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\")"
+      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\");"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1887.0541
+        x: 1888.9409
         y: 2220.6687
         width: 160
         height: 30
@@ -5394,7 +5394,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1710.1023
+        x: 1708.284
         y: 1359.8221
         width: 160
         height: 30
@@ -5675,8 +5675,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 310.9454, y: 608.05133}
-    canvasZoom: 0.6999998
+    canvasScrollPosition: {x: 339.97812, y: 526.81635}
+    canvasZoom: 0.52
   - id: 7
     fields:
     - title: Title

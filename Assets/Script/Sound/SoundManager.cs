@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-    public AudioSource _musicSource, _clickSource, _notificationSource;
+    public AudioSource _musicSource, _clickSource, _notificationSource, _ringtoneSource;
     public SliderView Slider;
 
     private void Start()
@@ -34,6 +34,11 @@ public class SoundManager : MonoBehaviour
     {
         _notificationSource.Play();
     }
+
+    public void PlayRingtoneSound()
+    {
+        _ringtoneSource.Play();
+    }
     public void MusicVolume(float value)
     {
         _musicSource.volume = value;
@@ -43,6 +48,12 @@ public class SoundManager : MonoBehaviour
     {
         _clickSource.volume = value;
         _notificationSource.volume = value;
+        _ringtoneSource.volume = value;
+    }
+
+    public void StopRingtoneSound()
+    {
+        _ringtoneSource.Stop();
     }
   
 }

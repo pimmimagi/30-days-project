@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChatAppStartDay1.unity
     guid: 154ad57430d60fb4babc0d84dbae3720
+  - enabled: 1
+    path: Assets/Scenes/Call.unity
+    guid: 07b33f139d85d9045a130af2828b761a
   m_configObjects: {}
