@@ -1,9 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
 using System.Diagnostics.Contracts;
 using UniRx;
+using System;
 
 public class ChatView: MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ChatView: MonoBehaviour
     public HeaderChatUIView headerChatUIView;
     public ChatlistView chatlistView;
     public SelectChapterView SelectChapterView;
+    public GameObject ContinuePanel;
 
 
     public void Init()
@@ -47,20 +49,35 @@ public class ChatView: MonoBehaviour
     {
      
         ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
-        if (playerpod.PlayerReadingConversationIndex <= chapter.DataEachConversation.Length)
+        if (playerpod.PlayerReadingConversationIndex == chapter.DataEachConversation.Length - 1)
         {
+            Debug.Log("Run if");
+            playerpod.current_date += 1;
+            playerpod.PlayerReadingConversationIndex = 0;
+            SetContinueActive();
+  
+        }
+        else if (playerpod.PlayerReadingConversationIndex < chapter.DataEachConversation.Length - 1)
+        {
+            Debug.LogError(playerpod.PlayerReadingConversationIndex);
+            Debug.LogError(chapter.DataEachConversation.Length - 1);
             playerpod.PlayerReadingConversationIndex += 1;
             SelectChapterView.LoopCharacters(chapter);
-        }
-        else
-        {
-            Debug.Log("Index out of bound");
-            playerpod.PlayerReadingConversationIndex = 0;
-
+            Debug.Log("Run else if");
         }
     }
 
+    public void SetContinueActive()
 
+    {
+        Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ => {
+            ContinuePanel.SetActive(true);
+          
+
+        });
+
+
+    }
 
 }
 

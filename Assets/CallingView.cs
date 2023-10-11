@@ -17,11 +17,16 @@ public class CallingView : MonoBehaviour
     public Button CallingButton;
     public Button HangUpButton;
     private SoundManager soundManager;
+    private PlayerPod playerPod;
+    private Chapterpod chapterpod;
+    public StartNewConversation startCall;
  
     private void Start()
     {
         characterPod = CharacterPod.Instance;
         soundManager = SoundManager.Instance;
+        playerPod = PlayerPod.Instance;
+        chapterpod = Chapterpod.Instance;
         Lua.RegisterFunction("SetCallingActive", this, typeof(CallingView).GetMethod("SetCallingActive"));
         SetupButtonListener();
 
@@ -51,8 +56,10 @@ public class CallingView : MonoBehaviour
         });
         CallingButton.onClick.AddListener(() =>
         {
-            MoveToScene(6);
+            
             soundManager.StopRingtoneSound();
+            ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
+            startCall.StartCall(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
 
         });
             

@@ -1,8 +1,11 @@
+using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AcceptCallView : MonoBehaviour
 {
@@ -18,16 +21,22 @@ public class AcceptCallView : MonoBehaviour
     private TMP_Text firstSecond;
     [SerializeField]
     private TMP_Text secondSecond;
-    public CallingView callingView;
     private Chapterpod chapterpod;
-    public SMSConversation SMSconversation;
+    private CharacterPod characterPod;
+    //public StartNewConversation newConversation;
     private PlayerPod playerPod;
+    public TMP_Text NameText;
+    public Image CharacterProfile;
+    public TMP_Text NPCNameText;
     private void Start()
     {
         UpdateTimerDisplay(timer);
         playerPod = PlayerPod.Instance;
         chapterpod = Chapterpod.Instance;
-        StartSubtile();
+        characterPod = CharacterPod.Instance;
+        Lua.RegisterFunction("MoveToScene", this, typeof(AcceptCallView).GetMethod("MoveToScene"));
+        //StartSubtile();
+        Bind(characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID));
     }
     private void ResetTimer()
     {
@@ -37,9 +46,16 @@ public class AcceptCallView : MonoBehaviour
     private void Update()
     {
 
-      UpdateTimerDisplay(timer);
-      timer += Time.deltaTime;
+        UpdateTimerDisplay(timer);
+        timer += Time.deltaTime;
 
+    }
+
+    public void Bind(CharacterBean data)
+    {
+        NameText.text = data.characterData.NameText;
+        CharacterProfile.sprite = data.characterData.ProfileSprite;
+        NPCNameText.text = data.characterData.NameText;
     }
 
     private void UpdateTimerDisplay(float time)
@@ -55,9 +71,27 @@ public class AcceptCallView : MonoBehaviour
 
     public void StartSubtile()
     {
+        Debug.LogError("Player is Reading ID " + playerPod.PlayerReadingID);
+        Debug.LogError("Player is Reading index" + playerPod.PlayerReadingConversationIndex);
+        //Debug.LogError("Player read conversation : " + chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
         ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
-        SMSconversation.StartSMSConversation(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
+        //newConversation.StartMyConversation(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
+
     }
+
+    public void MoveToScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
     }
+
+    public void OnConversationLine(Subtitle subtitle)
+    {
+        Debug.Log(subtitle);
+        if (!DialogueManager.currentConversationState.hasAnyResponses)
+        {
+            MoveToScene(0);
+        }
+    }
+}
 
 

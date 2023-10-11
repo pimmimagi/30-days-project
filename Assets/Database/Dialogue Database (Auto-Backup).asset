@@ -1730,8 +1730,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 912.1223, y: 514.9314}
-    canvasZoom: 0.63999987
+    canvasScrollPosition: {x: 644.27924, y: 444.94226}
+    canvasZoom: 0.54999995
   - id: 3
     fields:
     - title: Title
@@ -6521,7 +6521,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: 
+      userScript: MoveToScene(0);
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -6532,8 +6532,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 93.57364, y: 256.7122}
-    canvasZoom: 0.9099996
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.2800001
   syncInfo:
     syncActors: 0
     syncItems: 0

@@ -46,7 +46,7 @@ public class SelectChapterView : MonoBehaviour
         Day2Button.onClick.AddListener(() =>
         {
             ButtonSetting();
-            ChapterTemplateScriptableObject chapter2 = chapterPod.GetChapterByIndex(1);
+            ChapterTemplateScriptableObject chapter2 = chapterPod.GetChapterByIndex(playerPod.current_date - 1);
             LoopCharacters(chapter2);
             //ChatlistCell.SetActive(false);
 
