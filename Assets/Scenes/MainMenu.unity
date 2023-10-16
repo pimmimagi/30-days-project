@@ -2545,6 +2545,7 @@ MonoBehaviour:
   _musicSource: {fileID: 1130323237}
   _clickSource: {fileID: 778736556}
   _notificationSource: {fileID: 1572251486}
+  _ringtoneSource: {fileID: 0}
   Slider: {fileID: 380370897}
 --- !u!4 &672834246
 Transform:
@@ -4914,6 +4915,7 @@ MonoBehaviour:
     value: 0
   PlayerReadingID: -1
   NumberofNotification: 0
+  PlayerReadingConversationIndex: 2
 --- !u!4 &1182899685
 Transform:
   m_ObjectHideFlags: 0
@@ -6728,7 +6730,7 @@ MonoBehaviour:
   preloadResources: 1
   warmUpConversationController: 0
   dontHideImmediateDuringWarmup: 0
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   allowOnlyOneInstance: 1
   onStartTriggerWaitForSaveDataApplied: 0
   dialogueTimeMode: 0

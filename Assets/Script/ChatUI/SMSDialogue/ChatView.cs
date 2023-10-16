@@ -20,7 +20,6 @@ public class ChatView: MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("Init");
         playerpod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
         chapterpod = Chapterpod.Instance;
@@ -30,9 +29,6 @@ public class ChatView: MonoBehaviour
 
     public void OnConversationLine(Subtitle subtitle)
     {
-        Debug.Log(this.playerpod);
-        Debug.Log(playerpod.PlayerReadingID);
-        Debug.Log(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID));
         if (characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter == true)
         {
             characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, subtitle.formattedText.text);
@@ -65,6 +61,7 @@ public class ChatView: MonoBehaviour
             SelectChapterView.LoopCharacters(chapter);
             Debug.Log("Run else if");
         }
+        characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, "คุณมีข้อความใหม่");
     }
 
     public void SetContinueActive()

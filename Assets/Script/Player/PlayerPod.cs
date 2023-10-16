@@ -31,6 +31,7 @@ public class PlayerPod : MonoBehaviour
     public int PlayerReadingID = -1;
     public int NumberofNotification = 2;
     public int PlayerReadingConversationIndex = 2;
+    
 
     private void Update()
     {

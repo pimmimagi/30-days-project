@@ -58,8 +58,9 @@ public class CallingView : MonoBehaviour
         {
             
             soundManager.StopRingtoneSound();
-            ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
-            startCall.StartCall(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
+            //ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
+            //startCall.StartCall(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
+            MoveToScene(6);
 
         });
             

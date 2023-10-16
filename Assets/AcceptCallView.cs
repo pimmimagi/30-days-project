@@ -1,6 +1,7 @@
 using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -23,20 +24,30 @@ public class AcceptCallView : MonoBehaviour
     private TMP_Text secondSecond;
     private Chapterpod chapterpod;
     private CharacterPod characterPod;
+    private CallPod callPod;
     //public StartNewConversation newConversation;
     private PlayerPod playerPod;
     public TMP_Text NameText;
     public Image CharacterProfile;
     public TMP_Text NPCNameText;
+    public CallView CallView;
+  
     private void Start()
     {
         UpdateTimerDisplay(timer);
         playerPod = PlayerPod.Instance;
         chapterpod = Chapterpod.Instance;
         characterPod = CharacterPod.Instance;
+        callPod = CallPod.Instance;
+        Debug.Log(this.playerPod);
+        Debug.Log(this.characterPod);
+        Debug.Log(this.chapterpod);
         Lua.RegisterFunction("MoveToScene", this, typeof(AcceptCallView).GetMethod("MoveToScene"));
         //StartSubtile();
         Bind(characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID));
+        callPod.SettingCall();
+        DialogueLua.SetVariable("Poomrelationship",30);
+
     }
     private void ResetTimer()
     {
@@ -45,7 +56,7 @@ public class AcceptCallView : MonoBehaviour
 
     private void Update()
     {
-
+        //CallView.SettingCall();
         UpdateTimerDisplay(timer);
         timer += Time.deltaTime;
 
@@ -90,6 +101,7 @@ public class AcceptCallView : MonoBehaviour
         if (!DialogueManager.currentConversationState.hasAnyResponses)
         {
             MoveToScene(0);
+
         }
     }
 }

@@ -22,7 +22,7 @@ public class MenuButtonView : MonoBehaviour
         ChatButton.onClick.AddListener(() =>
         {
             soundManager.PlayClickSound();
-            MoveToScene(0);
+            MoveToScene(6);
         });
         GalleryButton.onClick.AddListener(() =>
         {
