@@ -16,16 +16,24 @@ public class ChatView: MonoBehaviour
     public ChatlistView chatlistView;
     public SelectChapterView SelectChapterView;
     public GameObject ContinuePanel;
+    public GameObject EndPanel;
+    public GameObject RespondButton;
 
 
-    public void Init()
+    private void Awake()
     {
         playerpod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
         chapterpod = Chapterpod.Instance;
         headerChatUIView.Bind(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID));
-
+        Debug.LogError(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter);
     }
+
+    public void Init()
+    {
+        headerChatUIView.Bind(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID));
+    }
+
 
     public void OnConversationLine(Subtitle subtitle)
     {
@@ -48,9 +56,12 @@ public class ChatView: MonoBehaviour
         if (playerpod.PlayerReadingConversationIndex == chapter.DataEachConversation.Length - 1)
         {
             Debug.Log("Run if");
-            playerpod.current_date += 1;
-            playerpod.PlayerReadingConversationIndex = 0;
+            RespondButton.SetActive(false);
+            SetEndActive();
             SetContinueActive();
+            //playerpod.current_date += 1;
+            //playerpod.PlayerReadingConversationIndex = 0;
+           
   
         }
         else if (playerpod.PlayerReadingConversationIndex < chapter.DataEachConversation.Length - 1)
@@ -58,10 +69,10 @@ public class ChatView: MonoBehaviour
             Debug.LogError(playerpod.PlayerReadingConversationIndex);
             Debug.LogError(chapter.DataEachConversation.Length - 1);
             playerpod.PlayerReadingConversationIndex += 1;
-            SelectChapterView.LoopCharacters(chapter);
+            //SelectChapterView.LoopCharacters(chapter);
             Debug.Log("Run else if");
         }
-        characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, "คุณมีข้อความใหม่");
+        //characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, "คุณมีข้อความใหม่");
     }
 
     public void SetContinueActive()
@@ -70,6 +81,18 @@ public class ChatView: MonoBehaviour
         Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ => {
             ContinuePanel.SetActive(true);
           
+
+        });
+
+
+    }
+
+    public void SetEndActive()
+
+    {
+        Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ => {
+            EndPanel.SetActive(true);
+
 
         });
 

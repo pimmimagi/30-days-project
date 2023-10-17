@@ -38,7 +38,7 @@ public class MenuChatAppView : MonoBehaviour
             ChatStartPanel.gameObject.SetActive(false);
             SelectChapterPanel.gameObject.SetActive(true);
             chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter); chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);
-            chatCellView.gameObject.SetActive(true);
+            //chatCellView.gameObject.SetActive(true);
             
 
 

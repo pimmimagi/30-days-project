@@ -15,10 +15,12 @@ public class ChatAppPanelView : MonoBehaviour
     public SelectChapterView selectChapterView;
     private CharacterPod characterPod;
     private PlayerPod playerPod;
+    private Chapterpod chapterPod;
     private void Start()
     {
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
+        chapterPod = Chapterpod.Instance;
         SetupSubscribe();
     }
     private void SetupSubscribe()
@@ -62,9 +64,8 @@ public class ChatAppPanelView : MonoBehaviour
     {
         chatlistView.Init();
         chatlistView.DestroyChatCell();
-        chatlistView.CreateChatCell();
-        //ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
-        //chapterView.LoopCharacters(chapter);
+        //chatlistView.CreateChatCell();
+
     }
     public void RunSelecChapter()
     {

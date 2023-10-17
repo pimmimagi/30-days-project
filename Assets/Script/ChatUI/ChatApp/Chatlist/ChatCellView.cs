@@ -19,7 +19,8 @@ public class ChatCellView : MonoBehaviour
    // public PopUpProfileWidgetView PopupProfile;
     //public GameObject PopUpProfilePanel;
     public SMSConversation SMSconversation;
-   
+    public HeaderChatUIView headerChatUIView;
+
 
     CharacterBean characterData;
 
@@ -56,6 +57,7 @@ public class ChatCellView : MonoBehaviour
             playerpod.UpdatePlayerIsReadingID(characterID);
             chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
             ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
+            headerChatUIView.Bind(characterpod.GetCharacterBeanByID(playerpod.PlayerReadingID));
             SMSconversation.StartSMSConversation(chapter.DataEachConversation[playerpod.PlayerReadingConversationIndex].Conversation);
             characterpod.UpdateCheckPlayerReadMessageAlready(playerpod.PlayerReadingID, true);
             SetNotificationChat();

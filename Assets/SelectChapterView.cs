@@ -39,7 +39,9 @@ public class SelectChapterView : MonoBehaviour
         {
             ButtonSetting();
             ChapterTemplateScriptableObject chapter1 = chapterPod.GetChapterByIndex(playerPod.current_date-1);
+            Debug.Log(playerPod.current_date - 1);
             LoopCharacters(chapter1);
+            Debug.Log("Loop already");
             //ChatlistCell.SetActive(false);
 
         });
@@ -60,10 +62,13 @@ public class SelectChapterView : MonoBehaviour
         chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
     }
     public void LoopCharacters(ChapterTemplateScriptableObject chapter)
-    { 
+    {
+        Debug.Log("PlayerReadingConversationIndex" + playerPod.PlayerReadingConversationIndex);
+        Debug.Log("DataEachConversation.Length" + chapter.DataEachConversation.Length);
         if (playerPod.PlayerReadingConversationIndex  < chapter.DataEachConversation.Length)
         {
             SetChatCellView(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].CharacterChat);
+            Debug.Log("Set Already");
         }
     }
 

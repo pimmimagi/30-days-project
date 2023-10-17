@@ -50,7 +50,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: IsPlayer
-      value: False
+      value: True
       type: 2
       typeString: CustomFieldType_Boolean
     - title: Display Name
@@ -5738,8 +5738,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 994.3798, y: 473.07434}
-    canvasZoom: 0.6999998
+    canvasScrollPosition: {x: 272.6138, y: 514.4328}
+    canvasZoom: 0.8199997
   - id: 7
     fields:
     - title: Title
@@ -6658,7 +6658,7 @@ MonoBehaviour:
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 2
+        value: 7
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -6694,8 +6694,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 923.78973
-        y: 2.5625
+        x: 1096.4761
+        y: 31.77594
         width: 160
         height: 30
     - id: 1
@@ -7345,11 +7345,11 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Actor
-        value: 1
+        value: 2
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: -1
+        value: 7
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -7357,7 +7357,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: 
+        value: gcghfghfghfg
         type: 0
         typeString: 
       - title: Sequence
@@ -7419,13 +7419,13 @@ MonoBehaviour:
             m_CallState: 2
       canvasRect:
         serializedVersion: 2
-        x: 932.5162
-        y: 96.34209
+        x: 1012.91504
+        y: 121.075
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 523.9587, y: 31.769957}
-    canvasZoom: 0.71000123
+    canvasScrollPosition: {x: 925.15784, y: 43.018497}
+    canvasZoom: 2
   - id: 10
     fields:
     - title: Title

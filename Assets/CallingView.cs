@@ -20,6 +20,9 @@ public class CallingView : MonoBehaviour
     private PlayerPod playerPod;
     private Chapterpod chapterpod;
     public StartNewConversation startCall;
+    public GameObject AcceptCallPanel;
+    public GameObject ChatUIPanel;
+    public GameObject DialoguePanelCall;
  
     private void Start()
     {
@@ -58,9 +61,13 @@ public class CallingView : MonoBehaviour
         {
             
             soundManager.StopRingtoneSound();
+            ChatUIPanel.SetActive(false);
+            AcceptCallPanel.SetActive(true);
+            DialoguePanelCall.SetActive(true);
+            
             //ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
             //startCall.StartCall(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
-            MoveToScene(6);
+            
 
         });
             

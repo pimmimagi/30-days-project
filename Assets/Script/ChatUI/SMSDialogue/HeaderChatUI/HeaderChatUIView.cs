@@ -39,7 +39,7 @@ public class HeaderChatUIView : MonoBehaviour
             characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).PlayerisReadingThisCharacter = false;
             characterPod.CheckLoadCharacterdata = true;
             chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
-            //chatlistView.DestroyChatCell();
+            chatlistView.DestroyChatCell();
             //chatCellView.SetActive(true);
             ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
             chapterView.LoopCharacters(chapter);

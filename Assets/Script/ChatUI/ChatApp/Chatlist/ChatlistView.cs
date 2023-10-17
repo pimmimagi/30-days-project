@@ -18,7 +18,7 @@ public class ChatlistView : MonoBehaviour
     public GameObject PopUpProfilePanel;
     private List<GameObject> instantiatedChatCells = new List<GameObject>();
     public GameObject ChatCellPrefab;
-
+    public bool Chapter1Create = false;
     private void Start()
     {
         chapterPod = Chapterpod.Instance;
@@ -42,12 +42,13 @@ public class ChatlistView : MonoBehaviour
 
         if (chatCellViewComponent != null)
         {
-            instantiatedChatCells.Add(newChatCellView);
+                instantiatedChatCells.Add(newChatCellView);
+                Chapter1Create = true;
         }
         else
         {
             //Destroy(newChatCellView);
-            //return null;
+            return null;
         }
         return chatCellViewComponent;
     }
