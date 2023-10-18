@@ -1786,8 +1786,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 891.2456, y: 501.6117}
-    canvasZoom: 0.63999987
+    canvasScrollPosition: {x: 286.1034, y: 195.86838}
+    canvasZoom: 0.27999997
   - id: 3
     fields:
     - title: Title
@@ -2417,11 +2417,11 @@ MonoBehaviour:
     - title: Title
       value: Questioning
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Description
       value: 
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Actor
       value: 1
       type: 5
@@ -2430,6 +2430,10 @@ MonoBehaviour:
       value: 2
       type: 5
       typeString: CustomFieldType_Actor
+    - title: Overlay
+      value: True
+      type: 2
+      typeString: CustomFieldType_Boolean
     overrideSettings:
       useOverrides: 0
       overrideSubtitleSettings: 0
@@ -5738,8 +5742,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 272.6138, y: 514.4328}
-    canvasZoom: 0.8199997
+    canvasScrollPosition: {x: 98.63838, y: 458.49722}
+    canvasZoom: 0.63999987
   - id: 7
     fields:
     - title: Title
@@ -6615,6 +6619,10 @@ MonoBehaviour:
       value: 2
       type: 5
       typeString: CustomFieldType_Actor
+    - title: Overlay
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
     overrideSettings:
       useOverrides: 0
       overrideSubtitleSettings: 0
@@ -6694,8 +6702,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1096.4761
-        y: 31.77594
+        x: 1248.9352
+        y: 48.169388
         width: 160
         height: 30
     - id: 1
@@ -6862,11 +6870,11 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 2
         type: 5
@@ -6878,15 +6886,15 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: Call 2
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 9
       isRoot: 0
       isGroup: 0
@@ -6964,7 +6972,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1101.9998
-        y: 274.78018
+        y: 280.04333
         width: 160
         height: 30
     - id: 6
@@ -7330,7 +7338,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1444.5132
+        x: 1446.4739
         y: 605.6198
         width: 160
         height: 30
@@ -7339,11 +7347,11 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 2
         type: 5
@@ -7355,19 +7363,19 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: gcghfghfghfg
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: EventGuid
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 9
       isRoot: 0
       isGroup: 0
@@ -7419,13 +7427,13 @@ MonoBehaviour:
             m_CallState: 2
       canvasRect:
         serializedVersion: 2
-        x: 1012.91504
-        y: 121.075
+        x: 998.6293
+        y: 151.84425
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 925.15784, y: 43.018497}
-    canvasZoom: 2
+    canvasScrollPosition: {x: 530.9416, y: 77.504684}
+    canvasZoom: 0.33000022
   - id: 10
     fields:
     - title: Title

@@ -59,11 +59,12 @@ public class CallingView : MonoBehaviour
         });
         CallingButton.onClick.AddListener(() =>
         {
-            
-            soundManager.StopRingtoneSound();
-            ChatUIPanel.SetActive(false);
             AcceptCallPanel.SetActive(true);
             DialoguePanelCall.SetActive(true);
+            Debug.Log("CallingButton Active");
+            soundManager.StopRingtoneSound();
+            //ChatUIPanel.SetActive(false);
+
             
             //ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
             //startCall.StartCall(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
