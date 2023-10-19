@@ -7,6 +7,7 @@ using Doozy.Runtime.Nody;
 public class SMSConversation : MonoBehaviour
 {
     public SMSDialogueUI mySMSDialogueUI;
+    public GameObject CallUI;
 
     //[ConversationPopup] public string conversation;
     
@@ -35,7 +36,9 @@ public class SMSConversation : MonoBehaviour
 
     public void StopSMSConversation()
     {
+        Debug.LogError("End Conversation");
         mySMSDialogueUI.OnRecordPersistentData();
         DialogueManager.StopConversation();
+        DialogueManager.UseDialogueUI(CallUI);
     }
 }

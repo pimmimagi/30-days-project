@@ -70,6 +70,7 @@ public class ChatAppPanelView : MonoBehaviour
     public void RunSelecChapter()
     {
         //selectChapterView.Init();
+        selectChapterView.SetUnlockChapter();
     }
 
 }

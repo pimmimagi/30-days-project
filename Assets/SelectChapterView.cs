@@ -18,6 +18,9 @@ public class SelectChapterView : MonoBehaviour
     private PlayerPod playerPod;
     public List<ChatCellView> Day1List;
     public GameObject ChatlistCell;
+    public GameObject LockDay2;
+    public GameObject LockDay3;
+    public GameObject SMSDialogue;
 
 
     public void Start()
@@ -80,6 +83,19 @@ public class SelectChapterView : MonoBehaviour
     }
 
 
+    public void SetUnlockChapter()
+    {
+        Debug.LogError("SetUnlockChapter");
 
+        if (playerPod.current_date == 2)
+        {
+            LockDay2.SetActive(false);
+        }
+        
+        else if (playerPod.current_date == 3)
+        {
+            LockDay3.SetActive(false);
+        }
+    }
 }
 

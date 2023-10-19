@@ -15,4 +15,4 @@ MonoBehaviour:
   Order: 2
   DataEachConversation:
   - CharacterChat: {fileID: 11400000, guid: 7362023a3e67044499002c247da82e48, type: 2}
-    Conversation: New Conversation 9
+    Conversation: New Conversation 8

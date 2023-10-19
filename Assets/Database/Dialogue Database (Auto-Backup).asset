@@ -362,6 +362,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: CustomFieldType_Text
+  - id: 11
+    fields:
+    - title: Name
+      value: NowCalling
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 1
     fields:
@@ -5068,7 +5082,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\");"
+      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\");\nCheckEndOfConversationforLuaCode();"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -5742,8 +5756,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 98.63838, y: 458.49722}
-    canvasZoom: 0.63999987
+    canvasScrollPosition: {x: 1033.6868, y: 1518.1115}
+    canvasZoom: 0.52
   - id: 7
     fields:
     - title: Title
@@ -6917,7 +6931,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 782.6817
-        y: 256.52838
+        y: 259.02838
         width: 160
         height: 30
     - id: 5
@@ -6972,7 +6986,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1101.9998
-        y: 274.78018
+        y: 278.04333
         width: 160
         height: 30
     - id: 6
@@ -7002,7 +7016,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: AudioWait(office-ambience-6322)
         type: 0
         typeString: 
       conversationID: 9
@@ -7289,7 +7303,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1437.6792
+        x: 1436.1866
         y: 407.93643
         width: 160
         height: 30
@@ -7320,7 +7334,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: SetContinueMode(false)
         type: 0
         typeString: 
       conversationID: 9
@@ -7338,8 +7352,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1444.5132
-        y: 605.6198
+        x: 1446.4739
+        y: 606.8393
         width: 160
         height: 30
     - id: 13
@@ -7369,7 +7383,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: SetContinueMode(true)
         type: 0
         typeString: CustomFieldType_Text
       - title: EventGuid
@@ -7408,6 +7422,12 @@ MonoBehaviour:
         destinationDialogueID: 6
         isConnector: 0
         priority: 2
+      - originConversationID: 9
+        originDialogueID: 13
+        destinationConversationID: 9
+        destinationDialogueID: 14
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: SettingCall();
       onExecute:
@@ -7431,9 +7451,58 @@ MonoBehaviour:
         y: 151.84425
         width: 160
         height: 30
+    - id: 14
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 7
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 9
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1563.1415
+        y: 211.19783
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.72
+    canvasScrollPosition: {x: 680.25055, y: 84.03604}
+    canvasZoom: 0.54999995
   - id: 10
     fields:
     - title: Title

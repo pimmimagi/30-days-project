@@ -6,6 +6,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using PixelCrushers.DialogueSystem;
 
 public class CallingView : MonoBehaviour
 
@@ -23,7 +24,8 @@ public class CallingView : MonoBehaviour
     public GameObject AcceptCallPanel;
     public GameObject ChatUIPanel;
     public GameObject DialoguePanelCall;
- 
+    public GameObject CallUI;
+    public GameObject CallPanel;
     private void Start()
     {
         characterPod = CharacterPod.Instance;
@@ -59,9 +61,11 @@ public class CallingView : MonoBehaviour
         });
         CallingButton.onClick.AddListener(() =>
         {
+            DialogueManager.UseDialogueUI(CallUI);
+            CallPanel.SetActive(false);
             AcceptCallPanel.SetActive(true);
             DialoguePanelCall.SetActive(true);
-            Debug.Log("CallingButton Active");
+            DialogueLua.SetVariable("NowCalling", true);
             soundManager.StopRingtoneSound();
             //ChatUIPanel.SetActive(false);
 
