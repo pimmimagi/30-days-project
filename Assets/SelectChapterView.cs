@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 public class SelectChapterView : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class SelectChapterView : MonoBehaviour
     public GameObject ChatAppPanel;
     public GameObject ChatCellGameObject;
     public ChatCellView ChatCellView;
-    public ChatlistView ChatlistView;
+    public ChatlistView chatlistView;
     private Chapterpod chapterPod;
     private CharacterPod characterPod;
     private ChatAppPanelPod chatAppPanelPod;
@@ -20,18 +21,22 @@ public class SelectChapterView : MonoBehaviour
     public GameObject ChatlistCell;
     public GameObject LockDay2;
     public GameObject LockDay3;
+    public Button PlayDay1;
     public GameObject SMSDialogue;
 
 
-    public void Start()
+    public void Init()
     {
         playerPod = PlayerPod.Instance;
         chapterPod = Chapterpod.Instance;
         characterPod = CharacterPod.Instance;
         chatAppPanelPod = ChatAppPanelPod.Instance;
         SetupButtonListener();
+        SetupSubscribe();
 
     }
+
+
 
 
 
@@ -40,44 +45,73 @@ public class SelectChapterView : MonoBehaviour
        
         Day1Button.onClick.AddListener(() =>
         {
+            chatlistView.DestroyChatCell();
             ButtonSetting();
-            ChapterTemplateScriptableObject chapter1 = chapterPod.GetChapterByIndex(playerPod.current_date-1);
-            Debug.Log(playerPod.current_date - 1);
+            ChapterTemplateScriptableObject chapter1 = chapterPod.GetChapterByIndex(playerPod.current_date - 1);
             LoopCharacters(chapter1);
-            Debug.Log("Loop already");
+            playerPod.UpdateIsplayingValue(true);
+            //chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
             //ChatlistCell.SetActive(false);
+
 
         });
         Day2Button.onClick.AddListener(() =>
         {
+            chatlistView.DestroyChatCell();
             ButtonSetting();
             ChapterTemplateScriptableObject chapter2 = chapterPod.GetChapterByIndex(playerPod.current_date - 1);
             LoopCharacters(chapter2);
+            SMSDialogue.SetActive(true);
             //ChatlistCell.SetActive(false);
 
         });
+
+        PlayDay1.onClick.AddListener(() =>
+        {
+            SelectChapterPanel.SetActive(false);
+            ChatAppPanel.SetActive(true);
+        });
+
+     }
+    
+
+    private void SetupSubscribe()
+    {
+        playerPod.IsPlaying.Subscribe(Isplaying =>
+        {
+            if (Isplaying)
+            {
+               //PlayDay1.gameObject.SetActive(true);
+            }
+            else
+            {
+                //PlayDay1.gameObject.SetActive(false);
+
+            }
+        }).AddTo(this);
     }
+
+
 
     public void ButtonSetting()
     {
         SelectChapterPanel.SetActive(false);
         ChatAppPanel.SetActive(true);
-        chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
+        //chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
     }
     public void LoopCharacters(ChapterTemplateScriptableObject chapter)
     {
-        Debug.Log("PlayerReadingConversationIndex" + playerPod.PlayerReadingConversationIndex);
-        Debug.Log("DataEachConversation.Length" + chapter.DataEachConversation.Length);
+
         if (playerPod.PlayerReadingConversationIndex  < chapter.DataEachConversation.Length)
         {
-            SetChatCellView(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].CharacterChat);
-            Debug.Log("Set Already");
+               SetChatCellView(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].CharacterChat);
         }
     }
 
     public void SetChatCellView(CharacterTemplateScriptableObject character)
     {
-        ChatCellView newChatCellView = ChatlistView.CreateChatCell();
+        ChatCellView newChatCellView = chatlistView.CreateChatCell();
+        Debug.LogError("Create New Chat");
         newChatCellView.Bind(characterPod.GetCharacterBeanByID(character.IDCharacter));
         newChatCellView.gameObject.SetActive(true);
     }
@@ -85,8 +119,7 @@ public class SelectChapterView : MonoBehaviour
 
     public void SetUnlockChapter()
     {
-        Debug.LogError("SetUnlockChapter");
-
+        Debug.Log(playerPod.current_date);
         if (playerPod.current_date == 2)
         {
             LockDay2.SetActive(false);
@@ -95,6 +128,10 @@ public class SelectChapterView : MonoBehaviour
         else if (playerPod.current_date == 3)
         {
             LockDay3.SetActive(false);
+        }
+        else
+        {
+            Debug.Log("Is day 1");
         }
     }
 }

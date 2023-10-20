@@ -50,7 +50,6 @@ public class CharacterPod : MonoBehaviour
             if (data.IDCharacter == 0)
             {
                 characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Frelationship").asInt;
-                Debug.Log("Relationship F " + characterBean.relationship);
             }
             else if (data.IDCharacter == 1)
             {

@@ -5082,7 +5082,7 @@ MonoBehaviour:
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
-      userScript: "NotificationCharacter(\"\u0E1E\u0E32\u0E22\");\nCheckEndOfConversationforLuaCode();"
+      userScript: "NotificationCharacter(\"\u0E40\u0E2D\u0E1F\");\nCheckEndOfConversationforLuaCode();"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -5697,7 +5697,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1782.9716
-        y: 1702.7361
+        y: 1701.4203
         width: 160
         height: 30
     - id: 70
@@ -5756,8 +5756,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1033.6868, y: 1518.1115}
-    canvasZoom: 0.52
+    canvasScrollPosition: {x: 1443.6956, y: 1657.4673}
+    canvasZoom: 0.6999998
   - id: 7
     fields:
     - title: Title
@@ -6351,7 +6351,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 833.39923
+        x: 831.9707
         y: 1136.2926
         width: 160
         height: 30
@@ -6400,13 +6400,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1298.8535
-        y: 1255.3834
+        x: 1297.634
+        y: 1254.1638
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 376.40463, y: 270.05383}
-    canvasZoom: 0.8199997
+    canvasScrollPosition: {x: 639.1503, y: 541.49805}
+    canvasZoom: 0.6999998
   - id: 8
     fields:
     - title: Title

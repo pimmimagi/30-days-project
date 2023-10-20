@@ -28,8 +28,6 @@ public class Chapterpod : MonoBehaviour
     {
         
         playerPod = PlayerPod.Instance;
-        Debug.Log(GetChapterByIndex(0).DataEachConversation.Length);
-        Debug.Log(GetChapterByIndex(1).DataEachConversation.Length);
     }
 
     public int CurrentChapterID()

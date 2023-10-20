@@ -40,5 +40,6 @@ public class SMSConversation : MonoBehaviour
         mySMSDialogueUI.OnRecordPersistentData();
         DialogueManager.StopConversation();
         DialogueManager.UseDialogueUI(CallUI);
+        //DialogueManager.
     }
 }

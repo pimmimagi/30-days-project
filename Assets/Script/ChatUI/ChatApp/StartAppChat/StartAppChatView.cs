@@ -26,26 +26,11 @@ public class StartAppChatView : MonoBehaviour
         playerpod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
         SetupButtonListener();
-        SetupSubscribe();
+     
       
     }
 
-    private void SetupSubscribe()
-    {
-        playerpod.IsPlaying.Subscribe(Isplaying => {
-            if (Isplaying)
-            {
-                PlayingBox.SetActive(true);
-            }
-            else
-            {
-                PlayingBox.SetActive(false);
 
-                int Chapterday = playerpod.current_date;
-                StatusOfDate.text = "DAY " + Chapterday;
-            }
-        }).AddTo(this);
-    }
     private void SetupButtonListener()
     {
 

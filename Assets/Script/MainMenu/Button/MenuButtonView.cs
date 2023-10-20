@@ -12,15 +12,18 @@ public class MenuButtonView : MonoBehaviour
     public Button SettingButton;
     public GameObject VolumeSettingPanel;
     private SoundManager soundManager;
+    private ChatAppPanelPod chatAppPanelPod;
     void Start()
     {
         soundManager = SoundManager.Instance;
+        chatAppPanelPod = ChatAppPanelPod.Instance;
         SetupButtonListener();
     }
     private void SetupButtonListener()
     {
         ChatButton.onClick.AddListener(() =>
         {
+            chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);
             soundManager.PlayClickSound();
             MoveToScene(0);
         });

@@ -47,7 +47,7 @@ public class ChatlistView : MonoBehaviour
         }
         else
         {
-            //Destroy(newChatCellView);
+            Destroy(newChatCellView);
             return null;
         }
         return chatCellViewComponent;

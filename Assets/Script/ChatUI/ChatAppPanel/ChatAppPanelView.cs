@@ -16,11 +16,13 @@ public class ChatAppPanelView : MonoBehaviour
     private CharacterPod characterPod;
     private PlayerPod playerPod;
     private Chapterpod chapterPod;
+    public GameObject SelectChapterPanel;
     private void Start()
     {
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
         chapterPod = Chapterpod.Instance;
+        ChatAppPod = ChatAppPanelPod.Instance;
         SetupSubscribe();
     }
     private void SetupSubscribe()
@@ -33,6 +35,7 @@ public class ChatAppPanelView : MonoBehaviour
 
     public void OnChatStateChange(ChatAppState state)
     {
+        Debug.Log(state);
         switch (state)
         {
             case ChatAppState.ChatPanel:
@@ -52,16 +55,19 @@ public class ChatAppPanelView : MonoBehaviour
 
     public void RunChatUIPanel()
     {
+        Debug.Log("Run ChatUIPanel");
         chatView.Init();
     }
 
     public void RunPopUpProfilePanel()
     {
+        Debug.Log("Run PopUpProfilePanel");
         popUpProfileWidgetView.Init();
     }
 
     public void RunChatlistPanel()
     {
+        Debug.Log("Run ChatlistPanel");
         chatlistView.Init();
         chatlistView.DestroyChatCell();
         //chatlistView.CreateChatCell();
@@ -69,7 +75,10 @@ public class ChatAppPanelView : MonoBehaviour
     }
     public void RunSelecChapter()
     {
-        //selectChapterView.Init();
+        selectChapterView.Init();
+        Debug.Log("Run SelecChapter");
+        SelectChapterPanel.SetActive(true);
+        chatlistView.DestroyChatCell();
         selectChapterView.SetUnlockChapter();
     }
 

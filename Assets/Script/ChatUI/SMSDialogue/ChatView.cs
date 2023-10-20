@@ -27,12 +27,12 @@ public class ChatView: MonoBehaviour
         characterPod = CharacterPod.Instance;
         chapterpod = Chapterpod.Instance;
         headerChatUIView.Bind(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID));
-        Debug.LogError(characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter);
     }
 
     private void Start()
     {
         Lua.RegisterFunction("CheckEndOfConversationforLuaCode", this, typeof(ChatView).GetMethod("CheckEndOfConversationforLuaCode"));
+        Lua.RegisterFunction("SetEndAndContinueButtonActive", this, typeof(ChatView).GetMethod("SetEndAndContinueButtonActive"));
     }
 
     public void Init()
@@ -43,13 +43,25 @@ public class ChatView: MonoBehaviour
 
     public void OnConversationLine(Subtitle subtitle)
     {
+        Iscalling = DialogueLua.GetVariable("NowCalling").AsBool;
         if (characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter == true)
         {
-            characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, subtitle.formattedText.text);
-            if (!DialogueManager.currentConversationState.hasAnyResponses)
+            if (Iscalling == false)
             {
-                CheckEndOfConversation();
-                characterPod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, false);
+                characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, subtitle.formattedText.text);
+                if (!DialogueManager.currentConversationState.hasAnyResponses)
+                {
+                    CheckEndOfConversation();
+                    characterPod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, false);
+                }
+            }
+            else if(Iscalling == true)
+            {
+                if (!DialogueManager.currentConversationState.hasAnyResponses)
+                {
+                    CheckEndOfConversation();
+                    characterPod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, false);
+                }
             }
         }
 
@@ -63,31 +75,19 @@ public class ChatView: MonoBehaviour
         
         if (Iscalling == true)
         {
-            Debug.Log("Now is calling don't run index");
             DialogueLua.SetVariable("NowCalling", false);
         }
         else if (playerpod.PlayerReadingConversationIndex == chapter.DataEachConversation.Length - 1)
         {
-            Debug.Log("Run if");
             RespondButton.SetActive(false);
             SetEndActive();
             SetContinueActive();
-            SelectChapterView.SetUnlockChapter();
-
-            //playerpod.current_date += 1;
-            //playerpod.PlayerReadingConversationIndex = 0;
-
-
+            //SelectChapterView.SetUnlockChapter();
         }
         else if (playerpod.PlayerReadingConversationIndex < chapter.DataEachConversation.Length - 1)
         {
-            Debug.LogError(playerpod.PlayerReadingConversationIndex);
-            Debug.LogError(chapter.DataEachConversation.Length - 1);
             playerpod.PlayerReadingConversationIndex += 1;
-            //SelectChapterView.LoopCharacters(chapter);
-            Debug.Log("Run else if");
         }
-        //characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, "คุณมีข้อความใหม่");
     }
 
     public void SetContinueActive()
@@ -105,7 +105,7 @@ public class ChatView: MonoBehaviour
     public void SetEndActive()
 
     {
-        Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ => {
+        Observable.Timer(TimeSpan.FromSeconds(3)).Subscribe(_ => {
             EndPanel.SetActive(true);
 
 
@@ -129,11 +129,8 @@ public class ChatView: MonoBehaviour
         {
             Debug.Log("Run if");
             RespondButton.SetActive(false);
-            SetEndActive();
-            SetContinueActive();
-            //playerpod.current_date += 1;
-            //playerpod.PlayerReadingConversationIndex = 0;
-
+            //SetEndActive();
+            //SetContinueActive();
 
         }
         else if (playerpod.PlayerReadingConversationIndex < chapter.DataEachConversation.Length - 1)
@@ -141,12 +138,16 @@ public class ChatView: MonoBehaviour
             Debug.LogError(playerpod.PlayerReadingConversationIndex);
             Debug.LogError(chapter.DataEachConversation.Length - 1);
             playerpod.PlayerReadingConversationIndex += 1;
-            //SelectChapterView.LoopCharacters(chapter);
             Debug.Log("Run else if");
         }
 
         characterPod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, false);
-        //characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, "คุณมีข้อความใหม่");
+    }
+
+    public void SetEndAndContinueButtonActive()
+    {
+        SetEndActive();
+        SetContinueActive();
     }
 }
 

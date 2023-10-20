@@ -11,6 +11,7 @@ public class MenuChatAppView : MonoBehaviour
     public Button BackToChatAppButton;
     private SoundManager soundManager;
     private ChatAppPanelPod chatAppPanelPod;
+    private PlayerPod playerPod;
     public GameObject ChatStartPanel;
     public GameObject SelectChapterPanel;
     public ChatlistView chatlistView;
@@ -20,6 +21,7 @@ public class MenuChatAppView : MonoBehaviour
     {
         chatAppPanelPod = ChatAppPanelPod.Instance;
         soundManager = SoundManager.Instance;
+        playerPod = PlayerPod.Instance;
         SetupButtonListener();
     }
     private void SetupButtonListener()
@@ -34,12 +36,16 @@ public class MenuChatAppView : MonoBehaviour
 
         BackToChatAppButton.onClick.AddListener(() =>
         {
+            chatlistView.DestroyChatCell();
             soundManager.PlayClickSound();
             ChatStartPanel.gameObject.SetActive(false);
             SelectChapterPanel.gameObject.SetActive(true);
-            chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter); chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);
-            //chatCellView.gameObject.SetActive(true);
+            chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter); 
+            playerPod.UpdateIsplayingValue(false);
             
+            
+            //chatCellView.gameObject.SetActive(true);
+
 
 
 

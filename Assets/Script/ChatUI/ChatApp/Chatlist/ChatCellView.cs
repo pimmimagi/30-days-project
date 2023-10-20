@@ -20,6 +20,7 @@ public class ChatCellView : MonoBehaviour
     //public GameObject PopUpProfilePanel;
     public SMSConversation SMSconversation;
     public HeaderChatUIView headerChatUIView;
+    public GameObject EndPanel;
 
 
     CharacterBean characterData;
@@ -40,8 +41,6 @@ public class ChatCellView : MonoBehaviour
         CharacterImage.sprite = data.characterData.ProfileSprite;
         CharacterNameText.text = data.characterData.NameText;
         Currenttext.text = data.CurrentChatText;
-        Debug.LogError("Update current text : " + Currenttext.text);
-        Debug.LogError("data.CurrentChatText : " + data.CurrentChatText);
         SetupButtonListener(data.characterData.IDCharacter);
     }
 
@@ -61,6 +60,7 @@ public class ChatCellView : MonoBehaviour
             SMSconversation.StartSMSConversation(chapter.DataEachConversation[playerpod.PlayerReadingConversationIndex].Conversation);
             characterpod.UpdateCheckPlayerReadMessageAlready(playerpod.PlayerReadingID, true);
             SetNotificationChat();
+            EndPanel.SetActive(false);
             characterpod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, true);
             
 
