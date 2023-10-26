@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RelationshipWidgetView : MonoBehaviour
-{   
-    public RelationshipCellView relationshipCellView1;
-    public RelationshipCellView relationshipCellView2;
-    public RelationshipCellView relationshipCellView3;
-    public CharacterPod characterPod;
+{
+    [Header("RelationshipCellView")]   
+    [SerializeField] private RelationshipCellView relationshipCellView1;
+    [SerializeField] private RelationshipCellView relationshipCellView2;
+    [SerializeField] private RelationshipCellView relationshipCellView3;
 
-    private void Awake()
-    {
-        characterPod.LoadCharacterData();
-    }
+    [Header("Pod")]
+    private CharacterPod characterPod;
+
     private void Start()
     {
+        characterPod = CharacterPod.Instance;
+        characterPod.LoadCharacterData();
+
         relationshipCellView1.Bind(characterPod.CharacterBeanList[0]);
         relationshipCellView2.Bind(characterPod.CharacterBeanList[1]);
         relationshipCellView3.Bind(characterPod.CharacterBeanList[2]);
-
     }
 }

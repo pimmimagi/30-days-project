@@ -36,11 +36,11 @@ public class ContinueChapterView : MonoBehaviour
             chatlistView.DestroyChatCell();
             selectchapterView.ButtonSetting();
             playerPod.current_date += 1;
-            //selectchapterView.SetUnlockChapter();
             playerPod.PlayerReadingConversationIndex = 0;
+            chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
             ChapterTemplateScriptableObject chapter = chapterPod.GetChapterByIndex(playerPod.current_date - 1);
             selectchapterView.LoopCharacters(chapter);
-            chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
+           
 
 
         });
@@ -48,16 +48,10 @@ public class ContinueChapterView : MonoBehaviour
         BackButton.onClick.AddListener(() =>
         {
             MoveToScene(2);
-
+            playerPod.current_date += 1;
             ContinuePanel.SetActive(false);
             smsConversation.StopSMSConversation();
-            //ChatUI.SetActive(false);
-            //selectchapterView.gameObject.SetActive(false);
-            playerPod.current_date += 1;
-            //selectchapterView.SetUnlockChapter();
             playerPod.PlayerReadingConversationIndex = 0;
-            //ChatUI.SetActive(false);
-            //SelectedChapterPanel.SetActive(true);
             chatlistView.DestroyChatCell();
 
 

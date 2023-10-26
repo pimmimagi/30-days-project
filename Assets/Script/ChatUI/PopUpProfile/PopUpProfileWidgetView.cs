@@ -1,36 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PopUpProfileWidgetView : MonoBehaviour
 {
+    [Header("Button")]
+    [SerializeField] private Button CloseButton;
+    [SerializeField] private Button FullProfilePicButton;
 
-    private CharacterPod characterPod;
-    public Button CloseButton;
-    public Button FullProfilePicButton;
-    public Image ProfilePic;
-    public GameObject InformationPopUp;
-    private PlayerPod playerPod;
+    [Header("Character Data UI")]
+    [SerializeField] private Image ProfilePic;
+    [SerializeField] private GameObject InformationPopUp;
+    [SerializeField] private RelationshipCellView relationshipCellView;
+
+    [Header("Sound Manager")]
     private SoundManager soundManager;
-    public RelationshipCellView relationshipCellView;
 
-
+    [Header("Pod")]
+    private PlayerPod playerPod;
+    private CharacterPod characterPod;
 
     public void Init()
     {
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
         soundManager = SoundManager.Instance;
+
         characterPod.LoadCharacterData();
-        SetupButtonListener();
         relationshipCellView.Bind(characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID));
-        
-       
-    }
-    public void BindPic(CharacterBean data)
-    {
-        ProfilePic.sprite = data.characterData.ProfileSprite;
+
+        SetupButtonListener();
     }
 
     private void SetupButtonListener()
@@ -39,7 +37,6 @@ public class PopUpProfileWidgetView : MonoBehaviour
         {
             InformationPopUp.SetActive(false);
             soundManager.PlayClickSound();
-
         });
     }
 }

@@ -1,65 +1,49 @@
 using PixelCrushers.DialogueSystem;
-using System.Collections;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
+using UniRx;
 
 public class AcceptCallView : MonoBehaviour
 {
-    private float timeDuration = 0;
+    [Header("Time")]
     private float timer;
-    [SerializeField]
-    private TMP_Text firstMinute;
-    [SerializeField]
-    private TMP_Text secondMinute;
-    [SerializeField]
-    private TMP_Text separator;
-    [SerializeField]
-    private TMP_Text firstSecond;
-    [SerializeField]
-    private TMP_Text secondSecond;
-    private Chapterpod chapterpod;
+    [SerializeField] private TMP_Text firstMinute;
+    [SerializeField] private TMP_Text secondMinute;
+    [SerializeField] private TMP_Text separator;
+    [SerializeField] private TMP_Text firstSecond;
+    [SerializeField] private TMP_Text secondSecond;
+
+    [Header("Character Data UI")]
+    [SerializeField] private TMP_Text NameText;
+    [SerializeField] private Image CharacterProfile;
+    [SerializeField] private TMP_Text NPCNameText;
+
+    [Header("CallView")]
+    [SerializeField] private CallView CallView;
+
+    [Header("Pod")]
     private CharacterPod characterPod;
     private CallPod callPod;
-    //public StartNewConversation newConversation;
     private PlayerPod playerPod;
-    public TMP_Text NameText;
-    public Image CharacterProfile;
-    public TMP_Text NPCNameText;
-    public CallView CallView;
-  
+
+    [Header("IDisposable")]
+    public IDisposable callTimeCountDisposable;
+
     private void Start()
     {
         UpdateTimerDisplay(timer);
+
         playerPod = PlayerPod.Instance;
-        chapterpod = Chapterpod.Instance;
         characterPod = CharacterPod.Instance;
         callPod = CallPod.Instance;
-        Debug.Log(this.playerPod);
-        Debug.Log(this.characterPod);
-        Debug.Log(this.chapterpod);
+
         Lua.RegisterFunction("MoveToScene", this, typeof(AcceptCallView).GetMethod("MoveToScene"));
-        //StartSubtile();
         Bind(characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID));
         callPod.SettingCall();
         DialogueLua.SetVariable("Poomrelationship",30);
-
-    }
-    private void ResetTimer()
-    {
-        timer = timeDuration;
-    }
-
-    private void Update()
-    {
-        //CallView.SettingCall();
-        UpdateTimerDisplay(timer);
-        timer += Time.deltaTime;
-
     }
 
     public void Bind(CharacterBean data)
@@ -67,6 +51,12 @@ public class AcceptCallView : MonoBehaviour
         NameText.text = data.characterData.NameText;
         CharacterProfile.sprite = data.characterData.ProfileSprite;
         NPCNameText.text = data.characterData.NameText;
+
+        callTimeCountDisposable = Observable.EveryUpdate().Subscribe(everyUpdate =>
+        {
+            UpdateTimerDisplay(timer);
+            timer += Time.deltaTime;
+        }).AddTo(this);
     }
 
     private void UpdateTimerDisplay(float time)
@@ -80,16 +70,6 @@ public class AcceptCallView : MonoBehaviour
         secondSecond.text = currentTime[3].ToString();
     }
 
-    public void StartSubtile()
-    {
-        Debug.LogError("Player is Reading ID " + playerPod.PlayerReadingID);
-        Debug.LogError("Player is Reading index" + playerPod.PlayerReadingConversationIndex);
-        //Debug.LogError("Player read conversation : " + chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
-        ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
-        //newConversation.StartMyConversation(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].Conversation);
-
-    }
-
     public void MoveToScene(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
@@ -97,11 +77,9 @@ public class AcceptCallView : MonoBehaviour
 
     public void OnConversationLine(Subtitle subtitle)
     {
-        Debug.Log(subtitle);
         if (!DialogueManager.currentConversationState.hasAnyResponses)
         {
-            MoveToScene(0);
-
+            callTimeCountDisposable?.Dispose();
         }
     }
 }

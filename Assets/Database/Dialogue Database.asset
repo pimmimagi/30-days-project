@@ -271,7 +271,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
-      value: 1
+      value: -50
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -285,7 +285,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
-      value: 18
+      value: 100
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -299,7 +299,7 @@ MonoBehaviour:
       type: 0
       typeString: CustomFieldType_Text
     - title: Initial Value
-      value: 100
+      value: 150
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -1800,8 +1800,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 286.1034, y: 195.86838}
-    canvasZoom: 0.27999997
+    canvasScrollPosition: {x: 962.2211, y: 720.3705}
+    canvasZoom: 0.45999998
   - id: 3
     fields:
     - title: Title
@@ -2589,8 +2589,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1363.5886
-        y: 642.8873
+        x: 1361.6655
+        y: 644.2031
         width: 160
         height: 30
     - id: 6
@@ -5025,14 +5025,14 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 
+      userScript: "NotificationCharacter(\"\u0E40\u0E2D\u0E1F\");"
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
         x: 1507.2848
-        y: 1755.6926
+        y: 1754.0532
         width: 160
         height: 30
     - id: 58
@@ -5088,8 +5088,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1888.9409
-        y: 2220.6687
+        x: 2073.0312
+        y: 2297.941
         width: 160
         height: 30
     - id: 59
@@ -5756,8 +5756,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1443.6956, y: 1657.4673}
-    canvasZoom: 0.6999998
+    canvasScrollPosition: {x: 1690.3496, y: 1716.5773}
+    canvasZoom: 0.45999995
   - id: 7
     fields:
     - title: Title
@@ -6405,8 +6405,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 639.1503, y: 541.49805}
-    canvasZoom: 0.6999998
+    canvasScrollPosition: {x: 438.57114, y: 443.09088}
+    canvasZoom: 0.39999998
   - id: 8
     fields:
     - title: Title
@@ -7153,7 +7153,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 1402.5443
-        y: 260.94803
+        y: 258.09085
         width: 160
         height: 30
     - id: 7
@@ -7613,8 +7613,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 900.922, y: 119.728065}
-    canvasZoom: 0.52
+    canvasScrollPosition: {x: 830.9543, y: 189.12035}
+    canvasZoom: 0.6999998
   - id: 10
     fields:
     - title: Title
@@ -7691,7 +7691,7 @@ MonoBehaviour:
         value: None()
         type: 0
         typeString: 
-      conversationID: 0
+      conversationID: 10
       isRoot: 0
       isGroup: 0
       nodeColor: 

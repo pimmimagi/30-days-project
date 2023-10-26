@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
-    public AudioSource _musicSource, _clickSource, _notificationSource, _ringtoneSource;
-    public SliderView Slider;
+
+    [Header("AudioSource")]
+    [SerializeField] private AudioSource _musicSource, _clickSource, _notificationSource, _ringtoneSource;
+
+    [Header("SliderView")]
+    [SerializeField] private SliderView Slider;
 
     private void Start()
     {
         Slider.LoadVolume();
         _musicSource.Play();
     }
+
     private void Awake()
     {
         if (Instance == null)
@@ -25,6 +28,7 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public void PlayClickSound()
     {
         _clickSource.Play();
@@ -39,6 +43,7 @@ public class SoundManager : MonoBehaviour
     {
         _ringtoneSource.Play();
     }
+
     public void MusicVolume(float value)
     {
         _musicSource.volume = value;

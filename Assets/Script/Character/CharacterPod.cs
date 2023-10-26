@@ -1,14 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using Unity.Collections.LowLevel.Unsafe;
 using System.Linq;
 
 public class CharacterPod : MonoBehaviour
-
 {
     public static CharacterPod Instance { get; private set; }
+
+    [Header("CharacterBean List")]
+    public List<CharacterBean> CharacterBeanList;
+
+    [Header("CharacterTemplateScriptableObject")]
+    public List<CharacterTemplateScriptableObject> CharacterTemplateList;
+
+    [Header("CheckLoadCharacterdata bool")]
+    public bool CheckLoadCharacterdata = false;
 
     private void Awake()
     {
@@ -23,19 +29,8 @@ public class CharacterPod : MonoBehaviour
         }
     }
 
-    
-
-    public List<CharacterBean> CharacterBeanList;
-
-    public List<CharacterTemplateScriptableObject> CharacterTemplateList;
-
-    public bool CheckLoadCharacterdata = false;
-
-
-
     public void LoadCharacterData()
     {
-
         if (CheckLoadCharacterdata)
         {
             return;
@@ -64,11 +59,8 @@ public class CharacterPod : MonoBehaviour
                 characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Pierelationship").asInt;
             }
             CharacterBeanList.Add(characterBean);
-          
         }
 
-
-        //  CharacterBean = characterBean;
         CharacterBeanList = CharacterBeanList.OrderByDescending(character => character.relationship).Take(3).ToList();
         CheckLoadCharacterdata = true;
 
@@ -80,9 +72,7 @@ public class CharacterPod : MonoBehaviour
             if (targetBean != null && targetBean.CurrentChatText != newChatText)
             {
                 targetBean.CurrentChatText = newChatText;
-
             }
-        
     }
 
     public void UpdateCheckPlayerReadMessageAlready(int characterID, bool newValue)

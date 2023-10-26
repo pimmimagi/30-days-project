@@ -3022,7 +3022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &493904234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5514,12 +5514,12 @@ GameObject:
   - component: {fileID: 998028678}
   - component: {fileID: 998028679}
   m_Layer: 5
-  m_Name: WRPG Template Standard Dialogue UI
+  m_Name: Call Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &998028678
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6456,7 +6456,6 @@ MonoBehaviour:
   NotificationText: {fileID: 0}
   CharacterImage: {fileID: 1498432460}
   CharacterNameText: {fileID: 1550030540}
-  NotiSound: {fileID: 1177706142}
 --- !u!114 &1177706144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7197,7 +7196,6 @@ MonoBehaviour:
   PlayerReadingMessage30DaysGroup:
     value: 0
   PlayerReadingID: 2
-  NumberofNotification: 2
   PlayerReadingConversationIndex: 0
 --- !u!224 &1331375023
 RectTransform:
@@ -7962,16 +7960,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf4122be785f2d4cb169838928eee67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CallView: {fileID: 1498514922}
-  CallingPanel: {fileID: 1134424927}
-  CallingButton: {fileID: 1861654406}
-  HangUpButton: {fileID: 1930542594}
-  startCall: {fileID: 591224931}
   AcceptCallPanel: {fileID: 998028677}
   ChatUIPanel: {fileID: 1725900287}
   DialoguePanelCall: {fileID: 493904233}
   CallUI: {fileID: 998028677}
   CallPanel: {fileID: 1498514920}
+  CallingPanel: {fileID: 1134424927}
+  callView: {fileID: 1498514922}
+  CallingButton: {fileID: 1861654406}
+  HangUpButton: {fileID: 1930542594}
+  startCall: {fileID: 591224931}
 --- !u!1 &1541265038
 GameObject:
   m_ObjectHideFlags: 0
@@ -11922,8 +11920,8 @@ MonoBehaviour:
   Currenttext: {fileID: 9118078670322602726}
   CharacterImage: {fileID: 8854578132068340916}
   CharacterNameText: {fileID: 5339216754748390084}
-  ChatBoxChatAppButton: {fileID: 216533098838744372}
   Notification: {fileID: 4880902377977482828}
+  ChatBoxChatAppButton: {fileID: 216533098838744372}
   ButtonImage: {fileID: 5813523434075077270}
   SMSconversation: {fileID: 5793025420030206103}
   headerChatUIView: {fileID: 6568327922232331449}
@@ -15169,7 +15167,6 @@ MonoBehaviour:
   NotificationText: {fileID: 0}
   CharacterImage: {fileID: 6375892655060905356}
   CharacterNameText: {fileID: 8121005685153277283}
-  NotiSound: {fileID: 1297089932976378959}
 --- !u!224 &3251441280456725178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15500,7 +15497,6 @@ MonoBehaviour:
   NPCPopUpStatus: {fileID: 6499902319376684329}
   NPCPopup: {fileID: 6607475973506414796}
   NameTextNPC: {fileID: 3923078440556091263}
-  StandardUISubtitlePanel: {fileID: 7764991654462933230}
 --- !u!1 &3442588884491610257
 GameObject:
   m_ObjectHideFlags: 0
@@ -15821,8 +15817,8 @@ MonoBehaviour:
   BackToChatAppButton: {fileID: 2104414411}
   ChatStartPanel: {fileID: 1175770074181622664}
   SelectChapterPanel: {fileID: 6393637193095907756}
-  chatlistView: {fileID: 9220033696567248939}
   chatCellView: {fileID: 5161935617452464222}
+  chatlistView: {fileID: 9220033696567248939}
 --- !u!224 &3731331750965536918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19198,7 +19194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf56aa87e8f755642ac553b59c8ff5e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChatAppPod: {fileID: 0}
   chatlistView: {fileID: 9220033696567248939}
   popUpProfileWidgetView: {fileID: 6044595523175537930}
   headerChatUIView: {fileID: 6568327922232331449}
@@ -19935,6 +19930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackChatUIButton: {fileID: 4802440790326866028}
+  soundManager: {fileID: 0}
   CharacterNameText: {fileID: 5301186888758588474}
   chapterView: {fileID: 8822006670077697241}
   chatlistView: {fileID: 9220033696567248939}
@@ -22604,17 +22600,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Day1Button: {fileID: 9033986833654966492}
   Day2Button: {fileID: 177682567}
+  PlayDay1: {fileID: 1640705976}
   SelectChapterPanel: {fileID: 6393637193095907756}
   ChatAppPanel: {fileID: 1175770074181622664}
   ChatCellGameObject: {fileID: 5161935617452464222}
-  ChatCellView: {fileID: 244113280595267425}
-  chatlistView: {fileID: 9220033696567248939}
-  Day1List: []
   ChatlistCell: {fileID: 5161935617452464222}
   LockDay2: {fileID: 255752939}
   LockDay3: {fileID: 1192262191}
-  PlayDay1: {fileID: 1640705976}
   SMSDialogue: {fileID: 5320310824505076563}
+  ChatCellView: {fileID: 244113280595267425}
+  chatlistView: {fileID: 9220033696567248939}
+  Day1List: []
 --- !u!114 &8854578132068340916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23417,10 +23413,8 @@ MonoBehaviour:
   ChatlistCellView: {fileID: 244113280595267425}
   SelectChapterView: {fileID: 8822006670077697241}
   headerChatUIView: {fileID: 6568327922232331449}
-  characterPod: {fileID: 379642875}
   PopUpProfilePanel: {fileID: 6499902319376684329}
   ChatCellPrefab: {fileID: 5161935617452464222}
-  Chapter1Create: 0
 --- !u!114 &9220033696567248940
 MonoBehaviour:
   m_ObjectHideFlags: 0

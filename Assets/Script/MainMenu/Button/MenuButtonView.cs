@@ -1,24 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuButtonView : MonoBehaviour
 {
-    public Button ChatButton;
-    public Button GalleryButton;
-    public Button CallButton;
-    public Button SettingButton;
-    public GameObject VolumeSettingPanel;
-    private SoundManager soundManager;
+    [Header("Button")]
+    [SerializeField] private Button ChatButton;
+    [SerializeField] private Button GalleryButton;
+    [SerializeField] private Button CallButton;
+    [SerializeField] private Button SettingButton;
+
+    [Header("GaneObject")]
+    [SerializeField] private GameObject VolumeSettingPanel;
+    [SerializeField] private GameObject HistoryCallPanel;
+    [SerializeField] private GameObject GalleryPanel;
+
+    [Header("SoundManager")]
+    [SerializeField] private SoundManager soundManager;
+
+    [Header("Pod")]
     private ChatAppPanelPod chatAppPanelPod;
+
     void Start()
     {
         soundManager = SoundManager.Instance;
         chatAppPanelPod = ChatAppPanelPod.Instance;
+
         SetupButtonListener();
     }
+
     private void SetupButtonListener()
     {
         ChatButton.onClick.AddListener(() =>
@@ -29,10 +39,12 @@ public class MenuButtonView : MonoBehaviour
         });
         GalleryButton.onClick.AddListener(() =>
         {
+            GalleryPanel.SetActive(true);
             soundManager.PlayClickSound();
         });
         CallButton.onClick.AddListener(() =>
         {
+            HistoryCallPanel.SetActive(true);
             soundManager.PlayClickSound();
         });
         SettingButton.onClick.AddListener(() =>

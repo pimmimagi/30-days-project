@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProfileImageView : MonoBehaviour
+public class HeaderGalleryView : MonoBehaviour
 {
     [Header("Button")]
     [SerializeField] private Button BackButton;
 
     [Header("GameObject")]
-    [SerializeField] private GameObject FullImage;
+    [SerializeField] private GameObject GalleryPanel;
 
-    void Start()
+    private void Start()
     {
         SetupButtonListener();
     }
@@ -18,7 +18,7 @@ public class ProfileImageView : MonoBehaviour
     {
         BackButton.onClick.AddListener(() =>
         {
-            FullImage.SetActive(false);
+            GalleryPanel.SetActive(false);
         });
     }
 }

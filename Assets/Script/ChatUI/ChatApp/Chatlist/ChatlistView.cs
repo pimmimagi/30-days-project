@@ -1,40 +1,33 @@
-﻿using PixelCrushers.DialogueSystem;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class ChatlistView : MonoBehaviour
 {
-    public ChatCellView ChatlistCellView;
-    public SelectChapterView SelectChapterView;
-    public HeaderChatUIView headerChatUIView;
-    private bool StartFirstTime = true;
-    [SerializeField] private CharacterPod characterPod;
-    private PlayerPod playerPod;
-    private Chapterpod chapterPod;
-    private ChatAppPanelPod chatAppPanelPod;
-    public GameObject PopUpProfilePanel;
+    [Header("ChatCellView")]
+    [SerializeField] private ChatCellView ChatlistCellView;
+
+    [Header("SelectChapterView")]
+    [SerializeField] private SelectChapterView SelectChapterView;
+
+    [Header("HeaderChatUIView")]
+    [SerializeField] private HeaderChatUIView headerChatUIView;
+
+    [Header("GameObject")]
+    [SerializeField] private GameObject PopUpProfilePanel;
+    [SerializeField] private GameObject ChatCellPrefab;
+
+    [Header("InstantiatedChatCells List")]
     private List<GameObject> instantiatedChatCells = new List<GameObject>();
-    public GameObject ChatCellPrefab;
-    public bool Chapter1Create = false;
-    private void Start()
-    {
-        chapterPod = Chapterpod.Instance;
-        chatAppPanelPod = ChatAppPanelPod.Instance;
-    }
+
+    [Header("Pod")]
+    private CharacterPod characterPod;
 
     public void Init()
     {
         characterPod = CharacterPod.Instance;
-        playerPod = PlayerPod.Instance;
-        characterPod.LoadCharacterData();
-        //UpdateCurrentText();
-        
+        characterPod.LoadCharacterData();   
     }
-    //TODO Refactor 
-
+  
     public ChatCellView CreateChatCell()
     {
         GameObject newChatCellView = Instantiate(ChatCellPrefab, transform);
@@ -42,8 +35,7 @@ public class ChatlistView : MonoBehaviour
 
         if (chatCellViewComponent != null)
         {
-                instantiatedChatCells.Add(newChatCellView);
-                Chapter1Create = true;
+            instantiatedChatCells.Add(newChatCellView);
         }
         else
         {
@@ -61,8 +53,6 @@ public class ChatlistView : MonoBehaviour
         }
         instantiatedChatCells.Clear();
     }
-
-    //public void BindCurrentCh
 }
     
    

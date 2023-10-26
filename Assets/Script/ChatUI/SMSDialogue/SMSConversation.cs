@@ -36,10 +36,8 @@ public class SMSConversation : MonoBehaviour
 
     public void StopSMSConversation()
     {
-        Debug.LogError("End Conversation");
         mySMSDialogueUI.OnRecordPersistentData();
         DialogueManager.StopConversation();
         DialogueManager.UseDialogueUI(CallUI);
-        //DialogueManager.
     }
 }

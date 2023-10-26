@@ -1,15 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProfileImageView : MonoBehaviour
+public class HistoryCallHeaderView : MonoBehaviour
 {
     [Header("Button")]
     [SerializeField] private Button BackButton;
 
     [Header("GameObject")]
-    [SerializeField] private GameObject FullImage;
+    [SerializeField] private GameObject HistoryCallPanel;
 
-    void Start()
+    private void Start()
     {
         SetupButtonListener();
     }
@@ -18,7 +18,7 @@ public class ProfileImageView : MonoBehaviour
     {
         BackButton.onClick.AddListener(() =>
         {
-            FullImage.SetActive(false);
+           HistoryCallPanel.SetActive(false);
         });
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ฉนืะรืีำฉ้ฟยะำพฮรำไ : MonoBehaviour
+public class HistoryCallView : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

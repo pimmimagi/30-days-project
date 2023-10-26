@@ -4,26 +4,33 @@ using UnityEngine.UI;
 
 public class ChatCellView : MonoBehaviour
 {
-    public TMP_Text Currenttext;
-    public Image CharacterImage;
-    public TMP_Text CharacterNameText;
+    [Header("Character Data UI")]
+    [SerializeField] private TMP_Text Currenttext;
+    [SerializeField] private Image CharacterImage;
+    [SerializeField] private TMP_Text CharacterNameText;
+    [SerializeField] private Image Notification;
+
+    [Header("Sound Manager")]
+    private SoundManager soundManager;
+
+    [Header("Button")]
+    [SerializeField] private Button ChatBoxChatAppButton;
+    [SerializeField] private Button ButtonImage;
+
+    [Header("SMSConversation")]
+    [SerializeField] private SMSConversation SMSconversation;
+
+    [Header("HeaderChatUI")]
+    [SerializeField] private HeaderChatUIView headerChatUIView;
+
+    [Header("GameObject")]
+    [SerializeField] private GameObject EndPanel;
+
+    [Header("Pod")]
     private PlayerPod playerpod;
     private CharacterPod characterpod;
     private ChatAppPanelPod chatAppPanelPod;
     private Chapterpod chapterpod;
-    private SoundManager soundManager;
-    public Button ChatBoxChatAppButton;
-    public Image Notification;
-    //public GameObject NumberofNotification;
-    public Button ButtonImage;
-   // public PopUpProfileWidgetView PopupProfile;
-    //public GameObject PopUpProfilePanel;
-    public SMSConversation SMSconversation;
-    public HeaderChatUIView headerChatUIView;
-    public GameObject EndPanel;
-
-
-    CharacterBean characterData;
 
     private void Start()
     {
@@ -34,53 +41,48 @@ public class ChatCellView : MonoBehaviour
         soundManager = SoundManager.Instance;
     }
 
-
     public void Bind(CharacterBean data)
     {
-        characterData = data;
         CharacterImage.sprite = data.characterData.ProfileSprite;
         CharacterNameText.text = data.characterData.NameText;
         Currenttext.text = data.CurrentChatText;
-        SetupButtonListener(data.characterData.IDCharacter);
-    }
 
-    public void BindOnlyName(CharacterBean data)
-    {
-        Currenttext.text = data.CurrentChatText;
+        SetupButtonListener(data.characterData.IDCharacter);
     }
 
     private void SetupButtonListener(int characterID)
     {
         ChatBoxChatAppButton.onClick.AddListener(() =>
         {
-            playerpod.UpdatePlayerIsReadingID(characterID);
-            chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
-            ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
-            headerChatUIView.Bind(characterpod.GetCharacterBeanByID(playerpod.PlayerReadingID));
-            SMSconversation.StartSMSConversation(chapter.DataEachConversation[playerpod.PlayerReadingConversationIndex].Conversation);
-            characterpod.UpdateCheckPlayerReadMessageAlready(playerpod.PlayerReadingID, true);
-            SetNotificationChat();
-            EndPanel.SetActive(false);
-            characterpod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, true);
-            
-
+            ChatBoxOnclick(characterID);
         });
 
         ButtonImage.onClick.AddListener(() =>
-          {
-              soundManager.PlayClickSound();
-              playerpod.UpdatePlayerIsReadingID(characterID);
-              chatAppPanelPod.ChangeChatState(ChatAppState.PopupProfilePanel);
-              //PopUpProfilePanel.SetActive(true);
+        {
+            soundManager.PlayClickSound();
+            playerpod.UpdatePlayerIsReadingID(characterID);
+            chatAppPanelPod.ChangeChatState(ChatAppState.PopupProfilePanel);
+        });
+    }
 
-          });
+    public void ChatBoxOnclick(int characterID)
+    {
+        playerpod.UpdatePlayerIsReadingID(characterID);
+        chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
 
+        ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
+        headerChatUIView.Bind(characterpod.GetCharacterBeanByID(playerpod.PlayerReadingID));
+        SMSconversation.StartSMSConversation(chapter.DataEachConversation[playerpod.PlayerReadingConversationIndex].Conversation);
+
+        characterpod.UpdateCheckPlayerReadMessageAlready(playerpod.PlayerReadingID, true);
+        SetNotificationChat();
+        EndPanel.SetActive(false);
+        characterpod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, true);
     }
 
     public void SetNotificationChat()
     {
         CharacterBean characterBean = characterpod.GetCharacterBeanByID(playerpod.PlayerReadingID);
         Notification.gameObject.SetActive(!characterBean.CheckPlayerReadMessageAlready);
-
     }
 }

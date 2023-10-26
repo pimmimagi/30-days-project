@@ -1,11 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class Chapterpod : MonoBehaviour
 {
     public static Chapterpod Instance { get; private set; }
+
+    [Header("Pod")]
+    private PlayerPod playerPod;
+
+    [Header("ChapterTemplateScriptableObject")]
+    public List<ChapterTemplateScriptableObject> ChapterTemplateList;
+
+    [Header("ChapterBeanList")]
+    public List<ChapterBean> ChapterBeanList;
 
     private void Awake()
     {
@@ -20,13 +27,8 @@ public class Chapterpod : MonoBehaviour
         }
     }
 
-    private PlayerPod playerPod;
-    private int CurrentChapter;
-    public List<ChapterTemplateScriptableObject> ChapterTemplateList;
-    public List<ChapterBean> ChapterBeanList;
     private void Start()
     {
-        
         playerPod = PlayerPod.Instance;
     }
 
@@ -34,9 +36,9 @@ public class Chapterpod : MonoBehaviour
     {
         return playerPod.PlayerReadingID;
     }
+
     public void LoadChapterData()
     {
-
         ChapterBeanList = new List<ChapterBean>();
 
         foreach (ChapterTemplateScriptableObject data in ChapterTemplateList)
@@ -59,6 +61,4 @@ public class Chapterpod : MonoBehaviour
             return null;
         }
     }
- 
-
 }

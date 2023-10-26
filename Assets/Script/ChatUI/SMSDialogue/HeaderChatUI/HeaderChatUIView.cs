@@ -1,52 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
-using System.Runtime.CompilerServices;
 
 public class HeaderChatUIView : MonoBehaviour
 {
-    public Button BackChatUIButton;
+    [Header("Button")]
+    [SerializeField] private Button BackChatUIButton;
+
+    [Header("Sound Manager")]
+    [SerializeField] private SoundManager soundManager;
+
+    [Header("Character Data UI")]
+    [SerializeField] private TMP_Text CharacterNameText;
+
+    [Header("SelectChapter")]
+    [SerializeField] private SelectChapterView chapterView;
+
+    [Header("ChatlistView")]
+    [SerializeField] private ChatlistView chatlistView;
+
+    [Header("GameObject")]
+    [SerializeField] private GameObject chatCellView;
+
+    [Header("Pod")]
     private CharacterPod characterPod;
     private PlayerPod playerPod;
     private ChatAppPanelPod chatAppPanelPod;
     private Chapterpod chapterpod;
-    private SoundManager soundManager;
-    public TMP_Text CharacterNameText;
-    public SelectChapterView chapterView;
-    public ChatlistView chatlistView;
-    public GameObject chatCellView;
-
 
     private void Start()
     {
-        SetupButtonListener();
         soundManager = SoundManager.Instance;
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
         chapterpod = Chapterpod.Instance;
         chatAppPanelPod = ChatAppPanelPod.Instance;
 
+        SetupButtonListener();
     }
  
     private void SetupButtonListener()
     {
         BackChatUIButton.onClick.AddListener(() =>
         {
-            characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).CheckPlayerReadMessageAlready = false;
-            characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).PlayerisReadingThisCharacter = false;
-            characterPod.CheckLoadCharacterdata = true;
-            chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
-            chatlistView.DestroyChatCell();
-            //chatCellView.SetActive(true);
-            ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
-            chapterView.LoopCharacters(chapter);
-            //chatCellView.SetActive(false);
-            //chatlistView.CreateChatCell();
-            soundManager.PlayClickSound();
+            BackChatUIOnclick();
         });
+    }
+
+    public void BackChatUIOnclick()
+    {
+        characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).CheckPlayerReadMessageAlready = false;
+        characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID).PlayerisReadingThisCharacter = false;
+        characterPod.CheckLoadCharacterdata = true;
+
+        chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
+        chatlistView.DestroyChatCell();
+        ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerPod.current_date - 1);
+        chapterView.LoopCharacters(chapter);
+        soundManager.PlayClickSound();
     }
 
     public void Bind(CharacterBean data)

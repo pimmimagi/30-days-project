@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
 public class ChatAppPanelPod : MonoBehaviour
 {
     public static ChatAppPanelPod Instance { get; private set; }
+
+    public ReactiveProperty<ChatAppState> ChatState = new ReactiveProperty<ChatAppState>(ChatAppState.SelectChapter);
 
     private void Awake()
     {
@@ -19,11 +19,9 @@ public class ChatAppPanelPod : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public ReactiveProperty<ChatAppState> ChatState = new ReactiveProperty<ChatAppState>(ChatAppState.SelectChapter);
 
     public void ChangeChatState(ChatAppState newState)
     {
-
         ChatState.Value = newState;
     }
 }

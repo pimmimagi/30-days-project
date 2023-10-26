@@ -1,11 +1,6 @@
-using Doozy.Runtime.UIManager.Triggers;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class RelationshipCellView : MonoBehaviour
 {
@@ -14,8 +9,6 @@ public class RelationshipCellView : MonoBehaviour
     [SerializeField] public Image[] HeartImage;
 
     public CharacterBean characterBean;
-
-
 
     public void Bind(CharacterBean data)
     {
@@ -26,7 +19,6 @@ public class RelationshipCellView : MonoBehaviour
             HeartImage[i].gameObject.SetActive(false);
         }
 
-        //TODO Refactor 
         if (data.relationship == 100)
         {
             HeartImage[0].gameObject.SetActive(true);
@@ -34,7 +26,6 @@ public class RelationshipCellView : MonoBehaviour
             HeartImage[2].gameObject.SetActive(true);
             HeartImage[3].gameObject.SetActive(true);
             HeartImage[4].gameObject.SetActive(true);
-
         }
         else if (data.relationship >= 80)
         {
@@ -45,27 +36,18 @@ public class RelationshipCellView : MonoBehaviour
         }
         else if (data.relationship >= 60)
         {
-
             HeartImage[0].gameObject.SetActive(true);
             HeartImage[1].gameObject.SetActive(true);
             HeartImage[2].gameObject.SetActive(true);
-
         }
         else if (data.relationship >= 40)
         {
-
             HeartImage[0].gameObject.SetActive(true);
             HeartImage[1].gameObject.SetActive(true);
-
-
         }
         else if (data.relationship >=20)
         {
-
             HeartImage[0].gameObject.SetActive(true);
-            
         }
-
     }
-
 }

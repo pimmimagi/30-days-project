@@ -1,19 +1,29 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CalendarWidgetView : MonoBehaviour
 {
-    public GameObject dayPrefab;
-    public Transform calendarPanel;
+    [Header("GameObject")]
+    [SerializeField] private GameObject dayPrefab;
 
+    [Header("Calendar Transform")]
+    [SerializeField] private Transform calendarPanel;
+
+    [Header("Total Day and DayCells")]
     private int totalDays = 30;
     private DayCellController[] dayCells;
 
+    [Header("Date and Day Text")]
     [SerializeField] private TMP_Text datetext;
     [SerializeField] private TMP_Text daytext;
 
+    [Header("Pod")]
     private PlayerPod playerPod;
+
+    private void Update()
+    {
+        DateAndDay(playerPod.current_date);
+    }
 
     private void Start()
     {
@@ -37,13 +47,10 @@ public class CalendarWidgetView : MonoBehaviour
             {
                 cell.SetDayText(i + 1); 
                 cell.SetDayMarker(i + 1 == playerPod.current_date);
-                
-
                 dayCells[i] = cell;
             }
         }
     }
-
 
     public void SetDateText(int datenumber)
     {
@@ -54,4 +61,37 @@ public class CalendarWidgetView : MonoBehaviour
     {
         daytext.text = day.ToString();
     }
+
+    public void DateAndDay(int currentdate)
+    {
+        if (currentdate % 7 == 1)
+         {
+            playerPod.current_day = "Sunday";
+        }
+        if (currentdate % 7 == 2)
+        {
+            playerPod.current_day = "Monday";
+        }
+        if (currentdate % 7 == 3)
+        {
+            playerPod.current_day = "Tuesday";
+        }
+        if (currentdate % 7 == 4)
+        {
+            playerPod.current_day = "Wednesday";
+        }
+        if (currentdate % 7 == 5)
+        {
+            playerPod.current_day = "Thursday";
+        }
+        if (currentdate % 7 == 6)
+        {
+            playerPod.current_day = "Friday";
+        }
+        if (currentdate % 7 == 7)
+        {
+            playerPod.current_day = "Saturday";
+        }
+    }
 }
+
