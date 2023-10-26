@@ -5,7 +5,7 @@ public class HistoryPod : MonoBehaviour
 {
     public static HistoryPod Instance { get; private set; }
 
-    [SerializeField] private SerializableList<int> history = new SerializableList<int>();
+    public SerializableList<int> history = new SerializableList<int>();
 
     private void Awake()
     {
@@ -20,9 +20,9 @@ public class HistoryPod : MonoBehaviour
         }
     }
 
-    public void SaveHistory()
+    public void SaveHistory(int Callnumber)
     {
-        history.list.Add(1);
+        history.list.Add(Callnumber);
             string saveJson = JsonUtility.ToJson(history);
         Debug.Log(saveJson);
         PlayerPrefs.SetString("SaveHistory", saveJson);
@@ -33,7 +33,7 @@ public class HistoryPod : MonoBehaviour
         string save =  PlayerPrefs.GetString("SaveHistory");
 
          history = JsonUtility.FromJson<SerializableList<int>>(save);
-        Debug.Log(history.list.Count);
+        //Debug.Log(history.list.Count);
     }
 
 

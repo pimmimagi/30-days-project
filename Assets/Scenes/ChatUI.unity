@@ -19198,6 +19198,7 @@ MonoBehaviour:
   popUpProfileWidgetView: {fileID: 6044595523175537930}
   headerChatUIView: {fileID: 6568327922232331449}
   chatView: {fileID: 7938506770464451821}
+  historyCallView: {fileID: 0}
   selectChapterView: {fileID: 8822006670077697241}
   SelectChapterPanel: {fileID: 6393637193095907756}
 --- !u!114 &6238035592098153580

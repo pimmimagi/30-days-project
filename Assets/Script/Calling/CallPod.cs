@@ -1,4 +1,4 @@
-using PixelCrushers.DialogueSystem;
+﻿using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 public class CallPod : MonoBehaviour
@@ -6,10 +6,10 @@ public class CallPod : MonoBehaviour
     public static CallPod Instance { get; private set; }
 
     [Header("Calling Bool")]
-    [SerializeField] private bool Calling1;
-    [SerializeField] private bool Calling2;
-    [SerializeField] private bool Calling3;
-    [SerializeField] private bool Calling4;
+    public bool Calling1;
+    public bool Calling2;
+    public bool Calling3;
+    public bool Calling4;
 
     private void Awake()
     {
@@ -37,6 +37,7 @@ public class CallPod : MonoBehaviour
         Calling2 = DialogueLua.GetVariable("Calling 2").AsBool;
         Calling3 = DialogueLua.GetVariable("Calling 3").AsBool;
         Calling4 = DialogueLua.GetVariable("Calling 4").AsBool;
+        // เซฟค่าตรงนี้มา
     }
 
     public void SettingCall()

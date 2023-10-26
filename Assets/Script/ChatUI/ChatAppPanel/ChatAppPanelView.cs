@@ -15,6 +15,9 @@ public class ChatAppPanelView : MonoBehaviour
     [Header("ChatView")]
     [SerializeField] private ChatView chatView;
 
+    [Header("HistoryCallView")]
+    [SerializeField] private HistoryCallView historyCallView;
+
     [Header("SelectChapter")]
     [SerializeField] private SelectChapterView selectChapterView;
 
@@ -81,4 +84,5 @@ public class ChatAppPanelView : MonoBehaviour
         chatlistView.DestroyChatCell();
         selectChapterView.SetUnlockChapter();
     }
+
 }

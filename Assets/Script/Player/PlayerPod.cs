@@ -20,6 +20,7 @@ public class PlayerPod : MonoBehaviour
     [Header("Reading Status Bool")]
     public int PlayerReadingID = -1;
     public int PlayerReadingConversationIndex = 2;
+    public int PlayerCallingConversation = 1;
 
     private void Awake()
     {
