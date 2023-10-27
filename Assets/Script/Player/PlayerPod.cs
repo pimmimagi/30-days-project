@@ -3,7 +3,6 @@ using UniRx;
 
 public class PlayerPod : MonoBehaviour
 {
-
     public static PlayerPod Instance { get; private set; }
 
     [Header("Current Date and Day")]
@@ -19,6 +18,7 @@ public class PlayerPod : MonoBehaviour
 
     [Header("Reading Status Bool")]
     public int PlayerReadingID = -1;
+    public int PlayerCallingID = -1;
     public int PlayerReadingConversationIndex = 2;
     public int PlayerCallingConversation = 1;
 
@@ -33,6 +33,11 @@ public class PlayerPod : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void UpdatePlayerCallingID(int newID)
+    {
+        PlayerCallingID = newID;
     }
 
     public void UpdatePlayerIsReadingID(int newID)

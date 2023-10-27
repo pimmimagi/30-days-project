@@ -44,8 +44,9 @@ public class MenuButtonView : MonoBehaviour
         });
         CallButton.onClick.AddListener(() =>
         {
-            HistoryCallPanel.SetActive(true);
+            chatAppPanelPod.ChangeChatState(ChatAppState.HistoryCall);
             soundManager.PlayClickSound();
+            MoveToScene(0);
         });
         SettingButton.onClick.AddListener(() =>
         {

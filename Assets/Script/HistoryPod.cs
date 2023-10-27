@@ -23,8 +23,8 @@ public class HistoryPod : MonoBehaviour
     public void SaveHistory(int Callnumber)
     {
         history.list.Add(Callnumber);
-            string saveJson = JsonUtility.ToJson(history);
-        Debug.Log(saveJson);
+        string saveJson = JsonUtility.ToJson(history);
+        //Debug.Log(saveJson);
         PlayerPrefs.SetString("SaveHistory", saveJson);
     }
 

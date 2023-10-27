@@ -4,5 +4,6 @@ public enum ChatAppState
     ChatPanel,
     PopupProfilePanel,
     SelectChapter,
-    HistoryCall
+    HistoryCall,
+    AcceptCall
 }

@@ -2,7 +2,6 @@ using PixelCrushers.DialogueSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System;
 using UniRx;
 
@@ -16,42 +15,27 @@ public class AcceptCallView : MonoBehaviour
     [SerializeField] private TMP_Text firstSecond;
     [SerializeField] private TMP_Text secondSecond;
 
-    [Header("Character Data UI")]
-    [SerializeField] private TMP_Text NameText;
-    [SerializeField] private Image CharacterProfile;
-    [SerializeField] private TMP_Text NPCNameText;
-
     [Header("CallView")]
     [SerializeField] private CallView CallView;
-
-    [Header("Pod")]
-    private CharacterPod characterPod;
-    private CallPod callPod;
-    private PlayerPod playerPod;
 
     [Header("IDisposable")]
     public IDisposable callTimeCountDisposable;
 
-    private void Start()
+    [Header("GameObject")]
+    [SerializeField] private GameObject SMSDialogueUI;
+
+    [Header("Pod")]
+    private CallPod callPod;
+    private ChatAppPanelPod chatAppPanelPod;
+
+    public void Init()
     {
         UpdateTimerDisplay(timer);
-
-        playerPod = PlayerPod.Instance;
-        characterPod = CharacterPod.Instance;
         callPod = CallPod.Instance;
+        chatAppPanelPod = ChatAppPanelPod.Instance;
 
         Lua.RegisterFunction("MoveToScene", this, typeof(AcceptCallView).GetMethod("MoveToScene"));
-        Bind(characterPod.GetCharacterBeanByID(playerPod.PlayerReadingID));
         callPod.SettingCall();
-        DialogueLua.SetVariable("Poomrelationship",30);
-    }
-
-    public void Bind(CharacterBean data)
-    {
-        NameText.text = data.characterData.NameText;
-        CharacterProfile.sprite = data.characterData.ProfileSprite;
-        NPCNameText.text = data.characterData.NameText;
-
         callTimeCountDisposable = Observable.EveryUpdate().Subscribe(everyUpdate =>
         {
             UpdateTimerDisplay(timer);
@@ -80,6 +64,8 @@ public class AcceptCallView : MonoBehaviour
         if (!DialogueManager.currentConversationState.hasAnyResponses)
         {
             callTimeCountDisposable?.Dispose();
+            DialogueManager.UseDialogueUI(SMSDialogueUI);
+            chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
         }
     }
 }

@@ -15,11 +15,14 @@ public class ChatAppPanelView : MonoBehaviour
     [Header("ChatView")]
     [SerializeField] private ChatView chatView;
 
-    [Header("HistoryCallView")]
-    [SerializeField] private HistoryCallView historyCallView;
+    [Header("AcceptCallView")]
+    [SerializeField] private AcceptCallView acceptCallView;
 
     [Header("SelectChapter")]
     [SerializeField] private SelectChapterView selectChapterView;
+
+    [Header("HistoryCallView")]
+    [SerializeField] private HistoryCallView historyCallView;
 
     [Header("GameObject")]
     [SerializeField] private GameObject SelectChapterPanel;
@@ -58,6 +61,12 @@ public class ChatAppPanelView : MonoBehaviour
             case ChatAppState.SelectChapter:
                 RunSelecChapter();
                 break;
+            case ChatAppState.AcceptCall:
+                RunAcceptCall();
+                break;
+            case ChatAppState.HistoryCall:
+                RunHistoryCall();
+                break;
         }
     }
 
@@ -85,4 +94,14 @@ public class ChatAppPanelView : MonoBehaviour
         selectChapterView.SetUnlockChapter();
     }
 
+    public void RunAcceptCall()
+    {
+        acceptCallView.Init();
+    }
+
+    public void RunHistoryCall()
+    {
+        historyCallView.Init();
+        SelectChapterPanel.SetActive(false);
+    }
 }

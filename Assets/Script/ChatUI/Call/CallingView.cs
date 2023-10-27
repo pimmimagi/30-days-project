@@ -31,6 +31,7 @@ public class CallingView : MonoBehaviour
     private CharacterPod characterPod;
     private HistoryPod historyPod;
     private PlayerPod playerPod;
+    private ChatAppPanelPod chatAppPanelPod;
  
     private void Start()
     {
@@ -38,6 +39,7 @@ public class CallingView : MonoBehaviour
         soundManager = SoundManager.Instance;
         characterPod = CharacterPod.Instance;
         playerPod = PlayerPod.Instance;
+        chatAppPanelPod = ChatAppPanelPod.Instance;
 
         Lua.RegisterFunction("SetCallingActive", this, typeof(CallingView).GetMethod("SetCallingActive"));
 
@@ -55,16 +57,17 @@ public class CallingView : MonoBehaviour
 
         CallingButton.onClick.AddListener(() =>
         {
+            historyPod.SaveHistory(playerPod.PlayerCallingConversation);
+            historyPod.LoadHistory();
+            chatAppPanelPod.ChangeChatState(ChatAppState.AcceptCall);
             DialogueManager.UseDialogueUI(CallUI);
-            CallPanel.SetActive(false);
+            CallingPanel.SetActive(false);
             AcceptCallPanel.SetActive(true);
             DialoguePanelCall.SetActive(true);
             DialogueLua.SetVariable("NowCalling", true);
             soundManager.StopRingtoneSound();
-            historyPod.SaveHistory(1);
-            playerPod.PlayerCallingConversation = +1;
-            historyPod.LoadHistory();
-
+            DialogueManager.StartConversation("New Conversation 9");
+            playerPod.PlayerCallingConversation = 2;
         });
     }
 
