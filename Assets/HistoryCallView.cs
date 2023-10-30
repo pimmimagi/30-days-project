@@ -1,6 +1,5 @@
 ﻿using PixelCrushers.DialogueSystem;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class HistoryCallView : MonoBehaviour
@@ -12,9 +11,10 @@ public class HistoryCallView : MonoBehaviour
     private HistoryPod historyPod;
     private CallPod callPod;
     private ChatAppPanelPod chatAppPanelPod;
+    private CharacterPod characterPod;
 
     [Header("CallingView")]
-    [SerializeField] private CallingView callView;
+    [SerializeField] private CallView callView;
 
     [Header("Call Dialogue GameObject")]
     [SerializeField] private GameObject CallDialogue;
@@ -24,12 +24,19 @@ public class HistoryCallView : MonoBehaviour
 
     [Header("ButtonReplayList")]
     [SerializeField] private Button[] ReplayButtonList;
+
+    [Header("Calling Panel")]
+    [SerializeField] private GameObject CallingPanel;
+
+    [Header("AcceptCallVIew")]
+    [SerializeField] private AcceptCallView acceptCallView;
     
     public void Init()
     {
         historyPod = HistoryPod.Instance;
         callPod = CallPod.Instance;
         chatAppPanelPod = ChatAppPanelPod.Instance;
+        characterPod = CharacterPod.Instance;
 
         SetupButtonListener();
     }
@@ -39,22 +46,27 @@ public class HistoryCallView : MonoBehaviour
         ReplayButtonList[0].onClick.AddListener(() =>
         {
             DialogueLua.SetVariable("Calling 1", true);
-            callView.SetCallingActive("พาย");
-            CallHistory.SetActive(false);
-            DialogueManager.UseDialogueUI(CallDialogue);
-            chatAppPanelPod.ChangeChatState(ChatAppState.AcceptCall);
-            DialogueLua.SetVariable("NowCalling", true);
-            callPod.GetVariableCalling();
+            callView.Bind(characterPod.GetCharacterBeanByID(3));
             callPod.Calling1 = true;
-            DialogueManager.StartConversation("New Conversation 9");
-            callPod.SettingCall();
+            SettingReplayButton();
         });
+    }
+
+    public void SettingReplayButton()
+    {
+        acceptCallView.CheckHistory = true;
+        CallHistory.SetActive(false);
+        DialogueManager.UseDialogueUI(CallDialogue);
+        chatAppPanelPod.ChangeChatState(ChatAppState.AcceptCall);
+        DialogueLua.SetVariable("NowCalling", true);
+        callPod.GetVariableCalling();
+        DialogueManager.StartConversation("New Conversation 9");
+        callPod.SettingCall();
     }
 
     private void Update()
     {
         SetUnlockCallHistory();
-        Debug.LogError(DialogueLua.GetVariable("Calling 1").AsBool);
     }
 
     public void SetUnlockCallHistory()

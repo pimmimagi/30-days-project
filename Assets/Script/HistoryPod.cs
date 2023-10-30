@@ -39,7 +39,6 @@ public class HistoryPod : MonoBehaviour
 
 }
 
-
 [System.Serializable]
 public class SerializableList<T>
 {

@@ -28,6 +28,12 @@ public class AcceptCallView : MonoBehaviour
     private CallPod callPod;
     private ChatAppPanelPod chatAppPanelPod;
 
+    [Header("History Check")]
+    public bool CheckHistory = false;
+
+    [Header("History Panel")]
+    [SerializeField] private GameObject HistoryPanel;
+      
     public void Init()
     {
         UpdateTimerDisplay(timer);
@@ -63,9 +69,18 @@ public class AcceptCallView : MonoBehaviour
     {
         if (!DialogueManager.currentConversationState.hasAnyResponses)
         {
-            callTimeCountDisposable?.Dispose();
-            DialogueManager.UseDialogueUI(SMSDialogueUI);
-            chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
+            if (CheckHistory == false)
+            {
+                callTimeCountDisposable?.Dispose();
+                DialogueManager.UseDialogueUI(SMSDialogueUI);
+                chatAppPanelPod.ChangeChatState(ChatAppState.ChatPanel);
+            }
+            else
+            {
+                callTimeCountDisposable?.Dispose();
+                HistoryPanel.SetActive(true);
+                chatAppPanelPod.ChangeChatState(ChatAppState.HistoryCall);
+            }
         }
     }
 }

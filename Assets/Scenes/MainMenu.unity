@@ -3726,6 +3726,8 @@ MonoBehaviour:
   - {fileID: 1235483406}
   - {fileID: 9513289}
   - {fileID: 250058495}
+  CallingPanel: {fileID: 0}
+  acceptCallView: {fileID: 0}
 --- !u!1 &479994558
 GameObject:
   m_ObjectHideFlags: 0

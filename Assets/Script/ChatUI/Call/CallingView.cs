@@ -57,18 +57,27 @@ public class CallingView : MonoBehaviour
 
         CallingButton.onClick.AddListener(() =>
         {
-            historyPod.SaveHistory(playerPod.PlayerCallingConversation);
-            historyPod.LoadHistory();
-            chatAppPanelPod.ChangeChatState(ChatAppState.AcceptCall);
-            DialogueManager.UseDialogueUI(CallUI);
-            CallingPanel.SetActive(false);
-            AcceptCallPanel.SetActive(true);
-            DialoguePanelCall.SetActive(true);
-            DialogueLua.SetVariable("NowCalling", true);
-            soundManager.StopRingtoneSound();
-            DialogueManager.StartConversation("New Conversation 9");
-            playerPod.PlayerCallingConversation = 2;
+            SetupCallingButton();
         });
+    }
+
+    public void SetupCallingButton()
+    {
+        //historyPod.LoadHistory();
+        historyPod.SaveHistory(playerPod.PlayerCallingConversation);
+        chatAppPanelPod.ChangeChatState(ChatAppState.AcceptCall);
+        DialogueManager.UseDialogueUI(CallUI);
+
+        CallingPanel.SetActive(false);
+        AcceptCallPanel.SetActive(true);
+        DialoguePanelCall.SetActive(true);
+
+        DialogueLua.SetVariable("NowCalling", true);
+        soundManager.StopRingtoneSound();
+        DialogueManager.StartConversation("New Conversation 9");
+
+        historyPod.LoadHistory();
+        playerPod.PlayerCallingConversation = 2;
     }
 
     public void SetCallingActive(string name)

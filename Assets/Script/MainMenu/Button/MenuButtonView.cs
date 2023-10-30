@@ -39,8 +39,9 @@ public class MenuButtonView : MonoBehaviour
         });
         GalleryButton.onClick.AddListener(() =>
         {
-            GalleryPanel.SetActive(true);
+            chatAppPanelPod.ChangeChatState(ChatAppState.GalleryPanel);
             soundManager.PlayClickSound();
+            MoveToScene(0);
         });
         CallButton.onClick.AddListener(() =>
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HistoryCallHeaderView : MonoBehaviour
@@ -18,7 +19,12 @@ public class HistoryCallHeaderView : MonoBehaviour
     {
         BackButton.onClick.AddListener(() =>
         {
-           HistoryCallPanel.SetActive(false);
+            MoveToScene(2);
         });
+    }
+
+    public void MoveToScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
     }
 }

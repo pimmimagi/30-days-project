@@ -26,6 +26,7 @@ public class ChatAppPanelView : MonoBehaviour
 
     [Header("GameObject")]
     [SerializeField] private GameObject SelectChapterPanel;
+    [SerializeField] private GameObject HistoryPanel;
 
     [Header("Pod")]
     private ChatAppPanelPod ChatAppPod;
@@ -67,6 +68,9 @@ public class ChatAppPanelView : MonoBehaviour
             case ChatAppState.HistoryCall:
                 RunHistoryCall();
                 break;
+            case ChatAppState.GalleryPanel:
+                RunGallery();
+                break;
         }
     }
 
@@ -103,5 +107,11 @@ public class ChatAppPanelView : MonoBehaviour
     {
         historyCallView.Init();
         SelectChapterPanel.SetActive(false);
+        HistoryPanel.SetActive(true);
+    }
+
+    public void RunGallery()
+    {
+
     }
 }

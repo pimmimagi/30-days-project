@@ -18,6 +18,7 @@ public class SelectChapterView : MonoBehaviour
     [SerializeField] private GameObject LockDay2;
     [SerializeField] private GameObject LockDay3;
     [SerializeField] private GameObject SMSDialogue;
+    [SerializeField] private GameObject HistoryPanel;
 
     [Header("ChatCellView")]
     [SerializeField] private ChatCellView ChatCellView;
@@ -73,6 +74,7 @@ public class SelectChapterView : MonoBehaviour
 
     public void ButtonSetting()
     {
+        HistoryPanel.SetActive(false);
         SelectChapterPanel.SetActive(false);
         ChatAppPanel.SetActive(true);
         chatAppPanelPod.ChangeChatState(ChatAppState.ChatListPanel);
