@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using PixelCrushers.DialogueSystem;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 

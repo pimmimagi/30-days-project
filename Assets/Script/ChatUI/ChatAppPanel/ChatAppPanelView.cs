@@ -24,9 +24,13 @@ public class ChatAppPanelView : MonoBehaviour
     [Header("HistoryCallView")]
     [SerializeField] private HistoryCallView historyCallView;
 
+    [Header("HistoryGalleryView")]
+    [SerializeField] private HistoryGalleryView historyGalleryView;
+
     [Header("GameObject")]
     [SerializeField] private GameObject SelectChapterPanel;
-    [SerializeField] private GameObject HistoryPanel;
+    [SerializeField] private GameObject HistoryCallPanel;
+    [SerializeField] private GameObject HistoryGalleryPanel;
 
     [Header("Pod")]
     private ChatAppPanelPod ChatAppPod;
@@ -107,11 +111,13 @@ public class ChatAppPanelView : MonoBehaviour
     {
         historyCallView.Init();
         SelectChapterPanel.SetActive(false);
-        HistoryPanel.SetActive(true);
+        HistoryCallPanel.SetActive(true);
     }
 
     public void RunGallery()
     {
-
+        historyCallView.Init();
+        SelectChapterPanel.SetActive(false);
+        HistoryGalleryPanel.SetActive(true);
     }
 }

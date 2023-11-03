@@ -219,7 +219,25 @@ MonoBehaviour:
     spritePortrait: {fileID: 21300000, guid: 2e5a4a1d394abed47be92041b75cef36, type: 3}
     alternatePortraits: []
     spritePortraits: []
-  items: []
+  items:
+  - id: 1
+    fields:
+    - title: Name
+      value: New Item 1
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Pictures
+      value: '[]'
+      type: 3
+      typeString: CustomFieldType_Files
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Is Item
+      value: True
+      type: 2
+      typeString: CustomFieldType_Boolean
   locations: []
   variables:
   - id: 1
@@ -2589,8 +2607,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1243.0831
-        y: 805.15594
+        x: 1529.9254
+        y: 859.10333
         width: 160
         height: 30
     - id: 6
@@ -2644,8 +2662,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1045.231
-        y: 640.7581
+        x: 1043.0571
+        y: 634.9177
         width: 160
         height: 30
     - id: 8
@@ -3689,13 +3707,13 @@ MonoBehaviour:
       - originConversationID: 6
         originDialogueID: 32
         destinationConversationID: 6
-        destinationDialogueID: 5
+        destinationDialogueID: 70
         isConnector: 0
         priority: 2
       - originConversationID: 6
         originDialogueID: 32
         destinationConversationID: 6
-        destinationDialogueID: 70
+        destinationDialogueID: 72
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -3785,7 +3803,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: SetActive(Test, true);
         type: 0
         typeString: 
       conversationID: 6
@@ -4821,11 +4839,11 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 3
         type: 5
@@ -4837,15 +4855,15 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: "\u0E2B\u0E22\u0E2D\u0E01\u0E01\u0E01\u0E01\u0E01"
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 6
       isRoot: 0
       isGroup: 0
@@ -4931,11 +4949,11 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 3
         type: 5
@@ -4947,15 +4965,15 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: "\u0E40\u0E14\u0E35\u0E4B\u0E22\u0E27\u0E2A\u0E31\u0E48\u0E07\u0E41\u0E25\u0E49\u0E27\u0E1A\u0E2D\u0E01\u0E41\u0E25\u0E49\u0E27\u0E01\u0E47\u0E1D\u0E32\u0E01\u0E25\u0E07\u0E44\u0E1B\u0E40\u0E2D\u0E32\u0E14\u0E49\u0E27\u0E22"
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 6
       isRoot: 0
       isGroup: 0
@@ -5347,7 +5365,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: SetActive(
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 6
@@ -5491,11 +5509,11 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 3
         type: 5
@@ -5507,15 +5525,15 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: "\u0E1E\u0E32\u0E22\u0E1A\u0E2D\u0E01\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E01\u0E47\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27"
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 6
       isRoot: 0
       isGroup: 0
@@ -5546,11 +5564,11 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 3
         type: 5
@@ -5562,16 +5580,16 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: "\u0E0A\u0E48\u0E27\u0E07\u0E19\u0E35\u0E49\u0E40\u0E2B\u0E19\u0E37\u0E48\u0E2D\u0E22\u0E44\u0E07
           \u0E2D\u0E22\u0E32\u0E01\u0E01\u0E34\u0E19\u0E02\u0E2D\u0E07\u0E2D\u0E23\u0E48\u0E2D\u0E22"
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       conversationID: 6
       isRoot: 0
       isGroup: 0
@@ -5811,9 +5829,64 @@ MonoBehaviour:
         y: 2555.9412
         width: 160
         height: 30
+    - id: 72
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 6
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 6
+        originDialogueID: 72
+        destinationConversationID: 6
+        destinationDialogueID: 5
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: CreateNPCImageTemplate();
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1550.579
+        y: 614.89825
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 2042.938, y: 2286.3816}
-    canvasZoom: 0.9999995
+    canvasScrollPosition: {x: 1383.3501, y: 355.40512}
+    canvasZoom: 1.0599995
   - id: 7
     fields:
     - title: Title

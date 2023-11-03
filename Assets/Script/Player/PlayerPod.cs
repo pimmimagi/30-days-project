@@ -21,6 +21,7 @@ public class PlayerPod : MonoBehaviour
     public int PlayerCallingID = -1;
     public int PlayerReadingConversationIndex = 2;
     public int PlayerCallingConversation = 1;
+    public int PlayerCollectImage = 1;
 
     private void Awake()
     {
@@ -59,4 +60,10 @@ public class PlayerPod : MonoBehaviour
     {
         StatusPlayerText.Value = newStatus;
     }
- }
+
+    public void UpdatePlayerCollectImage(int newID)
+    {
+        PlayerCollectImage = newID;
+    }
+
+}

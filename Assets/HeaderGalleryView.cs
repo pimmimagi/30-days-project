@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HeaderGalleryView : MonoBehaviour
@@ -9,8 +10,12 @@ public class HeaderGalleryView : MonoBehaviour
     [Header("GameObject")]
     [SerializeField] private GameObject GalleryPanel;
 
+    [Header("Pod")]
+    private ChatAppPanelPod chatAppPanelPod;
+
     private void Start()
     {
+        chatAppPanelPod = ChatAppPanelPod.Instance;
         SetupButtonListener();
     }
 
@@ -19,6 +24,13 @@ public class HeaderGalleryView : MonoBehaviour
         BackButton.onClick.AddListener(() =>
         {
             GalleryPanel.SetActive(false);
+            MoveToScene(2);
+            chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);
         });
+    }
+
+    public void MoveToScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
     }
 }

@@ -4802,6 +4802,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   history:
     list: 
+  HistoryGallery:
+    list: 
 --- !u!224 &681095985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9465,6 +9467,7 @@ MonoBehaviour:
   PlayerCallingID: -1
   PlayerReadingConversationIndex: 0
   PlayerCallingConversation: 1
+  PlayerCollectImage: 1
 --- !u!4 &1182899685
 Transform:
   m_ObjectHideFlags: 0
@@ -12738,7 +12741,7 @@ MonoBehaviour:
       alternateCameraObject: {fileID: 0}
       cameraAngles: {fileID: 0}
       keepCameraPositionAtConversationEnd: 0
-      defaultSequence: Delay({{end}})
+      defaultSequence: "Delay(2)@{{end}}->Message(PlayNow);\r\nAudio(ReceiveText)@Message(PlayNow)\r;"
       defaultPlayerSequence: 
       defaultResponseMenuSequence: 
       entrytagFormat: 0

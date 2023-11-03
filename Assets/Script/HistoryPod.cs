@@ -6,6 +6,7 @@ public class HistoryPod : MonoBehaviour
     public static HistoryPod Instance { get; private set; }
 
     public SerializableList<int> history = new SerializableList<int>();
+    public SerializableList<int> HistoryGallery = new SerializableList<int>();
 
     private void Awake()
     {
@@ -36,8 +37,21 @@ public class HistoryPod : MonoBehaviour
         //Debug.Log(history.list.Count);
     }
 
+    public void SaveGalleryHistory(int ImageNumber)
+    {
+        HistoryGallery.list.Add(ImageNumber);
+        string saveJson = JsonUtility.ToJson(HistoryGallery);
+        PlayerPrefs.SetString("SaveGalleryHistory", saveJson);
+    }
 
+    public void LoadGalleryHistory()
+    {
+        string save = PlayerPrefs.GetString("SaveGalleryHistory");
+
+        HistoryGallery = JsonUtility.FromJson<SerializableList<int>>(save);
+    }
 }
+
 
 [System.Serializable]
 public class SerializableList<T>

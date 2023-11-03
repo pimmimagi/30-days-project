@@ -1,15 +1,10 @@
 using PixelCrushers.DialogueSystem;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
 public class TimeBoxManagement : MonoBehaviour
-
 {
     public GameObject TimeboxPrefab;
-
-
 
     void Start()
     {
