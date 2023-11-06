@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using PixelCrushers.DialogueSystem;
-using Doozy.Runtime.Nody;
 
 public class SMSConversation : MonoBehaviour
 {

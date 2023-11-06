@@ -6,9 +6,11 @@ public class HeaderGalleryView : MonoBehaviour
 {
     [Header("Button")]
     [SerializeField] private Button BackButton;
+    [SerializeField] private Button BackFullImageButton;
 
     [Header("GameObject")]
     [SerializeField] private GameObject GalleryPanel;
+    [SerializeField] private GameObject FullImagePanel;
 
     [Header("Pod")]
     private ChatAppPanelPod chatAppPanelPod;
@@ -26,6 +28,11 @@ public class HeaderGalleryView : MonoBehaviour
             GalleryPanel.SetActive(false);
             MoveToScene(2);
             chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);
+        });
+
+        BackFullImageButton.onClick.AddListener(() =>
+        {
+            FullImagePanel.SetActive(false);
         });
     }
 

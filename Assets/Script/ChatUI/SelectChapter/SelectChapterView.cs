@@ -44,6 +44,11 @@ public class SelectChapterView : MonoBehaviour
         SetupButtonListener();
     }
 
+    private void Update()
+    {
+        SetUnlockChapter();
+    }
+
     private void SetupButtonListener()
     {    
         Day1Button.onClick.AddListener(() =>
@@ -100,7 +105,7 @@ public class SelectChapterView : MonoBehaviour
         {
             LockDay2.SetActive(false);
         }
-        else if (playerPod.current_date == 3)
+        if (playerPod.current_date == 3)
         {
             LockDay3.SetActive(false);
         }

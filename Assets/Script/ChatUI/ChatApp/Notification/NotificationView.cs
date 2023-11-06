@@ -35,7 +35,7 @@ public class NotificationView : MonoBehaviour
 
         if (characterpod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter == true)
         {
-            NotificationPopUp.SetActive();
+            NotificationPopUp.SetActiveNotification();
         }
     }
 }

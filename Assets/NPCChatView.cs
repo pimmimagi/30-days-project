@@ -15,12 +15,9 @@ public class NPCIChatView : MonoBehaviour
 
     [Header("Content")]
     public Transform Content;
-    //public bool isTemplate = true;
 
     void Start()
     {
-    //    if (isTemplate)
-    //        gameObject.SetActive(false);
         playerPod = PlayerPod.Instance;
         characterPod = CharacterPod.Instance;
         Lua.RegisterFunction("CreateNPCImageTemplate", this, SymbolExtensions.GetMethodInfo(() => CreateNPCImageTemplate()));
@@ -29,6 +26,7 @@ public class NPCIChatView : MonoBehaviour
 
     public void CreateNPCImageTemplate()
     {
+        Debug.Log("Run CreateNPCImageTemplate");
         NPCImageView newNPCImageTemplate = Instantiate(NPCImageTemplate, transform.parent);
         newNPCImageTemplate.isTemplate = false;
         newNPCImageTemplate.gameObject.SetActive(true);

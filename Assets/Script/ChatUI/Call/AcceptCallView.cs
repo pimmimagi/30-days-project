@@ -33,9 +33,10 @@ public class AcceptCallView : MonoBehaviour
 
     [Header("History Panel")]
     [SerializeField] private GameObject HistoryPanel;
-      
+
     public void Init()
     {
+        ResetTimer();
         UpdateTimerDisplay(timer);
         callPod = CallPod.Instance;
         chatAppPanelPod = ChatAppPanelPod.Instance;
@@ -58,6 +59,10 @@ public class AcceptCallView : MonoBehaviour
         secondMinute.text = currentTime[1].ToString();
         firstSecond.text = currentTime[2].ToString();
         secondSecond.text = currentTime[3].ToString();
+    }
+    private void ResetTimer()
+    {
+        timer = 0;
     }
 
     public void MoveToScene(int sceneID)

@@ -90,7 +90,6 @@ public class CallingView : MonoBehaviour
         {
             callView.Bind(characterPod.GetCharacterBeanByID(0));
         }
-
         SetActive();
     }
 

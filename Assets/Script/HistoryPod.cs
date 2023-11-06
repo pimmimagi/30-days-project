@@ -25,7 +25,6 @@ public class HistoryPod : MonoBehaviour
     {
         history.list.Add(Callnumber);
         string saveJson = JsonUtility.ToJson(history);
-        //Debug.Log(saveJson);
         PlayerPrefs.SetString("SaveHistory", saveJson);
     }
 
@@ -34,7 +33,6 @@ public class HistoryPod : MonoBehaviour
         string save =  PlayerPrefs.GetString("SaveHistory");
 
          history = JsonUtility.FromJson<SerializableList<int>>(save);
-        //Debug.Log(history.list.Count);
     }
 
     public void SaveGalleryHistory(int ImageNumber)
@@ -51,7 +49,6 @@ public class HistoryPod : MonoBehaviour
         HistoryGallery = JsonUtility.FromJson<SerializableList<int>>(save);
     }
 }
-
 
 [System.Serializable]
 public class SerializableList<T>

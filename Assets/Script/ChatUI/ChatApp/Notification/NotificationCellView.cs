@@ -28,13 +28,15 @@ public class NotificationCellView : MonoBehaviour
         CharacterNameText.text = data.characterData.NameText;
     }
 
-    public void SetActive()
+    public void SetActiveNotification()
     {
         Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ => { 
             NotificationPopUp.SetActive(true);
-            soundManager.PlayNotificationSound();
+            Debug.Log("run set active true");
+            //soundManager.PlayNotificationSound();
             Observable.Timer(TimeSpan.FromSeconds(2)).Subscribe(_ => {
                 NotificationPopUp.SetActive(false);
+                Debug.Log("run set active false");
             });
         });
     }
