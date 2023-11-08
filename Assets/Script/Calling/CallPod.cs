@@ -37,10 +37,6 @@ public class CallPod : MonoBehaviour
         Calling2 = DialogueLua.GetVariable("Calling 2").AsBool;
         Calling3 = DialogueLua.GetVariable("Calling 3").AsBool;
         Calling4 = DialogueLua.GetVariable("Calling 4").AsBool;
-        Debug.Log("Calling1 = " + Calling1);
-        Debug.Log("Calling2 = " + Calling2);
-        Debug.Log("Calling3 = " + Calling3);
-        Debug.Log("Calling4 = " + Calling4);
     }
 
     public void SettingCall()
@@ -49,10 +45,6 @@ public class CallPod : MonoBehaviour
         DialogueLua.SetVariable("Calling 2", Calling2);
         DialogueLua.SetVariable("Calling 3", Calling3);
         DialogueLua.SetVariable("Calling 4", Calling4);
-        Debug.Log("Calling 1 after set : " + DialogueLua.GetVariable("Calling 1").AsBool);
-        Debug.Log("Calling 2 after set : " + DialogueLua.GetVariable("Calling 2").AsBool);
-        Debug.Log("Calling 3 after set : " + DialogueLua.GetVariable("Calling 3").AsBool);
-        Debug.Log("Calling 4 after set : " + DialogueLua.GetVariable("Calling 4").AsBool);
     }
 
     public void SettingCallToFalse()

@@ -82,6 +82,7 @@ public class AcceptCallView : MonoBehaviour
             }
             else
             {
+                Debug.Log(CheckHistory);
                 callTimeCountDisposable?.Dispose();
                 HistoryPanel.SetActive(true);
                 chatAppPanelPod.ChangeChatState(ChatAppState.HistoryCall);

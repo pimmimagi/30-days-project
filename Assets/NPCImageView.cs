@@ -29,5 +29,4 @@ public class NPCImageView : MonoBehaviour
         CharacterNameText.text = data.characterData.NameText;
     }
 
- 
 }
