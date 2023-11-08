@@ -5794,7 +5794,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 
+        value: '#Image_1'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -5826,9 +5826,7 @@ MonoBehaviour:
         isConnector: 0
         priority: 2
       conditionsString: 
-      userScript: 'CreateNPCImageTemplate();
-
-        SetupHistoryImage();
+      userScript: 'SetupHistoryImage();
 
         SetUnlockGalleryHistory();'
       onExecute:
@@ -5841,8 +5839,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 187.86879, y: 1409.5164}
-    canvasZoom: 0.18999991
+    canvasScrollPosition: {x: 1220.6892, y: 386.9801}
+    canvasZoom: 0.66999984
   - id: 7
     fields:
     - title: Title
@@ -8032,8 +8030,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 936.9818, y: 1022.1619}
-    canvasZoom: 0.6099999
+    canvasScrollPosition: {x: 0, y: 322.75726}
+    canvasZoom: 0.15999997
   - id: 10
     fields:
     - title: Title

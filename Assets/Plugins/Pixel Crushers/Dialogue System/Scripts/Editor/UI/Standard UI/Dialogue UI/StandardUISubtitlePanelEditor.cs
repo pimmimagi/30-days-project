@@ -62,7 +62,10 @@ namespace PixelCrushers.DialogueSystem
             EditorGUILayout.PropertyField(serializedObject.FindProperty("onFocus"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("onUnfocus"), true);
             EditorGUILayout.PropertyField(serializedObject.FindProperty("onBackButtonDown"), true);
-            
+            // Extend
+            var imageInChat = serializedObject.FindProperty("imageInChat");
+            if (imageInChat != null) EditorGUILayout.PropertyField(imageInChat);
+
             serializedObject.ApplyModifiedProperties();
         }
 
