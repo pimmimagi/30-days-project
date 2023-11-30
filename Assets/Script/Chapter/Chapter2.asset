@@ -15,4 +15,12 @@ MonoBehaviour:
   Order: 2
   DataEachConversation:
   - CharacterChat: {fileID: 11400000, guid: 7362023a3e67044499002c247da82e48, type: 2}
-    Conversation: New Conversation 8
+    Conversation: Chapter2.Poom
+  - CharacterChat: {fileID: 11400000, guid: f40a7971a936a0b4ba06cb1a777eef3a, type: 2}
+    Conversation: Chapter2.Pie
+  - CharacterChat: {fileID: 11400000, guid: fe94f2659974c3741a6634e6151f8765, type: 2}
+    Conversation: Chapter2.F
+  - CharacterChat: {fileID: 11400000, guid: f40a7971a936a0b4ba06cb1a777eef3a, type: 2}
+    Conversation: Chapter2.Pie2
+  - CharacterChat: {fileID: 11400000, guid: ab5074eb64bd40a45a01f5e673371faa, type: 2}
+    Conversation: Chapter2.Group

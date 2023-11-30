@@ -55,6 +55,7 @@ public class ChatView: MonoBehaviour
         Iscalling = DialogueLua.GetVariable("NowCalling").AsBool;
         if (characterPod.GetCharacterBeanByID(playerpod.PlayerReadingID).PlayerisReadingThisCharacter == true)
         {
+            Debug.Log("Is Calling = " + Iscalling);
             if (Iscalling == false)
             {
                 characterPod.UpdateCurrentChatText(playerpod.PlayerReadingID, subtitle.formattedText.text);
@@ -70,6 +71,7 @@ public class ChatView: MonoBehaviour
                 {
                     CheckEndOfConversation();
                     characterPod.UpdatePlayerisReadingThisCharacter(playerpod.PlayerReadingID, false);
+                    Iscalling = false;
                 }
             }
         }

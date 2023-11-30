@@ -58,10 +58,19 @@ public class CharacterPod : MonoBehaviour
             {
                 characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Pierelationship").asInt;
             }
+            else if (data.IDCharacter == 4)
+            {
+                characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Pyunrelationship").asInt;
+            }
+            else if (data.IDCharacter == 6)
+            {
+                characterBean.relationship = PixelCrushers.DialogueSystem.DialogueLua.GetVariable("Preamrelationship").asInt;
+            }
             CharacterBeanList.Add(characterBean);
+            
         }
 
-        CharacterBeanList = CharacterBeanList.OrderByDescending(character => character.relationship).Take(3).ToList();
+        CharacterBeanList = CharacterBeanList.OrderByDescending(character => character.relationship).ToList();
         CheckLoadCharacterdata = true;
 
     }

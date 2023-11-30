@@ -31,8 +31,7 @@ public class TextAndImageSubtitlePanel : PixelCrushers.DialogueSystem.Wrappers.S
         {
             imageInChat.gameObject.SetActive(true);
             subtitleText.gameObject.SetActive(false);
-            Addressables.LoadAssetAsync<Sprite>("123").Completed += (task) => {
-                imageInChat.rectTransform.sizeDelta = new Vector2(20, 20);
+            Addressables.LoadAssetAsync<Sprite>("NinPie").Completed += (task) => {
                 imageInChat.sprite = task.Result;
             };
         }

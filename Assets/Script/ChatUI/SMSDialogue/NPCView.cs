@@ -46,6 +46,18 @@ public class NPCView : MonoBehaviour
             {
                 NPCPopup.Bind(characterPod.GetCharacterBeanByID(0));
             }
+            if (NameTextNPC.text == "Poom")
+            {
+                NPCPopup.Bind(characterPod.GetCharacterBeanByID(2));
+            }
+            if (NameTextNPC.text == "PyunAWish")
+            {
+                NPCPopup.Bind(characterPod.GetCharacterBeanByID(4));
+            }
+            if (NameTextNPC.text == "ภาระรีมภรีม")
+            {
+                NPCPopup.Bind(characterPod.GetCharacterBeanByID(6));
+            }
             NPCPopUpStatus.SetActive(true);
         });
     }

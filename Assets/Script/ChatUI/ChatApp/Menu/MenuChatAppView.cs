@@ -37,7 +37,7 @@ public class MenuChatAppView : MonoBehaviour
         HomeButton.onClick.AddListener(() =>
         {
             soundManager.PlayClickSound();                                                                                                                                                                                                                 
-            MoveToScene(2);
+            MoveToScene(0);
         });
 
         BackToChatAppButton.onClick.AddListener(() =>

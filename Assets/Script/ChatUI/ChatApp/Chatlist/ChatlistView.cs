@@ -25,7 +25,8 @@ public class ChatlistView : MonoBehaviour
     public void Init()
     {
         characterPod = CharacterPod.Instance;
-        characterPod.LoadCharacterData();   
+        characterPod.LoadCharacterData();
+        Debug.LogError(characterPod.GetCharacterBeanByID(4));
     }
   
     public ChatCellView CreateChatCell()

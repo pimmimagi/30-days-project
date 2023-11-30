@@ -19,7 +19,7 @@ public class HistoryCallHeaderView : MonoBehaviour
     {
         BackButton.onClick.AddListener(() =>
         {
-            MoveToScene(2);
+            MoveToScene(0);
         });
     }
 

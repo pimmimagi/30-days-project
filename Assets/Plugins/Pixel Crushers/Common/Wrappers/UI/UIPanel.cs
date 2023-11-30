@@ -13,10 +13,6 @@ namespace PixelCrushers.Wrappers
     public class UIPanel : PixelCrushers.UIPanel
     {
 
-        private void OnDisable()
-        {
-            Debug.Log("OnDisable");
-        }
     }
 
 }

@@ -26,7 +26,7 @@ public class HeaderGalleryView : MonoBehaviour
         BackButton.onClick.AddListener(() =>
         {
             GalleryPanel.SetActive(false);
-            MoveToScene(2);
+            MoveToScene(0);
             chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);
         });
 

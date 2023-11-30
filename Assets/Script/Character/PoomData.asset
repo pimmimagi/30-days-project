@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PoomData
   m_EditorClassIdentifier: 
   IDCharacter: 2
-  NameText: Group
-  ProfileSprite: {fileID: 21300000, guid: f958c265829fe8a4a99c42aa3c8902ae, type: 3}
+  NameText: Poom
+  ProfileSprite: {fileID: 21300000, guid: cb287dc8515383745b2b317b50b810f0, type: 3}

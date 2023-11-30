@@ -35,19 +35,19 @@ public class MenuButtonView : MonoBehaviour
         {
             chatAppPanelPod.ChangeChatState(ChatAppState.SelectChapter);
             soundManager.PlayClickSound();
-            MoveToScene(0);
+            MoveToScene(1);
         });
         GalleryButton.onClick.AddListener(() =>
         {
             chatAppPanelPod.ChangeChatState(ChatAppState.GalleryPanel);
             soundManager.PlayClickSound();
-            MoveToScene(0);
+            MoveToScene(1);
         });
         CallButton.onClick.AddListener(() =>
         {
             chatAppPanelPod.ChangeChatState(ChatAppState.HistoryCall);
             soundManager.PlayClickSound();
-            MoveToScene(0);
+            MoveToScene(1);
         });
         SettingButton.onClick.AddListener(() =>
         {
