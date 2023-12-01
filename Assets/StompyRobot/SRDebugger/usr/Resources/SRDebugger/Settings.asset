@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isEnabled: 1
   _defaultTab: 1
-  _triggerEnableMode: 0
-  _triggerBehaviour: 0
+  _triggerEnableMode: 3
+  _triggerBehaviour: 2
   _errorNotification: 0
-  _enableKeyboardShortcuts: 1
+  _enableKeyboardShortcuts: 0
   _keyboardShortcuts: []
   _newKeyboardShortcuts:
   - Action: 1

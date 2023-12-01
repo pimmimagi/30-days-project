@@ -64,6 +64,8 @@ public class CallingView : MonoBehaviour
     public void SetupCallingButton()
     {
         //historyPod.LoadHistory();
+        Debug.Log("History pod" + this.historyPod);
+        Debug.Log("PlayerPod" + this.playerPod.PlayerCallingConversation);
         historyPod.SaveHistory(playerPod.PlayerCallingConversation);
         chatAppPanelPod.ChangeChatState(ChatAppState.AcceptCall);
         DialogueManager.UseDialogueUI(CallUI);
