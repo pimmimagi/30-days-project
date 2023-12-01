@@ -76,6 +76,7 @@ public class CallingView : MonoBehaviour
 
         DialogueLua.SetVariable("NowCalling", true);
         soundManager.StopRingtoneSound();
+        soundManager.StopMusicSound();
         DialogueManager.StartConversation("New Conversation 9");
 
         historyPod.LoadHistory();

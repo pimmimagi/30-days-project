@@ -80,21 +80,26 @@ public class ChatView: MonoBehaviour
 
     public void CheckEndOfConversation()
     {
+        Debug.LogError("Run CheckEndOfConversation");
         ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
         Iscalling = DialogueLua.GetVariable("NowCalling").AsBool;
-        
+        Debug.LogError("(CheckEnd) index ที่ :" + playerpod.PlayerReadingConversationIndex);
+        Debug.LogError("(CheckEnd) ความยาว chapter :" + chapter.DataEachConversation.Length);
+
         if (Iscalling == true)
         {
             DialogueLua.SetVariable("NowCalling", false);
         }
         else if (playerpod.PlayerReadingConversationIndex == chapter.DataEachConversation.Length - 1)
         {
+            Debug.LogError("(CheckEnd) เท่ากัน");
             RespondButton.SetActive(false);
             SetEndActive();
             SetContinueActive();
         }
         else if (playerpod.PlayerReadingConversationIndex < chapter.DataEachConversation.Length - 1)
         {
+            Debug.LogError("(CheckEnd) น้อยกว่า");
             playerpod.PlayerReadingConversationIndex += 1;
         }
     }
@@ -115,6 +120,7 @@ public class ChatView: MonoBehaviour
 
     public void CheckEndOfConversationforLuaCode()
     {
+        Debug.Log("เข้าาาาา");
         ChapterTemplateScriptableObject chapter = chapterpod.GetChapterByIndex(playerpod.current_date - 1);
         Iscalling = DialogueLua.GetVariable("NowCalling").AsBool;
 

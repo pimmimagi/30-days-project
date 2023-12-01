@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PixelCrushers.DialogueSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChatlistView : MonoBehaviour
@@ -21,10 +22,12 @@ public class ChatlistView : MonoBehaviour
 
     [Header("Pod")]
     private CharacterPod characterPod;
+    private PlayerPod playerPod;
 
     public void Init()
     {
         characterPod = CharacterPod.Instance;
+        playerPod = PlayerPod.Instance;
         characterPod.LoadCharacterData();
         Debug.LogError(characterPod.GetCharacterBeanByID(4));
     }
@@ -37,6 +40,7 @@ public class ChatlistView : MonoBehaviour
         if (chatCellViewComponent != null)
         {
             instantiatedChatCells.Add(newChatCellView);
+            characterPod.UpdateCurrentChatText(playerPod.PlayerReadingID,"คุณมีข้อความใหม่");
         }
         else
         {

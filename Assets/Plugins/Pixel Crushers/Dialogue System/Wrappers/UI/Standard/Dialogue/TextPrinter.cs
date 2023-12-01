@@ -45,6 +45,7 @@ public class TextPrinter : MonoBehaviour
 
     public void SetWriterText(string textToWrite)
     {
+        ClearText();
         writer = textToWrite;
 
     }
@@ -73,6 +74,7 @@ public class TextPrinter : MonoBehaviour
 
     IEnumerator TypeWriterText()
     {
+        ClearText ();
         StartPrinting.Invoke();
         text.text = leadingCharBeforeDelay ? leadingChar : "";
         yield return new WaitForSeconds(delayBeforeStart);
@@ -96,6 +98,7 @@ public class TextPrinter : MonoBehaviour
 
     IEnumerator TypeWriterTMP()
     {
+        ClearText ();
         StartPrinting.Invoke();
         tmpProText.text = leadingCharBeforeDelay ? leadingChar : "";
         yield return new WaitForSeconds(delayBeforeStart);

@@ -61,4 +61,13 @@ public class SoundManager : MonoBehaviour
         _ringtoneSource.Stop();
     }
   
+    public void StopMusicSound()
+    {
+        _musicSource.Stop();
+    }
+
+    public void PlayMusicSound()
+    {
+        _musicSource.Play();
+    }
 }

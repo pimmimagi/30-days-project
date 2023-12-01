@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -88,6 +88,7 @@ public class SelectChapterView : MonoBehaviour
     {
         if (playerPod.PlayerReadingConversationIndex  < chapter.DataEachConversation.Length)
         {
+            Debug.LogError("Index ที่ : "+playerPod.PlayerReadingConversationIndex);
                SetChatCellView(chapter.DataEachConversation[playerPod.PlayerReadingConversationIndex].CharacterChat);
         }
     }

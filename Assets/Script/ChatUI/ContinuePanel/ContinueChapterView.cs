@@ -15,12 +15,14 @@ public class ContinueChapterView : MonoBehaviour
     private PlayerPod playerPod;
     public GameObject SelectedChapterPanel;
     private ChatAppPanelPod chatAppPanelPod;
+    private SoundManager soundManager;
 
     private void Start()
     {
         chapterPod = Chapterpod.Instance;
         playerPod = PlayerPod.Instance;
         chatAppPanelPod = ChatAppPanelPod.Instance;
+        soundManager = SoundManager.Instance;
         SetupButtonListener();
     }
     private void SetupButtonListener()
@@ -28,6 +30,7 @@ public class ContinueChapterView : MonoBehaviour
         ContinueButton.onClick.AddListener(() =>
         {
             ContinuePanel.SetActive(false);
+            soundManager.PlayMusicSound();
             smsConversation.StopSMSConversation();
             chatlistView.DestroyChatCell();
             selectchapterView.ButtonSetting();
@@ -43,7 +46,8 @@ public class ContinueChapterView : MonoBehaviour
 
         BackButton.onClick.AddListener(() =>
         {
-            MoveToScene(2);
+            MoveToScene(0);
+            soundManager.PlayMusicSound();
             playerPod.current_date += 1;
             ContinuePanel.SetActive(false);
             smsConversation.StopSMSConversation();
